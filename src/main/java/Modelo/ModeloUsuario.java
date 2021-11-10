@@ -9,7 +9,7 @@ package Modelo;
  *
  * @author User
  */
-public class Usuario {
+public class ModeloUsuario {
     
     private String estado;
     private String cidade;
@@ -21,7 +21,7 @@ public class Usuario {
     private String eMail;
     private String senha;
 
-    public Usuario(String estado, String cidade, String nome, String CPF, String celular, String nascimento, String sexo, String eMail, String senha) {
+    public ModeloUsuario(String estado, String cidade, String nome, String CPF, String celular, String nascimento, String sexo, String eMail, String senha) {
         this.estado = estado;
         this.cidade = cidade;
         this.nome = nome;

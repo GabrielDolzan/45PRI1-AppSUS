@@ -9,12 +9,12 @@ package Modelo;
  *
  * @author User
  */
-public class Administrador {
+public class ModeloAdministrador {
     private String eMail;
     private String nome;
     private String senha;
 
-    public Administrador(String eMail, String nome, String senha) {
+    public ModeloAdministrador(String eMail, String nome, String senha) {
         this.eMail = eMail;
         this.nome = nome;
         this.senha = senha;

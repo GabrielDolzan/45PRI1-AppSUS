@@ -10,11 +10,11 @@ package Modelo;
  *
  * @author User
  */
-public class Medico {
+public class ModeloMedico {
     private String nome;
     private Especialidade especialidade;
 
-    public Medico(String nome, Especialidade especialidade) {
+    public ModeloMedico(String nome, Especialidade especialidade) {
         this.nome = nome;
         this.especialidade = especialidade;
     }

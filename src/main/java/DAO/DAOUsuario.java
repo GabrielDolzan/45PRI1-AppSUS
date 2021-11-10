@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo.DAO;
+package DAO;
 
 import Modelo.*;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author User
  */
-public class UsuarioDAO {
+public class DAOUsuario {
     
     private static List<Usuario> usuarios = new ArrayList<>(); 
 

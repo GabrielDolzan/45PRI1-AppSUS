@@ -1,4 +1,4 @@
-package Modelo.DAO;
+package DAO;
 
 import Modelo.*;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author User
  */
-public class MedicoDAO {
+public class DAOMedico {
     private static List<Medico> medicos = new ArrayList<>(); 
 
     public static boolean gravar(Medico medico){

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo.DAO;
+package DAO;
 
-import Modelo.*;
+import Modelo.ModeloConsulta;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,17 +13,17 @@ import java.util.List;
  *
  * @author User
  */
-public class ConsultaDAO {
-    private static List<Consulta> consultas = new ArrayList<>(); 
+public class DAOConsulta {
+    private static List<ModeloConsulta> consultas = new ArrayList<>();
 
-    public static boolean gravar(Consulta consulta){
+    public static boolean gravar(ModeloConsulta consulta){
         consultas.add(consulta);
         return true;
     }
 
-    public static List<Consulta> getConsulta() {
+    public static List<ModeloConsulta> getConsulta() {
         return consultas;
     }
 
-    
+
 }

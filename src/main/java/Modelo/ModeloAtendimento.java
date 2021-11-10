@@ -9,13 +9,13 @@ package Modelo;
  *
  * @author User
  */
-public abstract class Atendimento {
+public abstract class ModeloAtendimento {
     
     private LocalAtendimento local;
     private String hora;
     private String data;
 
-    public Atendimento(LocalAtendimento local, String hora, String data) {
+    public ModeloAtendimento(LocalAtendimento local, String hora, String data) {
         this.local = local;
         this.hora = hora;
         this.data = data;

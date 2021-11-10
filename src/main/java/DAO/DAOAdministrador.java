@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo.DAO;
+package DAO;
 
-import Modelo.Administrador;
+import Modelo.ModeloAdministrador;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +13,11 @@ import java.util.List;
  *
  * @author User
  */
-public class AdministradorDAO {
-    private static List<Administrador> administradores = new ArrayList<>(); 
+public class DAOAdministrador {
+    private static List<ModeloAdministrador> administradores = new ArrayList<>();
 
-    public static boolean gravar(Administrador administrador){
-        for(Administrador admin : administradores){
+    public static boolean gravar(ModeloAdministrador administrador){
+        for(ModeloAdministrador admin : administradores){
             if(admin.getNome().equals(administrador.getNome())){
                 return false;
             }
@@ -25,13 +25,13 @@ public class AdministradorDAO {
         administradores.add(administrador);
         return true;
     }
-     
-    public static List<Administrador> getAdministrador() {
+
+    public static List<ModeloAdministrador> getAdministrador() {
         return administradores;
     }
-  
+
     public static boolean removeAdministrador(String nome){
-        for(Administrador admin : administradores){
+        for(ModeloAdministrador admin : administradores){
             if(admin.getNome().equals(nome)){
                 administradores.remove(admin);
                 return true;
@@ -39,7 +39,7 @@ public class AdministradorDAO {
         }
         return false;
     }
-    
-    
-    
+
+
+
 }

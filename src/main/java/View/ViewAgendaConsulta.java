@@ -13,12 +13,12 @@ import Modelo.Medico;
  *
  * @author User
  */
-public class AgendaConsultaView extends javax.swing.JFrame {
+public class ViewAgendaConsulta extends javax.swing.JFrame {
 
     /**
      * Creates new form AgendaConsultaView
      */
-    public AgendaConsultaView() {
+    public ViewAgendaConsulta() {
         initComponents();
     }
 
@@ -56,8 +56,6 @@ public class AgendaConsultaView extends javax.swing.JFrame {
                 cbMedicoActionPerformed(evt);
             }
         });
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\App-SUS_Projeto_Integrador\\logo-sus.jpg")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

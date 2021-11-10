@@ -9,12 +9,12 @@ package View;
  *
  * @author User
  */
-public class CadastraConsultaView extends javax.swing.JFrame {
+public class ViewCadastroConsulta extends javax.swing.JFrame {
 
     /**
      * Creates new form CadastraConsultaView
      */
-    public CadastraConsultaView() {
+    public ViewCadastroConsulta() {
         initComponents();
     }
 
@@ -58,8 +58,6 @@ public class CadastraConsultaView extends javax.swing.JFrame {
         jCheckBox7.setText("jCheckBox1");
 
         btAgendaConsulta.setText("Agendar consulta");
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\App-SUS_Projeto_Integrador\\logo-sus.jpg")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -9,11 +9,11 @@ package Modelo;
  *
  * @author User
  */
-public class Exame extends Atendimento {
+public class ModeloExame extends Atendimento {
     
     private String exame;
 
-    public Exame(String exame, LocalAtendimento local, String hora, String data) {
+    public ModeloExame(String exame, LocalAtendimento local, String hora, String data) {
         super(local, hora, data);
         this.exame = exame;
     }

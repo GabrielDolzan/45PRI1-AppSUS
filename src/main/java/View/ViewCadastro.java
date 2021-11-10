@@ -9,12 +9,12 @@ package View;
  *
  * @author User
  */
-public class CriarCadastroView extends javax.swing.JFrame {
+public class ViewCadastro extends javax.swing.JFrame {
 
     /**
      * Creates new form CriarCadastroView
      */
-    public CriarCadastroView() {
+    public ViewCadastro() {
         initComponents();
     }
 

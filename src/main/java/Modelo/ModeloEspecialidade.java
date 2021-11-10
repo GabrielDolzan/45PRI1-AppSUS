@@ -9,10 +9,10 @@ package Modelo;
  *
  * @author User
  */
-public class Especialidade {
+public class ModeloEspecialidade {
     private String especialidade;
 
-    public Especialidade(String especialidade) {
+    public ModeloEspecialidade(String especialidade) {
         this.especialidade = especialidade;
     }
 

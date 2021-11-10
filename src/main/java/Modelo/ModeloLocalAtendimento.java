@@ -9,11 +9,11 @@ package Modelo;
  *
  * @author User
  */
-public class LocalAtendimento {
+public class ModeloLocalAtendimento {
     private String localAtendimento;
     private String endereço;
 
-    public LocalAtendimento(String localAtendimento, String endereço) {
+    public ModeloLocalAtendimento(String localAtendimento, String endereço) {
         this.localAtendimento = localAtendimento;
         this.endereço = endereço;
     }

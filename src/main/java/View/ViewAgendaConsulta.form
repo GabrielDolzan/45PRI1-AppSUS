@@ -125,11 +125,6 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\User\Documents\NetBeansProjects\App-SUS_Projeto_Integrador\logo-sus.jpg"/>
-        </Property>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>
