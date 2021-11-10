@@ -12,9 +12,9 @@ package Modelo;
  */
 public class ModeloMedico {
     private String nome;
-    private Especialidade especialidade;
+    private ModeloEspecialidade especialidade;
 
-    public ModeloMedico(String nome, Especialidade especialidade) {
+    public ModeloMedico(String nome, ModeloEspecialidade especialidade) {
         this.nome = nome;
         this.especialidade = especialidade;
     }
@@ -27,11 +27,11 @@ public class ModeloMedico {
         this.nome = nome;
     }
 
-    public Especialidade getEspecialidade() {
+    public ModeloEspecialidade getEspecialidade() {
         return especialidade;
     }
 
-    public void setEspecialidade(Especialidade especialidade) {
+    public void setEspecialidade(ModeloEspecialidade especialidade) {
         this.especialidade = especialidade;
     }
 
@@ -40,6 +40,6 @@ public class ModeloMedico {
         return "Medico: " + nome + "/n"+
                "Especialidade: " + especialidade +"/n";
     }
-    
-    
+
+
 }

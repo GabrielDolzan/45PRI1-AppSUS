@@ -9,11 +9,11 @@ package Modelo;
  *
  * @author User
  */
-public class ModeloConsulta extends Atendimento{
+public class ModeloConsulta extends ModeloAtendimento {
     private String areaDesejada;
-    private Medico medico;
-    
-    public ModeloConsulta(String areaDesejada, Medico medico, LocalAtendimento local, String hora, String data) {
+    private ModeloMedico medico;
+
+    public ModeloConsulta(String areaDesejada, ModeloMedico medico, ModeloLocalAtendimento local, String hora, String data) {
         super(local, hora, data);
 //        this.areaDesejada = areaDesejada;
 //        this.medico = medico;
@@ -27,11 +27,11 @@ public class ModeloConsulta extends Atendimento{
         this.areaDesejada = areaDesejada;
     }
 
-    public Medico getMedico() {
+    public ModeloMedico getMedico() {
         return medico;
     }
 
-    public void setMedico(Medico medico) {
+    public void setMedico(ModeloMedico medico) {
         this.medico = medico;
     }
 
@@ -40,6 +40,6 @@ public class ModeloConsulta extends Atendimento{
         return "Especialidade: " + areaDesejada +"\n"
              + "Médico: " + medico+"\n" ;
     }
-    
-    
+
+
 }

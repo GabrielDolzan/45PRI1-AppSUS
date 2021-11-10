@@ -10,22 +10,22 @@ package Modelo;
  * @author User
  */
 public abstract class ModeloAtendimento {
-    
-    private LocalAtendimento local;
+
+    private ModeloLocalAtendimento local;
     private String hora;
     private String data;
 
-    public ModeloAtendimento(LocalAtendimento local, String hora, String data) {
+    public ModeloAtendimento(ModeloLocalAtendimento local, String hora, String data) {
         this.local = local;
         this.hora = hora;
         this.data = data;
     }
 
-    public LocalAtendimento getLocal() {
+    public ModeloLocalAtendimento getLocal() {
         return local;
     }
 
-    public void setLocal(LocalAtendimento local) {
+    public void setLocal(ModeloLocalAtendimento local) {
         this.local = local;
     }
 
@@ -51,7 +51,7 @@ public abstract class ModeloAtendimento {
              + "Data: " + data +"\n"
              + "Horario: " + hora+ "\n";
     }
-    
-    
-    
+
+
+
 }

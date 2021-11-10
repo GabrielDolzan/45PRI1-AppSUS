@@ -14,16 +14,16 @@ import java.util.List;
  * @author User
  */
 public class DAOExame {
-    
-    private static List<Exame> exames = new ArrayList<>(); 
 
-    public static boolean gravar(Exame exame){
+    private static List<ModeloExame> exames = new ArrayList<>();
+
+    public static boolean gravar(ModeloExame exame){
         exames.add(exame);
         return true;
     }
 
-    public static List<Exame> getConsulta() {
+    public static List<ModeloExame> getConsulta() {
         return exames;
     }
-    
+
 }

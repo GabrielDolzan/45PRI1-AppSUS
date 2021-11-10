@@ -128,7 +128,7 @@ public class ViewLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginView().setVisible(true);
+                new ViewLogin().setVisible(true);
             }
         });
     }

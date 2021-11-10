@@ -14,11 +14,11 @@ import java.util.List;
  * @author User
  */
 public class DAOUsuario {
-    
-    private static List<Usuario> usuarios = new ArrayList<>(); 
 
-    public static boolean gravar(Usuario usuario){
-        for(Usuario use : usuarios){
+    private static List<ModeloUsuario> usuarios = new ArrayList<>();
+
+    public static boolean gravar(ModeloUsuario usuario){
+        for(ModeloUsuario use : usuarios){
             if(use.getCPF().equals(usuario.getCPF())){
                 return false;
             }
@@ -27,12 +27,12 @@ public class DAOUsuario {
         return true;
     }
      
-    public static List<Usuario> getUsuario() {
+    public static List<ModeloUsuario> getUsuario() {
         return usuarios;
     }
-  
+
     public static boolean removeUsuario(String cpf){
-        for(Usuario use : usuarios){
+        for(ModeloUsuario use : usuarios){
             if(use.getCPF().equals(cpf)){
                 usuarios.remove(use);
                 return true;

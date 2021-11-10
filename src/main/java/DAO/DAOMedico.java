@@ -15,10 +15,10 @@ import java.util.List;
  * @author User
  */
 public class DAOMedico {
-    private static List<Medico> medicos = new ArrayList<>(); 
+    private static List<ModeloMedico> medicos = new ArrayList<>();
 
-    public static boolean gravar(Medico medico){
-        for(Medico med : medicos){
+    public static boolean gravar(ModeloMedico medico){
+        for(ModeloMedico med : medicos){
             if(med.getNome().equals(medico.getNome())){
                 return false;
             }
@@ -26,13 +26,13 @@ public class DAOMedico {
         medicos.add(medico);
         return true;
     }
-     
-    public static List<Medico> getMedico() {
+
+    public static List<ModeloMedico> getMedico() {
         return medicos;
     }
-  
+
     public static boolean removeMedico(String nome){
-        for(Medico med : medicos){
+        for(ModeloMedico med : medicos){
             if(med.getNome().equals(nome)){
                 medicos.remove(med);
                 return true;
@@ -40,5 +40,5 @@ public class DAOMedico {
         }
         return false;
     }
-    
+
 }

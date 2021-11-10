@@ -5,9 +5,9 @@
  */
 package View;
 
-import Modelo.Especialidade;
-import Modelo.LocalAtendimento;
-import Modelo.Medico;
+import Modelo.ModeloEspecialidade;
+import Modelo.ModeloLocalAtendimento;
+import Modelo.ModeloMedico;
 
 /**
  *
@@ -50,12 +50,6 @@ public class ViewAgendaConsulta extends javax.swing.JFrame {
         btPesquisaData.setText("Pesquisar data disponivel");
 
         jLabel2.setText("Médico");
-
-        cbMedico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbMedicoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,10 +95,6 @@ public class ViewAgendaConsulta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMedicoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbMedicoActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -112,7 +102,7 @@ public class ViewAgendaConsulta extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -135,16 +125,16 @@ public class ViewAgendaConsulta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgendaConsultaView().setVisible(true);
+                new ViewAgendaConsulta().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btPesquisaData;
-    private javax.swing.JComboBox<Especialidade> cbEspecialidade;
-    private javax.swing.JComboBox<Medico> cbMedico;
-    private javax.swing.JComboBox<LocalAtendimento> cbPostoAtendimento;
+    private javax.swing.JComboBox<ModeloEspecialidade> cbEspecialidade;
+    private javax.swing.JComboBox<ModeloMedico> cbMedico;
+    private javax.swing.JComboBox<ModeloLocalAtendimento> cbPostoAtendimento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

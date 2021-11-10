@@ -14,14 +14,14 @@ import java.util.List;
  * @author User
  */
 public class DAOEspecialidade {
-    private static List<Especialidade> especialidades = new ArrayList<>(); 
+    private static List<ModeloEspecialidade> especialidades = new ArrayList<>();
 
-    public static boolean gravar(Especialidade especialidade){
+    public static boolean gravar(ModeloEspecialidade especialidade){
         especialidades.add(especialidade);
         return true;
     }
 
-    public static List<Especialidade> getEspecialidade() {
+    public static List<ModeloEspecialidade> getEspecialidade() {
         return especialidades;
     }
 }

@@ -9,11 +9,11 @@ package Modelo;
  *
  * @author User
  */
-public class ModeloExame extends Atendimento {
-    
+public class ModeloExame extends ModeloAtendimento {
+
     private String exame;
 
-    public ModeloExame(String exame, LocalAtendimento local, String hora, String data) {
+    public ModeloExame(String exame, ModeloLocalAtendimento local, String hora, String data) {
         super(local, hora, data);
         this.exame = exame;
     }
@@ -30,7 +30,7 @@ public class ModeloExame extends Atendimento {
     public String toString() {
         return super.toString()+ "Exame: " + exame +"\n";
     }
-    
-    
-    
+
+
+
 }

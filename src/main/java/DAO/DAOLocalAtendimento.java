@@ -14,23 +14,23 @@ import java.util.List;
  * @author User
  */
 public class DAOLocalAtendimento {
-    private static List<LocalAtendimento> locais = new ArrayList<>();
-    
-    public static boolean salvar(LocalAtendimento local){
-        for(LocalAtendimento loc : locais){
+    private static List<ModeloLocalAtendimento> locais = new ArrayList<>();
+
+    public static boolean salvar(ModeloLocalAtendimento local){
+        for(ModeloLocalAtendimento loc : locais){
             if(loc.getLocalAtendimento().equals(local.getLocalAtendimento()) || loc.getEndereço().equals(local.getEndereço()))
                 return false;
         }
         locais.add(local);
         return true;
     }
-        
-   public static List<LocalAtendimento> getLocalAtendimento(){
+
+   public static List<ModeloLocalAtendimento> getLocalAtendimento(){
         return locais;
     }
-    
+
     public static boolean excluirFilial(String localAntendimento){
-        for(LocalAtendimento loc : locais){
+        for(ModeloLocalAtendimento loc : locais){
             if(loc.getLocalAtendimento().equals(localAntendimento)){
                 locais.remove(loc);
                 return true;
@@ -38,6 +38,6 @@ public class DAOLocalAtendimento {
         }
         return false;
     }
-    
-    
+
+
 }
