@@ -17,55 +17,62 @@ import java.awt.event.ActionListener;
  * @author User
  */
 public class ControladorCadastro {
-    
-    private ViewLogin viewLogin;
-    private ModeloUsuario modeloUsuario;
-    
+
     private ViewCadastro viewCadastro;
-    
-    public ControladorCadastro(ViewLogin viewLogin, ViewCadastro viewCadastro, ModeloUsuario modeloUsuario) {
-        this.viewCadastro = viewCadastro;
-        this.modeloUsuario =modeloUsuario;
-        this.viewLogin = viewLogin;
+    private ModeloUsuario modeloUsuario;
+
+    public ControladorCadastro() {
+        this.viewCadastro = new ViewCadastro();
         adicionarAcoesBotoes();
     }
+
     public void exibir(){
        viewCadastro.exibirTela();
     }
-       
+
     public void adicionarAcoesBotoes(){
         viewCadastro.addAcaoBotaoCriarConta(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    CadastraUsuario();
-                    //viewCadastro.exibirMensagem("Consulta XXXX");
+                cadastraUsuario();
+                //viewCadastro.exibirMensagem("Consulta XXXX");
+            }
+        });
+
+        viewCadastro.addAcaoBotaoVoltar(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                viewCadastro.setVisible(false);
+
+                ControladorLogin controlador = new ControladorLogin();
+                controlador.exibir();
             }
         });
     }
-    
-    public void CadastraUsuario(){
+
+    public void cadastraUsuario() {
         modeloUsuario = new ModeloUsuario(viewCadastro.getEstado(), viewCadastro.getCidade(), viewCadastro.getNomeCompleto(), viewCadastro.getCPF(), viewCadastro.getCelular(), viewCadastro.getDataNascimento(), viewCadastro.getSexo(), viewCadastro.getEmail(), viewCadastro.getSenha());
-        
-        if(validarUsuario()){
-            if(DAOUsuario.gravar(modeloUsuario)){
+
+        if (validarUsuario()) {
+            DAOUsuario dao = new DAOUsuario();
+            if (dao.gravar(modeloUsuario)) {
                 viewCadastro.exibirMensagem("Usuario criado com sucesso. ");
-                viewCadastro.LimpaTela();
+                viewCadastro.limpaTela();
             }
         }
         else {
-                viewCadastro.exibirMensagem("Algum Campo esta em branco ou preenchido incorretamente! ");
+            viewCadastro.exibirMensagem("Algum Campo esta em branco ou preenchido incorretamente! ");
         }
     }
-   
+
     public boolean validarUsuario(){
-        
         if (this.modeloUsuario.getEstado().equals(""))
             return false;
         if (this.modeloUsuario.getCidade().equals(""))
             return false;
         if (this.modeloUsuario.getNome().equals(""))
             return false;
-        if (this.modeloUsuario.getCPF().equals(""))
+        if (this.modeloUsuario.getCpf().equals(""))
             return false;
         if (this.modeloUsuario.getCelular().equals(""))
             return false;
@@ -73,7 +80,7 @@ public class ControladorCadastro {
             return false;
         if (this.modeloUsuario.getSexo().equals(""))
             return false;
-        if (this.modeloUsuario.geteMail().equals(""))
+        if (this.modeloUsuario.getEmail().equals(""))
             return false;
         if (this.modeloUsuario.getSenha().equals(""))
             return false;
@@ -82,5 +89,5 @@ public class ControladorCadastro {
 
     public ViewCadastro getViewCadastro() {
         return viewCadastro;
-    } 
+    }
 }

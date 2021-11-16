@@ -1,10 +1,13 @@
 package Controlador;
 
+import DAO.DAOAdministrador;
+import DAO.DAOUsuario;
+import Modelo.ModeloAdministrador;
 import Modelo.ModeloUsuario;
-import View.ViewCadastro;
 import View.ViewLogin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,56 +15,72 @@ import java.awt.event.ActionListener;
  */
 public class ControladorLogin {
 
-    private ViewLogin  logView;
+    private ViewLogin viewLogin;
     private ControladorCadastro controladorCadastro;
 
     public ControladorLogin() {
-        logView = new ViewLogin();
+        viewLogin = new ViewLogin();
         adicionarAcoesBotoes();
         inicializarAgendaConsulta();
-        
     }
-    
+
     public void exibir(){
-        logView.exibirTela();
+        viewLogin.exibirTela();
     }
-   
-    
+
     public void adicionarAcoesBotoes(){
-        logView.addAcaoBotaoCriarConta(new ActionListener() {
+        viewLogin.addAcaoBotaoCriarConta(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controladorCadastro.exibir();
+
+                viewLogin.setVisible(false);
             }
         });
-        
-        
-        logView.addAcaoBotaoLogin(new ActionListener() {
+
+        viewLogin.addAcaoBotaoLogin(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                verificaFuncionario();
+                verificaUsuario();
             }
         });
-        
-    }
-    
-    
-   public void verificaFuncionario(){
-    
-       String senha = logView.getSenha();
-        if(senha.equalsIgnoreCase("admin")){
-            logView.abrirMenuAdmin();
-        }else{
-            logView.abrirMenuUsuario();
 
+    }
+
+    public void verificaUsuario() {
+        String cpf = viewLogin.getCpf();
+        String senha = viewLogin.getSenha();
+
+        if (!cpf.isEmpty() && !senha.isEmpty()) {
+            DAOUsuario DaoUsu = new DAOUsuario();
+            DAOAdministrador DaoAdmin = new DAOAdministrador();
+
+            ModeloUsuario usuario = DaoUsu.getUsuario(cpf);
+            ModeloAdministrador admin = DaoAdmin.getAdministrador(cpf);
+
+            if (usuario != null) {
+                if (usuario.getSenha().equalsIgnoreCase(senha)) {
+                    viewLogin.abrirMenuUsuario();
+                    viewLogin.setVisible(false);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Senha inválida.", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            } else if (admin != null) {
+                if (admin.getSenha().equalsIgnoreCase(senha)) {
+                    viewLogin.abrirMenuAdmin();
+                    viewLogin.setVisible(false);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Senha inválida.", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            } else if (senha.equalsIgnoreCase("admin")) {
+                viewLogin.abrirMenuAdmin();
+                viewLogin.setVisible(false);
+            }
         }
     }
-   
-   public void inicializarAgendaConsulta() {
-        controladorCadastro = new ControladorCadastro(new ViewLogin(),new ViewCadastro(), new ModeloUsuario("", "","", "", "", "", "", "", ""));
+
+    public void inicializarAgendaConsulta() {
+        controladorCadastro = new ControladorCadastro();
     }
+
 }
-       
- 
-
-

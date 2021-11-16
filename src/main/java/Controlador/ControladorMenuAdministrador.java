@@ -11,33 +11,32 @@ import Modelo.ModeloMedico;
 import View.ViewAdicionaDadosConsultaAdmin;
 import View.ViewLogin;
 import View.ViewMenuAdministrador;
-import com.sun.java.swing.action.ViewMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class ControladorMenuAdiministrador {
+public class ControladorMenuAdministrador {
     private ViewLogin viewLogin;
     private ViewMenuAdministrador viewMenuAdmin;
 
     //Referenete Agenda Consulta
     //private ModeloConsulta ModeloConsulta;
-    private ControladorAdiciondaDadosAdmin controladorAddDados;
- 
-    public ControladorMenuAdiministrador(ViewLogin viewLogin  ) {
+    private ControladorAdicionaDadosAdmin controladorAddDados;
+
+    public ControladorMenuAdministrador(ViewLogin viewLogin) {
         this.viewLogin= viewLogin;
         viewMenuAdmin = new ViewMenuAdministrador();
         //mostraDados();
         inicializarAcaoBotoesMenu();
-        inicializaCadastros();    
+        inicializaCadastros();
 
         //atualizarListasAoSalvar();
     }
-     
+
     public void exibirTela() {
         viewMenuAdmin.exibirTela();
     }
-     
+
     public void inicializarAcaoBotoesMenu() {
         viewMenuAdmin.adicionarAcaoAddDadosConsulta(new ActionListener() {
             @Override
@@ -47,13 +46,13 @@ public class ControladorMenuAdiministrador {
             }
         });
     }
-    
+
     public void inicializaCadastros(){
         inicializarAgendaConsulta();
-       
-    }   
+
+    }
     public void inicializarAgendaConsulta() {
-        controladorAddDados = new ControladorAdiciondaDadosAdmin(new ViewMenuAdministrador(),new ViewAdicionaDadosConsultaAdmin(), new ModeloMedico("", null) , new ModeloEspecialidade("") , new ModeloLocalAtendimento("",""));
+        controladorAddDados = new ControladorAdicionaDadosAdmin(new ViewMenuAdministrador(),new ViewAdicionaDadosConsultaAdmin(), new ModeloMedico("", null) , new ModeloEspecialidade("") , new ModeloLocalAtendimento("",""));
     }
 
 }

@@ -20,7 +20,7 @@ import java.awt.event.ActionListener;
  *
  * @author User
  */
-public class ControladorAdiciondaDadosAdmin {
+public class ControladorAdicionaDadosAdmin {
     
     private ModeloMedico modeloMedico;
     private ModeloEspecialidade modeloEspecialidade;
@@ -30,7 +30,7 @@ public class ControladorAdiciondaDadosAdmin {
     private ViewMenuAdministrador viewMenuAdmin;
 
             
-    public ControladorAdiciondaDadosAdmin(ViewMenuAdministrador viewMenuAdmin, ViewAdicionaDadosConsultaAdmin viewAdicionaDados, ModeloMedico modeloMedico, ModeloEspecialidade modeloEspecialidade, ModeloLocalAtendimento modeloLocal) {
+    public ControladorAdicionaDadosAdmin(ViewMenuAdministrador viewMenuAdmin, ViewAdicionaDadosConsultaAdmin viewAdicionaDados, ModeloMedico modeloMedico, ModeloEspecialidade modeloEspecialidade, ModeloLocalAtendimento modeloLocal) {
        this.viewMenuAdmin = viewMenuAdmin;
        this.viewAdicionaDados = viewAdicionaDados;
        this.modeloEspecialidade = modeloEspecialidade;

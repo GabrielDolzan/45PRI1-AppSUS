@@ -5,7 +5,7 @@
  */
 package View;
 
-import Controlador.ControladorMenuAdiministrador;
+import Controlador.ControladorMenuAdministrador;
 import Controlador.ControladorMenuUsuario;
 import Modelo.ModeloAdministrador;
 import Modelo.ModeloUsuario;
@@ -20,33 +20,33 @@ public class ViewLogin extends javax.swing.JFrame {
 
     private ModeloUsuario usuario;
     private ModeloAdministrador admin;
-    
+
     public ViewLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
 
     }
-    
+
     public String getCpf(){
         String cpf = tfCpf.getText();
-        return cpf;       
+        return cpf;
     }
-    
+
     public String getSenha(){
         String senha = pfSenha.getText();
-        return senha;       
+        return senha;
     }
-    
+
     public void exibirMensagem(String mensagem){
         JOptionPane.showMessageDialog(null, mensagem);
     }
-   
-    
+
+
     public void addAcaoBotaoLogin(ActionListener acao){
         btEntrar.addActionListener(acao);
         dispose();
     }
-    
+
     public void addAcaoBotaoCriarConta(ActionListener acao){
         btCadastro.addActionListener(acao);
         dispose();
@@ -55,15 +55,15 @@ public class ViewLogin extends javax.swing.JFrame {
     public void exibirTela(){
         this.setVisible(true);
     }
-    
+
     public void abrirMenuUsuario(){
         ControladorMenuUsuario menuUsuario = new ControladorMenuUsuario(this);
-        menuUsuario.exibirTela();                 
+        menuUsuario.exibirTela();
     }
-    
+
     public void abrirMenuAdmin(){
-        ControladorMenuAdiministrador menuAdmin = new ControladorMenuAdiministrador(this);
-        menuAdmin.exibirTela();               
+        ControladorMenuAdministrador menuAdmin = new ControladorMenuAdministrador(this);
+        menuAdmin.exibirTela();
     }
 
     /**
@@ -99,7 +99,6 @@ public class ViewLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\GitHub\\45PRI1-AppSUS\\sus - login.png")); // NOI18N
         jLabel6.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jLabel6FocusGained(evt);
@@ -125,19 +124,16 @@ public class ViewLogin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(btEntrar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(btCadastro))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(pfSenha, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tfCpf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2))))
+                            .addComponent(tfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(pfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btEntrar, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(btCadastro)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -149,19 +145,19 @@ public class ViewLogin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4))
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btEntrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(btCadastro)
-                .addContainerGap())
+                .addGap(24, 24, 24))
         );
 
         pack();

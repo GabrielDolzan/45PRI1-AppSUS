@@ -10,22 +10,25 @@ package Modelo;
  * @author User
  */
 public class ModeloAdministrador {
-    private String eMail;
+
+    private String email;
     private String nome;
     private String senha;
+    private String cpf;
 
-    public ModeloAdministrador(String eMail, String nome, String senha) {
-        this.eMail = eMail;
+    public ModeloAdministrador(String eMail, String nome, String senha, String cpf) {
+        this.email = eMail;
         this.nome = nome;
         this.senha = senha;
+        this.cpf = cpf;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getNome() {
@@ -44,12 +47,18 @@ public class ModeloAdministrador {
         this.senha = senha;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
     @Override
     public String toString() {
-        return "E-mail: " + eMail + "\n"+
+        return "E-mail: " + email + "\n"+
                "Nome: " + nome +"\n";
     }
-    
-    
-    
+
 }

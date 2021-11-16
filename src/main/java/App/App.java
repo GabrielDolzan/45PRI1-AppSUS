@@ -15,14 +15,10 @@ import Controlador.ControladorLogin;
 public class App {
     public static void main(String[] args) {
 //       Funcionario fun = new Funcionario("1234", "Fabiano", null);
-        
-       ControladorLogin controlador = new ControladorLogin();
-        
+
+        ControladorLogin controlador = new ControladorLogin();
+
         controlador.exibir();
-       
-        
-        
-     
-       
     }
+
 }

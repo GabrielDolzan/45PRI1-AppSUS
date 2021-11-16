@@ -10,26 +10,26 @@ package Modelo;
  * @author User
  */
 public class ModeloUsuario {
-    
+
     private String estado;
     private String cidade;
     private String nome;
-    private String CPF;
+    private String cpf;
     private String celular;
     private String nascimento;
     private String sexo;
-    private String eMail;
+    private String email;
     private String senha;
 
     public ModeloUsuario(String estado, String cidade, String nome, String CPF, String celular, String nascimento, String sexo, String eMail, String senha) {
         this.estado = estado;
         this.cidade = cidade;
         this.nome = nome;
-        this.CPF = CPF;
+        this.cpf = CPF;
         this.celular = celular;
         this.nascimento = nascimento;
         this.sexo = sexo;
-        this.eMail = eMail;
+        this.email = eMail;
         this.senha = senha;
     }
 
@@ -57,12 +57,12 @@ public class ModeloUsuario {
         this.nome = nome;
     }
 
-    public String getCPF() {
-        return CPF;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setCpf(String CPF) {
+        this.cpf = CPF;
     }
 
     public String getCelular() {
@@ -89,12 +89,12 @@ public class ModeloUsuario {
         this.sexo = sexo;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String eMail) {
+        this.email = eMail;
     }
 
     public String getSenha() {
@@ -110,12 +110,12 @@ public class ModeloUsuario {
         return "Estado: " + estado + "\n"+
                "Cidade: " + cidade + "\n"+
                "Usuario: " + nome + "\n"+
-               "CPF: " + CPF +"/n"+
+               "CPF: " + cpf +"/n"+
                "Celular: " + celular + "\n"+
                "Data de Nascimento: " + nascimento + "\n"+
                "Sexo: " + sexo + "\n"+
-               "E-mail: " + eMail +"\n";
+               "E-mail: " + email +"\n";
     }
-    
-    
+
+
 }
