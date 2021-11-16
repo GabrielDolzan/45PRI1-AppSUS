@@ -26,7 +26,7 @@ public class ModeloEspecialidade {
 
     @Override
     public String toString() {
-        return "Especialidade: " + especialidade + "\n";
+        return " " + especialidade ;
     }
     
     

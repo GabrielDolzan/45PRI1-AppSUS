@@ -18,6 +18,8 @@ public class DAOEspecialidade {
 
     public static boolean gravar(ModeloEspecialidade especialidade){
         especialidades.add(especialidade);
+        System.out.println(especialidades);
+
         return true;
     }
 

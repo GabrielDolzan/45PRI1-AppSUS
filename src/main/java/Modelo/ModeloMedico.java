@@ -37,8 +37,7 @@ public class ModeloMedico {
 
     @Override
     public String toString() {
-        return "Medico: " + nome + "/n"+
-               "Especialidade: " + especialidade +"/n";
+        return  nome + " - "+ especialidade ;
     }
 
 

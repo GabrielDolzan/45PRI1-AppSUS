@@ -38,8 +38,7 @@ public class ModeloLocalAtendimento {
 
     @Override
     public String toString() {
-        return "Local de Atendimento: " + localAtendimento +"\n"+
-               "Endereço: "+ endereço+"\n";
+        return "" + localAtendimento ;
     }
     
     

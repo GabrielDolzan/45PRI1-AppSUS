@@ -5,19 +5,97 @@
  */
 package View;
 
+import DAO.DAOUsuario;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
  */
 public class ViewCadastro extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CriarCadastroView
-     */
+    private ViewMenuUsuario viewMenuUsuario;
+    private DAOUsuario usuarioDAO;
+//    private MotoDAO motoDAO;
+//    private CarroDAO carroDAO;
+    
     public ViewCadastro() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
+    public void addAcaoBotaoCriarConta(ActionListener acao){
+        btCriaConta.addActionListener(acao);
+    }
+  
+    public void exibirTela() {
+        this.setVisible(true);
+    }
+ /////////////////////////////////////
+    public String getEstado(){
+        String estado = tfEstado.getText();
+        return estado;
+    }
+    public String getCidade(){
+        String cidade =tfCidade.getText();
+        return cidade;
+    }
+    
+    public String getNomeCompleto(){
+        String nomeCompleto = tfNomeCompleto.getText();
+        return nomeCompleto;
+    }
+    
+    public String getCPF(){
+        String CPF = tfCPF.getText();
+        return CPF;
+    }
+    
+    public String getCelular(){
+        String celular = tfCelular.getText();
+        return celular;
+    }
+    
+    public String getDataNascimento(){
+        String dataNascimento = tfDataNascimento.getText();
+        return dataNascimento;
+    }
+    
+    public String getSexo(){
+        String sexo = cbSexo.getItemAt(cbSexo.getSelectedIndex());
+        return sexo;
+    }
+    
+    public String getEmail(){
+        String email = tfEmail.getText();      
+        return email;
+    }
+    
+    public String getSenha(){
+        String senha= tfSenha.getText();
+        return senha;
+    }
+    
+    public void popularFiliais(){
+            cbSexo.addItem(cbSexo.getItemAt(cbSexo.getSelectedIndex()));
+        
+    }
+    
+     public void LimpaTela(){
+        this.tfEstado.setText("");
+        this.tfCidade.setText("");
+        this.tfNomeCompleto .setText("");
+        this.tfCPF.setText("");
+        this.tfCelular.setText("");    
+        this.tfEmail.setText("");
+        this.tfDataNascimento.setText("");
+        this.tfSenha.setText("");
+   }    
+     
+     public void exibirMensagem(String mensagem){
+        JOptionPane.showMessageDialog(null, mensagem);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

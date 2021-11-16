@@ -6,17 +6,16 @@
 package View;
 
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /**
  *
  * @author User
  */
-public class ViewMenuUsuario extends javax.swing.JFrame {
+public class ViewMenuAdministrador extends javax.swing.JFrame {
 
     private ViewLogin viewLogin;
-    
-    public ViewMenuUsuario() {
+
+    public ViewMenuAdministrador() {
         initComponents();
         this.setLocationRelativeTo(null);
 
@@ -26,10 +25,10 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
-    public void adicionarAcaoAgendaConsulta(ActionListener acao){
-        miAgendarConsulta.addActionListener(acao);
+    public void adicionarAcaoAddDadosConsulta(ActionListener acao){
+        miAddDadosConsulta.addActionListener(acao);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,18 +39,21 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        mnMenu = new javax.swing.JMenu();
-        miAgendarConsulta = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        miAddDadosConsulta = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Próximos Agendamentos");
 
-        mnMenu.setText("Menu");
+        jMenu1.setText("....");
 
-        miAgendarConsulta.setText("Agendar Consulta");
-        mnMenu.add(miAgendarConsulta);
+        miAddDadosConsulta.setText("Adicionar dados da Consulta");
+        jMenu1.add(miAddDadosConsulta);
 
-        jMenuBar1.add(mnMenu);
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -76,7 +78,7 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -86,27 +88,28 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewMenuUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewMenuUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewMenuUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewMenuUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewMenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewMenuUsuario().setVisible(true);
+                new ViewMenuAdministrador().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem miAgendarConsulta;
-    private javax.swing.JMenu mnMenu;
+    private javax.swing.JMenuItem miAddDadosConsulta;
     // End of variables declaration//GEN-END:variables
 }
