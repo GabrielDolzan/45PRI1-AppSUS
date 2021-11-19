@@ -36,7 +36,7 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
     }
 
     public void adicionarAcaoSair(ActionListener acao){
-        miCadastrarConsulta.addActionListener(acao);
+        btSair.addActionListener(acao);
     }
 
     /**
