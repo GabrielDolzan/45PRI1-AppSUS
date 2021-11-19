@@ -95,7 +95,7 @@ public class DAOAdministrador {
         //return administradores;
     }
 
-    public static ModeloAdministrador getAdministrador(String cpf) {
+    public ModeloAdministrador getAdministrador(String cpf) {
         Connection connection = Conexao.conectar();
 
         String sql = "SELECT * FROM ADMINISTRADOR WHERE cpf = ?";

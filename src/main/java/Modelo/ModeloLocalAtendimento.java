@@ -1,46 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
-/**
- *
- * @author User
- */
 public class ModeloLocalAtendimento {
-    private String localAtendimento;
-    private String endereço;
 
-    public ModeloLocalAtendimento(String localAtendimento, String endereço) {
-        this.localAtendimento = localAtendimento;
-        this.endereço = endereço;
+    private String telefone;
+    private String endereco;
+
+    public ModeloLocalAtendimento(String telefone, String endereco) {
+        this.telefone = telefone;
+        this.endereco = endereco;
     }
 
-    public String getLocalAtendimento() {
-        return localAtendimento;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setLocalAtendimento(String localAtendimento) {
-        this.localAtendimento = localAtendimento;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public String getEndereço() {
-        return endereço;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setEndereço(String endereço) {
-        this.endereço = endereço;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
-    
-    
 
     @Override
     public String toString() {
-        return "" + localAtendimento ;
+        return "Endereço: " + endereco + ", telefone: " + telefone;
     }
-    
-    
-    
+
 }

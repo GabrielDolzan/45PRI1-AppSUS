@@ -1,40 +1,73 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
-import Modelo.ModeloConsulta;
+import DAO.DAOEspecialidade;
+import DAO.DAOLocalAtendimento;
+import DAO.DAOMedico;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author User
- */
 public class ViewCadastroConsulta extends javax.swing.JFrame {
-    
-    private ViewMenuUsuario viewMenuUsuario;
-    private ModeloConsulta modeloConsulta;
-    
+
+//    private DAOEspecialidade especialidadeDAO;
+//    private DAOMedico medicoDAO;
+//    private DAOLocalAtendimento localDAO;
+
     public ViewCadastroConsulta() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
 
+    public void adicionaAcaoBotaoCadastrar(ActionListener acao){
+        btCadastrar.addActionListener(acao);
     }
-       
-    public void addAcaoBotaoCadastraData(ActionListener acao){
-        btAgendaConsulta.addActionListener(acao);
+
+    public void adicionarAcaoBotaoVoltar(ActionListener acao) {
+        btVoltar.addActionListener(acao);
     }
-    
-    // Retornar data e hora da consulta do checbox
-    
-  
-    public void exibirTela() {
+
+    public void exibir() {
         this.setVisible(true);
     }
-    
+
+    public String getEspecialidade(){
+        String especialidade = tfAreaDesejada.getText();
+        return especialidade;
+    }
+
+    public String getMedico(){
+        String medico = tfMedico.getText();
+        return medico;
+    }
+
+    public String getlocalAtendimento(){
+        String local = tfPostoAtendimento.getText();
+        return local;
+    }
+
+    public String getEndereço(){
+        String endereco = tfEndereco.getText();
+        return endereco;
+    }
+
+    public String getData() {
+        String data = tfData.getText();
+
+        return data;
+    }
+
+    public String getHora() {
+        String hora = tfHora.getText();
+
+        return hora;
+    }
+
+    public void limpaTela(){
+        this.tfAreaDesejada.setText("");
+        this.tfEndereco.setText("");
+        this.tfMedico.setText("");
+        this.tfPostoAtendimento.setText("");
+    }
+
     public void exibirMensagem(String mensagem){
         JOptionPane.showMessageDialog(null, mensagem);
     }
@@ -47,89 +80,113 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        btAgendaConsulta = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        tfAreaDesejada = new javax.swing.JTextField();
+        tfMedico = new javax.swing.JTextField();
+        tfEndereco = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        tfPostoAtendimento = new javax.swing.JTextField();
+        btCadastrar = new javax.swing.JButton();
+        btVoltar = new javax.swing.JButton();
+        lbData = new javax.swing.JLabel();
+        lbHora = new javax.swing.JLabel();
+        tfData = new javax.swing.JTextField();
+        tfHora = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Selecione uma data e hora");
+        setTitle("Adiciona Dados");
 
-        jLabel1.setText("Datas e horas disponiveis:");
+        jLabel3.setText("Posto de atendimento:");
 
-        jCheckBox1.setText("jCheckBox1");
+        jLabel2.setText("Area desejada:");
 
-        jCheckBox2.setText("jCheckBox1");
+        jLabel4.setText("Médico");
 
-        jCheckBox3.setText("jCheckBox1");
+        jLabel5.setText("Endereço:");
 
-        jCheckBox4.setText("jCheckBox1");
+        btCadastrar.setText("Cadastrar");
 
-        jCheckBox5.setText("jCheckBox1");
+        btVoltar.setText("Voltar");
 
-        jCheckBox6.setText("jCheckBox1");
+        lbData.setText("Data");
 
-        jCheckBox7.setText("jCheckBox1");
-
-        btAgendaConsulta.setText("Agendar consulta");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\GitHub\\45PRI1-AppSUS\\logo-sus.jpg")); // NOI18N
+        lbHora.setText("Hora");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox5)
-                    .addComponent(jCheckBox6)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox7)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jLabel1)
-                    .addComponent(jCheckBox4)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(btAgendaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btVoltar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tfHora, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel4)
+                                        .addComponent(tfEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel5)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(tfMedico, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                                            .addComponent(tfPostoAtendimento, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addComponent(tfAreaDesejada, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lbData)
+                                            .addGap(67, 67, 67)
+                                            .addComponent(lbHora))))
+                                .addGap(0, 36, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfAreaDesejada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox1)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox5)
+                .addComponent(tfPostoAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox4)
+                .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox7)
+                .addComponent(tfEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox3)
-                .addGap(18, 18, 18)
-                .addComponent(btAgendaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbData)
+                    .addComponent(lbHora))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(btVoltar)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,6 +218,7 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ViewCadastroConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -171,16 +229,19 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAgendaConsulta;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btCadastrar;
+    private javax.swing.JButton btVoltar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lbData;
+    private javax.swing.JLabel lbHora;
+    private javax.swing.JTextField tfAreaDesejada;
+    private javax.swing.JTextField tfData;
+    private javax.swing.JTextField tfEndereco;
+    private javax.swing.JTextField tfHora;
+    private javax.swing.JTextField tfMedico;
+    private javax.swing.JTextField tfPostoAtendimento;
     // End of variables declaration//GEN-END:variables
 }

@@ -25,7 +25,7 @@ public class DAOMedico {
 //        }
         medicos.add(medico);
         System.out.println(medicos);
-       
+
         return true;
     }
 
@@ -41,6 +41,10 @@ public class DAOMedico {
             }
         }
         return false;
+    }
+
+    public void insere(ModeloMedico medico) {
+        
     }
 
 }

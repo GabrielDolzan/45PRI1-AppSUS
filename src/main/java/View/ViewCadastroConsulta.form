@@ -3,7 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Selecione uma data e hora"/>
+    <Property name="title" type="java.lang.String" value="Adiciona Dados"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -24,114 +24,148 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jLabel3" min="-2" pref="388" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBox7" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                      <Component id="btAgendaConsulta" min="-2" pref="127" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btVoltar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="tfHora" alignment="1" min="-2" pref="79" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfEndereco" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
+                                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="tfMedico" alignment="0" pref="169" max="32767" attributes="0"/>
+                                          <Component id="tfPostoAtendimento" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="tfAreaDesejada" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lbData" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                                          <Component id="lbHora" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="btCadastrar" min="-2" pref="103" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tfData" min="-2" pref="79" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLabel2" min="-2" pref="218" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="tfAreaDesejada" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="tfMedico" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="tfPostoAtendimento" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="tfEndereco" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbData" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbHora" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jCheckBox7" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btAgendaConsulta" min="-2" pref="47" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="tfData" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfHora" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <Component id="btCadastrar" min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+              <Component id="btVoltar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Datas e horas disponiveis:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox6">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox7">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btAgendaConsulta">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Agendar consulta"/>
+        <Property name="text" type="java.lang.String" value="Posto de atendimento:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\User\Documents\GitHub\45PRI1-AppSUS\logo-sus.jpg"/>
-        </Property>
+        <Property name="text" type="java.lang.String" value="Area desejada:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="M&#xe9;dico"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfAreaDesejada">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfMedico">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfEndereco">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Endere&#xe7;o:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfPostoAtendimento">
+    </Component>
+    <Component class="javax.swing.JButton" name="btCadastrar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cadastrar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btVoltar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Voltar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbData">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Data"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbHora">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hora"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfData">
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfHora">
     </Component>
   </SubComponents>
 </Form>

@@ -6,7 +6,6 @@
 package View;
 
 import Controlador.ControladorMenuAdministrador;
-import Controlador.ControladorMenuUsuario;
 import Modelo.ModeloAdministrador;
 import Modelo.ModeloUsuario;
 import java.awt.event.ActionListener;
@@ -56,16 +55,6 @@ public class ViewLogin extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
-    public void abrirMenuUsuario(){
-        ControladorMenuUsuario menuUsuario = new ControladorMenuUsuario(this);
-        menuUsuario.exibirTela();
-    }
-
-    public void abrirMenuAdmin(){
-        ControladorMenuAdministrador menuAdmin = new ControladorMenuAdministrador(this);
-        menuAdmin.exibirTela();
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,11 +82,6 @@ public class ViewLogin extends javax.swing.JFrame {
         jLabel2.setText("Senha:");
 
         btEntrar.setText("Entrar");
-        btEntrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEntrarActionPerformed(evt);
-            }
-        });
 
         jLabel6.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -124,16 +108,17 @@ public class ViewLogin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(tfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(pfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btEntrar, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGap(52, 52, 52)
+                        .addComponent(btEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(btCadastro)))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btCadastro)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2)
+                                .addComponent(tfCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                                .addComponent(pfSenha)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -153,19 +138,15 @@ public class ViewLogin extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btEntrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(btEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                 .addComponent(btCadastro)
-                .addGap(24, 24, 24))
+                .addGap(22, 22, 22))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btEntrarActionPerformed
 
     private void jLabel6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabel6FocusLost
         // TODO add your handling code here:

@@ -1,27 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-/**
- *
- * @author User
- */
 public class ViewMenuUsuario extends javax.swing.JFrame {
 
-    private ViewLogin viewLogin;
-    
     public ViewMenuUsuario() {
         initComponents();
-        this.setLocationRelativeTo(null);
-
+        //this.setLocationRelativeTo(null);
     }
-    
+
     public void exibirTela(){
         this.setVisible(true);
     }
@@ -29,7 +16,15 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
     public void adicionarAcaoAgendaConsulta(ActionListener acao){
         miAgendarConsulta.addActionListener(acao);
     }
-    
+
+    public void adicionarAcaoAgendaExame(ActionListener acao){
+        miAgendarExame.addActionListener(acao);
+    }
+
+    public void adicionarAcaoSair(ActionListener acao) {
+        btSair.addActionListener(acao);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,17 +34,24 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btSair = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnMenu = new javax.swing.JMenu();
         miAgendarConsulta = new javax.swing.JMenuItem();
+        miAgendarExame = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Próximos Agendamentos");
 
-        mnMenu.setText("Menu");
+        btSair.setText("Sair");
 
-        miAgendarConsulta.setText("Agendar Consulta");
+        mnMenu.setText("Agendar");
+
+        miAgendarConsulta.setText("Consulta");
         mnMenu.add(miAgendarConsulta);
+
+        miAgendarExame.setText("Exame");
+        mnMenu.add(miAgendarExame);
 
         jMenuBar1.add(mnMenu);
 
@@ -59,11 +61,17 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(218, Short.MAX_VALUE)
+                .addComponent(btSair)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(323, Short.MAX_VALUE)
+                .addComponent(btSair)
+                .addContainerGap())
         );
 
         pack();
@@ -105,8 +113,10 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btSair;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem miAgendarConsulta;
+    private javax.swing.JMenuItem miAgendarExame;
     private javax.swing.JMenu mnMenu;
     // End of variables declaration//GEN-END:variables
 }

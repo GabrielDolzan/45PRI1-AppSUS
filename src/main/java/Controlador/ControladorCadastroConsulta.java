@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controlador;
 
 import Modelo.ModeloConsulta;
@@ -11,56 +6,63 @@ import View.ViewMenuUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- *
- * @author User
- */
 public class ControladorCadastroConsulta {
-    
-    //private ViewAgendaConsulta viewAgendaConsulta;
+
     private ViewMenuUsuario viewMenuUsuario;
     private ModeloConsulta modeloConsulta;
-    
+
     private ViewCadastroConsulta viewCadastroConsulta;
-    
-    public ControladorCadastroConsulta(ViewMenuUsuario viewMenuUsuario, ViewCadastroConsulta viewCadastroConsulta, ModeloConsulta modeloConsulta) {
-        this.viewCadastroConsulta = viewCadastroConsulta;
-        this.modeloConsulta =modeloConsulta;
-        this.viewMenuUsuario = viewMenuUsuario;
+
+    public ControladorCadastroConsulta() {
+        this.viewCadastroConsulta = new ViewCadastroConsulta();
         //adicionarAcoesBotoes();
-        inicializarAcaoBotaoCadastraConsulta();
+        adicionarAcoesBotoes();
     }
-    
+
     public void exibir(){
-       viewCadastroConsulta.exibirTela();
+       viewCadastroConsulta.exibir();
     }
-       
-//    public void adicionarAcoesBotoes(){
-//        viewCadastroConsulta.addAcaoBotaoCadastraData(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                    pesquisaConsulta();
-//                    viewCadastroConsulta.exibirMensagem("Consulta XXXX");
-//            }
-//        });
-//    }
-    
-    public void inicializarAcaoBotaoCadastraConsulta() {
-        viewCadastroConsulta.addAcaoBotaoCadastraData(new ActionListener() {
+
+    public void adicionarAcoesBotoes(){
+        viewCadastroConsulta.adicionaAcaoBotaoCadastrar(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                cadastraConsulta();
+            }
+        });
 
-                viewCadastroConsulta.exibirTela();
+        viewCadastroConsulta.adicionarAcaoBotaoVoltar(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ControladorMenuAdministrador cont = new ControladorMenuAdministrador();
+                cont.exibirTela();
+
+                viewCadastroConsulta.setVisible(false);
             }
         });
     }
-    
-    public void pesquisaConsulta(){
-        //comparar com os dados salvos do admin
-    }
-   
 
-    public ViewCadastroConsulta getViewCadastroConsulta() {
-        return viewCadastroConsulta;
-    } 
+    private void cadastraConsulta() {
+        if (verificaPreenchimento()) {
+            
+        }
+    }
+
+    private boolean verificaPreenchimento() {
+        if (viewCadastroConsulta.getEspecialidade().isEmpty())
+            return false;
+        if (viewCadastroConsulta.getMedico().isEmpty())
+            return false;
+        if (viewCadastroConsulta.getlocalAtendimento().isEmpty())
+            return false;
+        if (viewCadastroConsulta.getEndereço().isEmpty())
+            return false;
+        if (viewCadastroConsulta.getData().isEmpty())
+            return false;
+        if (viewCadastroConsulta.getHora().isEmpty())
+            return false;
+
+        return true;
+    }
+
 }

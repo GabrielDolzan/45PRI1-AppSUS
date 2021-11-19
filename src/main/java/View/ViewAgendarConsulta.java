@@ -19,67 +19,64 @@ import javax.swing.JOptionPane;
  *
  * @author User
  */
-public class ViewAgendaConsulta extends javax.swing.JFrame {
+public class ViewAgendarConsulta extends javax.swing.JFrame {
 
-    private ViewMenuUsuario viewMenuUsuario;
-    private ModeloConsulta modeloConsulta;
-    
-    private DAOEspecialidade especialidadeDAO; 
-    private DAOMedico medicoDAO; 
+    private DAOEspecialidade especialidadeDAO;
+    private DAOMedico medicoDAO;
     private DAOLocalAtendimento localAtendimentoDAO;
-        
-    public ViewAgendaConsulta() {
+
+    public ViewAgendarConsulta() {
         initComponents();
         this.setLocationRelativeTo(null);
-
     }
 
     public void popularEspecialidade(){
-        for (ModeloEspecialidade esp: this.especialidadeDAO.getEspecialidade()){
+        for (ModeloEspecialidade esp : this.especialidadeDAO.getEspecialidade()){
             cbEspecialidade.addItem(esp);
         }
     }
     public void popularMedico(){
-
         for (ModeloMedico med: this.medicoDAO.getMedico()){
             cbMedico.addItem(med);
         }
     }
     public void popularPostoAtendimento(){
-
         for (ModeloLocalAtendimento loc: this.localAtendimentoDAO.getLocalAtendimento()){
             cbPostoAtendimento.addItem(loc);
         }
     }
-    
+
     public void limparCB(){
         cbEspecialidade.removeAllItems();
         cbMedico.removeAllItems();
         cbPostoAtendimento.removeAllItems();
     }
-    
+
     public void addAcaoBotaoPesquisaData(ActionListener acao){
         btPesquisaData.addActionListener(acao);
     }
 
     public ModeloEspecialidade getEspecialidade(){
         ModeloEspecialidade especialidade = cbEspecialidade.getItemAt(cbEspecialidade.getSelectedIndex());
+
         return especialidade;
     }
     public ModeloMedico getMedico(){
         ModeloMedico medico = cbMedico.getItemAt(cbMedico.getSelectedIndex());
+
         return medico;
     }
     public ModeloLocalAtendimento getLocalAtendimento(){
         ModeloLocalAtendimento localAtendimento = cbPostoAtendimento.getItemAt(cbPostoAtendimento.getSelectedIndex());
+
         return localAtendimento;
     }
-  
+
     public void exibirTela() {
         this.setVisible(true);
     }
-    
-    public void exibirMensagem(String mensagem){
+
+    public void exibirMensagem(String mensagem) {
         JOptionPane.showMessageDialog(null, mensagem);
     }
 
@@ -112,8 +109,6 @@ public class ViewAgendaConsulta extends javax.swing.JFrame {
         btPesquisaData.setText("Pesquisar data disponivel");
 
         jLabel2.setText("Médico");
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\GitHub\\45PRI1-AppSUS\\logo-sus.jpg")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -192,20 +187,21 @@ public class ViewAgendaConsulta extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewAgendaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewAgendarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewAgendaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewAgendarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewAgendaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewAgendarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewAgendaConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewAgendarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewAgendaConsulta().setVisible(true);
+                new ViewAgendarConsulta().setVisible(true);
             }
         });
     }

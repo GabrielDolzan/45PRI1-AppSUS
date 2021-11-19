@@ -30,9 +30,9 @@ public class DAOLocalAtendimento {
         return locais;
     }
 
-    public static boolean excluirFilial(String localAntendimento){
+    public static boolean excluirFilial(String endereco){
         for(ModeloLocalAtendimento loc : locais){
-            if(loc.getLocalAtendimento().equals(localAntendimento)){
+            if(loc.getEndereco().equals(endereco)){
                 locais.remove(loc);
                 return true;
             }
@@ -40,5 +40,8 @@ public class DAOLocalAtendimento {
         return false;
     }
 
+    public void insere(ModeloLocalAtendimento local) {
+
+    }
 
 }

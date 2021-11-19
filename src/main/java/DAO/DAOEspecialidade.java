@@ -23,6 +23,10 @@ public class DAOEspecialidade {
         return true;
     }
 
+    public void insere(ModeloEspecialidade model) {
+        
+    }
+
     public static List<ModeloEspecialidade> getEspecialidade() {
         return especialidades;
     }

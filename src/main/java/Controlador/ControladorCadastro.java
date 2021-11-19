@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controlador;
 
 import DAO.DAOUsuario;
 import Modelo.ModeloUsuario;
 import View.ViewCadastro;
-import View.ViewLogin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,12 +24,11 @@ public class ControladorCadastro {
        viewCadastro.exibirTela();
     }
 
-    public void adicionarAcoesBotoes(){
+    private void adicionarAcoesBotoes(){
         viewCadastro.addAcaoBotaoCriarConta(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cadastraUsuario();
-                //viewCadastro.exibirMensagem("Consulta XXXX");
             }
         });
 
@@ -61,11 +54,11 @@ public class ControladorCadastro {
             }
         }
         else {
-            viewCadastro.exibirMensagem("Algum Campo esta em branco ou preenchido incorretamente! ");
+            viewCadastro.exibirMensagem("Algum campo esta em branco ou preenchido incorretamente! ");
         }
     }
 
-    public boolean validarUsuario(){
+    public boolean validarUsuario() {
         if (this.modeloUsuario.getEstado().equals(""))
             return false;
         if (this.modeloUsuario.getCidade().equals(""))
@@ -87,7 +80,4 @@ public class ControladorCadastro {
         return true;
     }
 
-    public ViewCadastro getViewCadastro() {
-        return viewCadastro;
-    }
 }

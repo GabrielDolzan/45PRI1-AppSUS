@@ -1,58 +1,53 @@
 package Controlador;
 
-import Modelo.ModeloConsulta;
-import View.ViewAgendaConsulta;
-import View.ViewLogin;
+import Estrutura.Principal;
 import View.ViewMenuUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 public class ControladorMenuUsuario {
 
-    private ViewLogin viewLogin;
     private ViewMenuUsuario viewMenuUsuario;
-    
-    //Referenete Agenda Consulta
-    private ModeloConsulta ModeloConsulta;
-    private ControladorAgendaConsulta controladorAgendaConsulta;
-    private ControladorCadastroConsulta controladorCadastroConsulta;
 
-     public ControladorMenuUsuario(ViewLogin viewLogin  ) {
-        this.viewLogin= viewLogin;
+     public ControladorMenuUsuario() {
         viewMenuUsuario = new ViewMenuUsuario();
-        //mostraDados();
         inicializarAcaoBotoesMenu();
-        inicializaCadastros();    
-
-        //atualizarListasAoSalvar();
     }
-     
+
     public void exibirTela() {
         viewMenuUsuario.exibirTela();
     }
-     
+
     public void inicializarAcaoBotoesMenu() {
         viewMenuUsuario.adicionarAcaoAgendaConsulta(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ControladorAgendarConsulta cont = new ControladorAgendarConsulta();
+                cont.exibir();
 
-                controladorAgendaConsulta.exibir();
+                viewMenuUsuario.setVisible(false);
             }
         });
-    }
-    
-    public void inicializaCadastros(){
-        inicializarAgendaConsulta();
-       
-    }   
-    public void inicializarAgendaConsulta() {
-        controladorAgendaConsulta = new ControladorAgendaConsulta(new ViewMenuUsuario(),new ViewAgendaConsulta(), new ModeloConsulta("", null, null, "",""));
+
+        viewMenuUsuario.adicionarAcaoAgendaExame(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+
+        viewMenuUsuario.adicionarAcaoSair(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ControladorLogin cont = new ControladorLogin();
+                cont.exibir();
+
+                Principal.getInstance().setModeloUsuario(null);
+
+                viewMenuUsuario.setVisible(false);
+            }
+        });
+
     }
 
-    
 }
-    
- 
-    
-  

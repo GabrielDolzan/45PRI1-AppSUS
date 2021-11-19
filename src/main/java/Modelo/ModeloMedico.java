@@ -1,20 +1,13 @@
 package Modelo;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author User
- */
 public class ModeloMedico {
+
     private String nome;
+    private String telefone;
+    private String rg;
     private ModeloEspecialidade especialidade;
 
-    public ModeloMedico(String nome, ModeloEspecialidade especialidade) {
+    public ModeloMedico(String nome, ModeloEspecialidade especialidade, String telefone, String rg) {
         this.nome = nome;
         this.especialidade = especialidade;
     }
@@ -35,9 +28,25 @@ public class ModeloMedico {
         this.especialidade = especialidade;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
     @Override
     public String toString() {
-        return  nome + " - "+ especialidade ;
+        return  nome + " - " + especialidade ;
     }
 
 

@@ -1,27 +1,22 @@
 package Controlador;
 
-import DAO.DAOAdministrador;
-import DAO.DAOUsuario;
-import Modelo.ModeloAdministrador;
-import Modelo.ModeloUsuario;
 import View.ViewLogin;
+import DAO.DAOUsuario;
+import DAO.DAOAdministrador;
+import Estrutura.Principal;
+import Modelo.ModeloUsuario;
+import Modelo.ModeloAdministrador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author User
- */
 public class ControladorLogin {
 
     private ViewLogin viewLogin;
-    private ControladorCadastro controladorCadastro;
 
     public ControladorLogin() {
         viewLogin = new ViewLogin();
         adicionarAcoesBotoes();
-        inicializarAgendaConsulta();
     }
 
     public void exibir(){
@@ -32,7 +27,8 @@ public class ControladorLogin {
         viewLogin.addAcaoBotaoCriarConta(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controladorCadastro.exibir();
+                ControladorCadastro cont = new ControladorCadastro();
+                cont.exibir();
 
                 viewLogin.setVisible(false);
             }
@@ -60,27 +56,33 @@ public class ControladorLogin {
 
             if (usuario != null) {
                 if (usuario.getSenha().equalsIgnoreCase(senha)) {
-                    viewLogin.abrirMenuUsuario();
+                    ControladorMenuUsuario menuUsuario = new ControladorMenuUsuario();
+                    menuUsuario.exibirTela();
+
+                    Principal.getInstance().setModeloUsuario(usuario);
+
                     viewLogin.setVisible(false);
                 } else {
                     JOptionPane.showMessageDialog(null, "Senha inválida.", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
             } else if (admin != null) {
                 if (admin.getSenha().equalsIgnoreCase(senha)) {
-                    viewLogin.abrirMenuAdmin();
+                    ControladorMenuAdministrador menuAdmin = new ControladorMenuAdministrador();
+                    menuAdmin.exibirTela();
                     viewLogin.setVisible(false);
                 } else {
                     JOptionPane.showMessageDialog(null, "Senha inválida.", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
             } else if (senha.equalsIgnoreCase("admin")) {
-                viewLogin.abrirMenuAdmin();
+                ControladorMenuAdministrador menuAdmin = new ControladorMenuAdministrador();
+                menuAdmin.exibirTela();
                 viewLogin.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Senha inválida.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os camposo.", "Alerta", JOptionPane.WARNING_MESSAGE);
         }
-    }
-
-    public void inicializarAgendaConsulta() {
-        controladorCadastro = new ControladorCadastro();
     }
 
 }

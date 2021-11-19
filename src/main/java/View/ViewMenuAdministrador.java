@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import java.awt.event.ActionListener;
 
-/**
- *
- * @author User
- */
 public class ViewMenuAdministrador extends javax.swing.JFrame {
 
     private ViewLogin viewLogin;
@@ -18,15 +9,34 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
     public ViewMenuAdministrador() {
         initComponents();
         this.setLocationRelativeTo(null);
-
     }
-    
+
     public void exibirTela(){
         this.setVisible(true);
     }
 
-    public void adicionarAcaoAddDadosConsulta(ActionListener acao){
-        miAddDadosConsulta.addActionListener(acao);
+    public void adicionarAcaoCadastrarConsulta(ActionListener acao){
+        miCadastrarConsulta.addActionListener(acao);
+    }
+
+    public void adicionarAcaoCadastrarExame(ActionListener acao){
+        miCadastrarExame.addActionListener(acao);
+    }
+
+    public void adicionarAcaoCadastrarEspecialidade(ActionListener acao){
+        miEspecialidade.addActionListener(acao);
+    }
+
+    public void adicionarAcaoCadastrarMedico(ActionListener acao){
+        miMedico.addActionListener(acao);
+    }
+
+    public void adicionarAcaoCadastrarLocal(ActionListener acao){
+        miLocal.addActionListener(acao);
+    }
+
+    public void adicionarAcaoSair(ActionListener acao){
+        miCadastrarConsulta.addActionListener(acao);
     }
 
     /**
@@ -38,22 +48,37 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btSair = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        miAddDadosConsulta = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        miCadastrarConsulta = new javax.swing.JMenuItem();
+        miCadastrarExame = new javax.swing.JMenuItem();
+        miEspecialidade = new javax.swing.JMenuItem();
+        miMedico = new javax.swing.JMenuItem();
+        miLocal = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("....");
+        btSair.setText("Sair");
 
-        miAddDadosConsulta.setText("Adicionar dados da Consulta");
-        jMenu1.add(miAddDadosConsulta);
+        jMenu1.setText("Cadastrar");
+
+        miCadastrarConsulta.setText("Consulta");
+        jMenu1.add(miCadastrarConsulta);
+
+        miCadastrarExame.setText("Exame");
+        jMenu1.add(miCadastrarExame);
+
+        miEspecialidade.setText("Especialidade");
+        jMenu1.add(miEspecialidade);
+
+        miMedico.setText("Médico");
+        jMenu1.add(miMedico);
+
+        miLocal.setText("Local de Atendimento");
+        jMenu1.add(miLocal);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -61,11 +86,17 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(202, Short.MAX_VALUE)
+                .addComponent(btSair)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(364, Short.MAX_VALUE)
+                .addComponent(btSair)
+                .addContainerGap())
         );
 
         pack();
@@ -78,7 +109,7 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -107,9 +138,13 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btSair;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem miAddDadosConsulta;
+    private javax.swing.JMenuItem miCadastrarConsulta;
+    private javax.swing.JMenuItem miCadastrarExame;
+    private javax.swing.JMenuItem miEspecialidade;
+    private javax.swing.JMenuItem miLocal;
+    private javax.swing.JMenuItem miMedico;
     // End of variables declaration//GEN-END:variables
 }

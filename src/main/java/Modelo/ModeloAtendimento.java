@@ -14,6 +14,7 @@ public abstract class ModeloAtendimento {
     private ModeloLocalAtendimento local;
     private String hora;
     private String data;
+    private ModeloUsuario usuario;
 
     public ModeloAtendimento(ModeloLocalAtendimento local, String hora, String data) {
         this.local = local;
@@ -43,6 +44,14 @@ public abstract class ModeloAtendimento {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public ModeloUsuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(ModeloUsuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
