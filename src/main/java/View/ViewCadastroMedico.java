@@ -2,6 +2,7 @@ package View;
 
 import Modelo.ModeloEspecialidade;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class ViewCadastroMedico extends javax.swing.JFrame {
 
@@ -31,6 +32,16 @@ public class ViewCadastroMedico extends javax.swing.JFrame {
 
     public ModeloEspecialidade getEspecialidade() {
         return (ModeloEspecialidade) cbEspecialidade.getModel();
+    }
+    
+    public void limpaTela(){
+        this.tfNome.setText("");
+        this.tfRg.setText("");
+        this.tfTelefone .setText("");
+    }
+
+    public void exibirMensagem(String mensagem){
+        JOptionPane.showMessageDialog(null, mensagem);
     }
 
     /**

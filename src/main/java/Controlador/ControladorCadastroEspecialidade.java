@@ -39,9 +39,16 @@ public class ControladorCadastroEspecialidade {
 
         ModeloEspecialidade esp = new ModeloEspecialidade(descricao);
 
-        DAOEspecialidade dao = new DAOEspecialidade();
-
-        dao.insere(esp);
+        if(!descricao.equalsIgnoreCase("")){
+            DAOEspecialidade dao = new DAOEspecialidade();
+            if(dao.gravar(esp)){
+             view.exibirMensagem("Especialidade cadastrada com sucesso. ");
+                view.limpaTela();
+            }
+        }
+        else {
+            view.exibirMensagem("Algum campo esta em branco ou preenchido incorretamente! ");
+        }
     }
 
     public void exibir() {

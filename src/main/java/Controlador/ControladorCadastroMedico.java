@@ -9,7 +9,8 @@ import java.awt.event.ActionListener;
 public class ControladorCadastroMedico {
 
     private ViewCadastroMedico view;
-
+    private ModeloMedico medico;
+    
     public ControladorCadastroMedico() {
         view = new ViewCadastroMedico();
         adicionaAcoes();
@@ -34,14 +35,40 @@ public class ControladorCadastroMedico {
         });
     }
 
+     
     private void insere() {
-        ModeloMedico medico = new ModeloMedico(view.getNome(), view.getEspecialidade(), view.getTelefone(), view.getRg());
+         medico = new ModeloMedico(view.getNome(), view.getEspecialidade(), view.getTelefone(), view.getRg());
 
-        DAOMedico dao = new DAOMedico();
+        //DAOMedico dao = new DAOMedico();
 
-        dao.insere(medico);
+        //dao.insere(medico);
+        
+        
+         if (validarMedico()) {
+            DAOMedico dao = new DAOMedico();
+            if (dao.gravar(medico)) {
+                view.exibirMensagem("Médico cadastrado com sucesso. ");
+                view.limpaTela();
+            }
+        }
+        else {
+            view.exibirMensagem("Algum campo esta em branco ou preenchido incorretamente! ");
+        }
     }
 
+    public boolean validarMedico() {
+        if (this.view.getNome().equals(""))
+            return false;
+        if (this.view.getRg().equals(""))
+            return false;
+        if (this.view.getTelefone().equals(""))
+            return false;
+        if (this.view.getEspecialidade().equals(""))
+            return false;
+   
+        return true;
+    }
+    
     public void exibir() {
         view.setVisible(true);
     }

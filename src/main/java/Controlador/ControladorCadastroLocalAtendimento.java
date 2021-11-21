@@ -36,10 +36,16 @@ public class ControladorCadastroLocalAtendimento {
 
     private void insere() {
         ModeloLocalAtendimento local = new ModeloLocalAtendimento(view.getTelefone(), view.getEndereco());
-
-        DAOLocalAtendimento dao = new DAOLocalAtendimento();
-
-        dao.insere(local);
+        
+        if(!view.getEndereco().equalsIgnoreCase("") && !view.getTelefone().equalsIgnoreCase("")){
+            DAOLocalAtendimento dao = new DAOLocalAtendimento();
+            dao.insere(local);
+            view.exibirMensagem("Local cadastrado com sucesso. ");
+            view.limpaTela();
+        }
+        else {
+            view.exibirMensagem("Algum campo esta em branco ou preenchido incorretamente! ");
+        }
     }
 
     public void exibir() {

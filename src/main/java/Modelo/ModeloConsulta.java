@@ -20,7 +20,8 @@ public class ModeloConsulta extends ModeloAtendimento {
     @Override
     public String toString() {
         return "Especialidade: " + medico.getEspecialidade().getDescricao() +"\n"
-             + "Médico: " + medico+"\n" ;
+             + "Médico: " + medico+"\n" 
+             + super.toString()+"\n";
     }
 
 

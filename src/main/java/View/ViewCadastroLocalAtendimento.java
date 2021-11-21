@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class ViewCadastroLocalAtendimento extends javax.swing.JFrame {
 
@@ -22,6 +23,15 @@ public class ViewCadastroLocalAtendimento extends javax.swing.JFrame {
 
     public String getTelefone() {
         return tfTelefone.getText();
+    }
+    
+    public void limpaTela(){
+        this.tfEndereco.setText("");
+        this.tfTelefone.setText("");
+    }
+    
+     public void exibirMensagem(String mensagem){
+        JOptionPane.showMessageDialog(null, mensagem);
     }
 
     /**

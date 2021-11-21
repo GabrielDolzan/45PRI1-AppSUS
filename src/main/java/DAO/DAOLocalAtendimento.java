@@ -17,10 +17,7 @@ public class DAOLocalAtendimento {
     private static List<ModeloLocalAtendimento> locais = new ArrayList<>();
 
     public static boolean salvar(ModeloLocalAtendimento local){
-//        for(ModeloLocalAtendimento loc : locais){
-//            if(loc.getLocalAtendimento().equals(local.getLocalAtendimento()) || loc.getEndereço().equals(local.getEndereço()))
-//                return false;
-//        }
+       
         locais.add(local);
         System.out.println(locais);
         return true;

@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class ViewCadastroEspecialidade extends javax.swing.JFrame {
 
@@ -18,6 +19,14 @@ public class ViewCadastroEspecialidade extends javax.swing.JFrame {
 
     public String getDescricao() {
         return tfDescricao.getText();
+    }
+    
+    public void limpaTela(){
+        this.tfDescricao.setText(""); 
+    }
+    
+    public void exibirMensagem(String mensagem){
+        JOptionPane.showMessageDialog(null, mensagem);
     }
 
     /**

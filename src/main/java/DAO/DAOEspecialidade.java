@@ -17,15 +17,17 @@ public class DAOEspecialidade {
     private static List<ModeloEspecialidade> especialidades = new ArrayList<>();
 
     public static boolean gravar(ModeloEspecialidade especialidade){
+        for(ModeloEspecialidade esp: especialidades){
+            if(esp.getDescricao().equalsIgnoreCase(especialidade.getDescricao())){
+                return false;
+            }
+        }
         especialidades.add(especialidade);
         System.out.println(especialidades);
 
         return true;
     }
 
-    public void insere(ModeloEspecialidade model) {
-        
-    }
 
     public static List<ModeloEspecialidade> getEspecialidade() {
         return especialidades;

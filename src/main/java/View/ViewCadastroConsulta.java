@@ -3,14 +3,17 @@ package View;
 import DAO.DAOEspecialidade;
 import DAO.DAOLocalAtendimento;
 import DAO.DAOMedico;
+import Modelo.ModeloEspecialidade;
+import Modelo.ModeloLocalAtendimento;
+import Modelo.ModeloMedico;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 public class ViewCadastroConsulta extends javax.swing.JFrame {
 
-//    private DAOEspecialidade especialidadeDAO;
-//    private DAOMedico medicoDAO;
-//    private DAOLocalAtendimento localDAO;
+   private DAOEspecialidade especialidadeDAO;
+   private DAOMedico medicoDAO;
+   private DAOLocalAtendimento localDAO;
 
     public ViewCadastroConsulta() {
         initComponents();
@@ -29,25 +32,25 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
-    public String getEspecialidade(){
-        String especialidade = tfAreaDesejada.getText();
+    public ModeloEspecialidade getEspecialidade(){
+        ModeloEspecialidade especialidade = cbEspecialidade.getItemAt(cbEspecialidade.getSelectedIndex());
         return especialidade;
     }
 
-    public String getMedico(){
-        String medico = tfMedico.getText();
+    public ModeloMedico getMedico(){
+        ModeloMedico medico = cbMedico.getItemAt(cbMedico.getSelectedIndex());
         return medico;
     }
-
-    public String getlocalAtendimento(){
-        String local = tfPostoAtendimento.getText();
+    
+    public ModeloLocalAtendimento getlocalAtendimento(){
+        ModeloLocalAtendimento local = cbLocal.getItemAt(cbLocal.getSelectedIndex());
         return local;
     }
 
-    public String getEndereço(){
-        String endereco = tfEndereco.getText();
-        return endereco;
-    }
+//    public String getEndereço(){
+//        String endereco = tfEndereco.getText();
+//        return endereco;
+//    }
 
     public String getData() {
         String data = tfData.getText();
@@ -61,11 +64,34 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
         return hora;
     }
 
+    public void populaEspecialidade(){
+        for(ModeloEspecialidade esp:this.especialidadeDAO.getEspecialidade()){
+            cbEspecialidade.addItem(esp);
+        }
+    }
+    
+    public void populaMedico(){
+        for(ModeloMedico med:this.medicoDAO.getMedico()){
+            cbMedico.addItem(med);
+        }
+    }
+    
+    public void populaLocal(){
+        for(ModeloLocalAtendimento local:this.localDAO.getLocalAtendimento()){
+            cbLocal.addItem(local);
+        }
+    }
+  
+     public void limparCB(){
+        cbEspecialidade.removeAllItems();
+        cbMedico.removeAllItems();
+        cbLocal.removeAllItems();
+    }
+     
     public void limpaTela(){
-        this.tfAreaDesejada.setText("");
-        this.tfEndereco.setText("");
-        this.tfMedico.setText("");
-        this.tfPostoAtendimento.setText("");
+        //this.tfEndereco.setText("");
+        this.tfData.setText("");
+        this.tfHora.setText("");
     }
 
     public void exibirMensagem(String mensagem){
@@ -83,17 +109,17 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        tfAreaDesejada = new javax.swing.JTextField();
-        tfMedico = new javax.swing.JTextField();
-        tfEndereco = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        tfPostoAtendimento = new javax.swing.JTextField();
         btCadastrar = new javax.swing.JButton();
         btVoltar = new javax.swing.JButton();
         lbData = new javax.swing.JLabel();
         lbHora = new javax.swing.JLabel();
         tfData = new javax.swing.JTextField();
         tfHora = new javax.swing.JTextField();
+        cbEspecialidade = new javax.swing.JComboBox<>();
+        cbMedico = new javax.swing.JComboBox<>();
+        cbLocal = new javax.swing.JComboBox<>();
+        jComboBox4 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Adiciona Dados");
@@ -114,36 +140,14 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
 
         lbHora.setText("Hora");
 
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btVoltar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tfHora, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel4)
-                                        .addComponent(tfEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(tfMedico, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                                            .addComponent(tfPostoAtendimento, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addComponent(tfAreaDesejada, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lbData)
-                                            .addGap(67, 67, 67)
-                                            .addComponent(lbHora))))
-                                .addGap(0, 36, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -152,7 +156,33 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btVoltar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(tfHora, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel3)
+                                                .addComponent(jLabel2)
+                                                .addComponent(jLabel4)
+                                                .addComponent(jLabel5)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(lbData)
+                                                    .addGap(67, 67, 67)
+                                                    .addComponent(lbHora)))
+                                            .addGap(56, 56, 56)))
+                                    .addComponent(cbEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 10, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -160,20 +190,20 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfAreaDesejada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfPostoAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbData)
@@ -186,7 +216,7 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
                 .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addComponent(btVoltar)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
@@ -231,17 +261,17 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btVoltar;
+    private javax.swing.JComboBox<ModeloEspecialidade> cbEspecialidade;
+    private javax.swing.JComboBox<ModeloLocalAtendimento> cbLocal;
+    private javax.swing.JComboBox<ModeloMedico> cbMedico;
+    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lbData;
     private javax.swing.JLabel lbHora;
-    private javax.swing.JTextField tfAreaDesejada;
     private javax.swing.JTextField tfData;
-    private javax.swing.JTextField tfEndereco;
     private javax.swing.JTextField tfHora;
-    private javax.swing.JTextField tfMedico;
-    private javax.swing.JTextField tfPostoAtendimento;
     // End of variables declaration//GEN-END:variables
 }

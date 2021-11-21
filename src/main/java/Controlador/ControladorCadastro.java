@@ -59,23 +59,23 @@ public class ControladorCadastro {
     }
 
     public boolean validarUsuario() {
-        if (this.modeloUsuario.getEstado().equals(""))
+        if (this.viewCadastro.getEstado().equals(""))
             return false;
-        if (this.modeloUsuario.getCidade().equals(""))
+        if (this.viewCadastro.getCidade().equals(""))
             return false;
-        if (this.modeloUsuario.getNome().equals(""))
+        if (this.viewCadastro.getNomeCompleto().equals(""))
             return false;
-        if (this.modeloUsuario.getCpf().equals(""))
+        if (this.viewCadastro.getCPF().equals(""))
             return false;
-        if (this.modeloUsuario.getCelular().equals(""))
+        if (this.viewCadastro.getCelular().equals(""))
             return false;
-        if (this.modeloUsuario.getNascimento().equals(""))
+        if (this.viewCadastro.getDataNascimento().equals(""))
             return false;
-        if (this.modeloUsuario.getSexo().equals(""))
+        if (this.viewCadastro.getSexo().equals(""))
             return false;
-        if (this.modeloUsuario.getEmail().equals(""))
+        if (this.viewCadastro.getEmail().equals(""))
             return false;
-        if (this.modeloUsuario.getSenha().equals(""))
+        if (this.viewCadastro.getSenha().equals(""))
             return false;
         return true;
     }
