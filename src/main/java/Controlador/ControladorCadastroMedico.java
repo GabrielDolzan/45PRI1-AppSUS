@@ -13,9 +13,14 @@ public class ControladorCadastroMedico {
     
     public ControladorCadastroMedico() {
         view = new ViewCadastroMedico();
+        popularCB();
         adicionaAcoes();
     }
 
+    public void popularCB(){
+       view.populaEspecialidade();
+    } 
+    
     private void adicionaAcoes() {
         view.adicionaAcaoCadastrar(new ActionListener() {
             @Override
@@ -49,6 +54,7 @@ public class ControladorCadastroMedico {
             if (dao.gravar(medico)) {
                 view.exibirMensagem("Médico cadastrado com sucesso. ");
                 view.limpaTela();
+                //view.limparCB();
             }
         }
         else {

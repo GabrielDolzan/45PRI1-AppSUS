@@ -22,7 +22,7 @@ public class DAOExame {
         return true;
     }
 
-    public static List<ModeloExame> getConsulta() {
+    public static List<ModeloExame> getExame() {
         return exames;
     }
 

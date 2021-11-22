@@ -1,25 +1,31 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package View;
 
-import DAO.DAOEspecialidade;
+import DAO.DAODescricaoExame;
 import DAO.DAOLocalAtendimento;
-import DAO.DAOMedico;
-import Modelo.ModeloEspecialidade;
+import Modelo.ModeloDescricaoExame;
+import Modelo.ModeloExame;
 import Modelo.ModeloLocalAtendimento;
-import Modelo.ModeloMedico;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
-public class ViewCadastroConsulta extends javax.swing.JFrame {
+/**
+ *
+ * @author User
+ */
+public class ViewCadastroExame extends javax.swing.JFrame {
 
-   private DAOEspecialidade especialidadeDAO;
-   private DAOMedico medicoDAO;
-   private DAOLocalAtendimento localDAO;
-
-    public ViewCadastroConsulta() {
+    private DAODescricaoExame exameDAO;
+    private DAOLocalAtendimento localDAO;
+    
+    public ViewCadastroExame() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
-
+    
     public void adicionaAcaoBotaoCadastrar(ActionListener acao){
         btCadastrar.addActionListener(acao);
     }
@@ -32,14 +38,9 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
-    public ModeloEspecialidade getEspecialidade(){
-        ModeloEspecialidade especialidade = cbEspecialidade.getItemAt(cbEspecialidade.getSelectedIndex());
-        return especialidade;
-    }
-
-    public ModeloMedico getMedico(){
-        ModeloMedico medico = cbMedico.getItemAt(cbMedico.getSelectedIndex());
-        return medico;
+    public ModeloDescricaoExame getExame(){
+        ModeloDescricaoExame exame = cbExame.getItemAt(cbExame.getSelectedIndex());
+        return exame;
     }
     
     public ModeloLocalAtendimento getlocalAtendimento(){
@@ -59,18 +60,12 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
         return hora;
     }
 
-    public void populaEspecialidade(){
-        for(ModeloEspecialidade esp:this.especialidadeDAO.getEspecialidade()){
-            cbEspecialidade.addItem(esp);
+    public void populaExame(){
+        for(ModeloDescricaoExame ex:this.exameDAO.getExame()){
+            cbExame.addItem(ex);
         }
     }
-    
-    public void populaMedico(){
-        for(ModeloMedico med:this.medicoDAO.getMedico()){
-            cbMedico.addItem(med);
-        }
-    }
-    
+      
     public void populaLocal(){
         for(ModeloLocalAtendimento local:this.localDAO.getLocalAtendimento()){
             cbLocal.addItem(local);
@@ -86,6 +81,7 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
     public void exibirMensagem(String mensagem){
         JOptionPane.showMessageDialog(null, mensagem);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,87 +91,68 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        cbExame = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        cbLocal = new javax.swing.JComboBox<>();
+        lbData = new javax.swing.JLabel();
+        tfData = new javax.swing.JTextField();
+        lbHora = new javax.swing.JLabel();
+        tfHora = new javax.swing.JTextField();
         btCadastrar = new javax.swing.JButton();
         btVoltar = new javax.swing.JButton();
-        lbData = new javax.swing.JLabel();
-        lbHora = new javax.swing.JLabel();
-        tfData = new javax.swing.JTextField();
-        tfHora = new javax.swing.JTextField();
-        cbEspecialidade = new javax.swing.JComboBox<>();
-        cbMedico = new javax.swing.JComboBox<>();
-        cbLocal = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Adiciona Dados");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel4.setText("Exame:");
 
         jLabel3.setText("Posto de atendimento:");
-
-        jLabel2.setText("Area desejada:");
-
-        jLabel4.setText("Médico");
-
-        btCadastrar.setText("Cadastrar");
-
-        btVoltar.setText("Voltar");
 
         lbData.setText("Data");
 
         lbHora.setText("Hora");
 
+        btCadastrar.setText("Cadastrar");
+
+        btVoltar.setText("Voltar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btVoltar)
+                .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btVoltar))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(cbExame, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4))
-                                .addGap(60, 96, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lbData)
+                                    .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(lbHora)
+                                    .addComponent(tfHora, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbData)
-                            .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbHora)
-                            .addComponent(tfHora, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbExame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -188,11 +165,11 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(50, 50, 50)
                 .addComponent(btVoltar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -205,7 +182,7 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -215,21 +192,20 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewCadastroConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewCadastroExame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewCadastroConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewCadastroExame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewCadastroConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewCadastroExame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewCadastroConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewCadastroExame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewCadastroConsulta().setVisible(true);
+                new ViewCadastroExame().setVisible(true);
             }
         });
     }
@@ -237,10 +213,8 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btVoltar;
-    private javax.swing.JComboBox<ModeloEspecialidade> cbEspecialidade;
+    private javax.swing.JComboBox<ModeloDescricaoExame> cbExame;
     private javax.swing.JComboBox<ModeloLocalAtendimento> cbLocal;
-    private javax.swing.JComboBox<ModeloMedico> cbMedico;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lbData;

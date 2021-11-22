@@ -18,11 +18,14 @@ public class DAOMedico {
     private static List<ModeloMedico> medicos = new ArrayList<>();
 
     public static boolean gravar(ModeloMedico medico){
-        for(ModeloMedico med : medicos){
-            if(med.getRg().equals(medico.getRg())){
-                return false;
-            }
-        }
+//        for(ModeloMedico med : medicos){
+//            
+//            System.out.println(med.getRg()+" xxxxxxxxxx "+ medico.getRg());
+//
+//            if(med.getRg().equals(medico.getRg())){
+//                return false;
+//            }
+//        }
         medicos.add(medico);
         System.out.println(medicos);
 

@@ -44,6 +44,9 @@ public class ModeloMedico {
         this.rg = rg;
     }
 
+    public String imprimeDados() {
+        return  "Medico: " +nome +  " - Especialidade:  " + especialidade ;
+    }
     @Override
     public String toString() {
         return  nome + " - " + especialidade ;

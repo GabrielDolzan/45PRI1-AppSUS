@@ -34,6 +34,11 @@
                 <Property name="text" type="java.lang.String" value="Local de Atendimento"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="miCadastrarNomeeExame">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nome do Exame"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>

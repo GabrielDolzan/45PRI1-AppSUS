@@ -37,9 +37,9 @@ public class ControladorCadastroLocalAtendimento {
     private void insere() {
         ModeloLocalAtendimento local = new ModeloLocalAtendimento(view.getTelefone(), view.getEndereco());
         
-        if(!view.getEndereco().equalsIgnoreCase("") && !view.getTelefone().equalsIgnoreCase("")){
+        if(validaCampo()){
             DAOLocalAtendimento dao = new DAOLocalAtendimento();
-            dao.insere(local);
+            dao.salvar(local);
             view.exibirMensagem("Local cadastrado com sucesso. ");
             view.limpaTela();
         }
@@ -48,6 +48,16 @@ public class ControladorCadastroLocalAtendimento {
         }
     }
 
+    public boolean validaCampo(){
+        if(this.view.getTelefone().equals(""))
+            return false;
+        
+        if(this.view.getEndereco().equals(""))
+           return false;
+        
+        return true;
+    }
+    
     public void exibir() {
         view.setVisible(true);
     }

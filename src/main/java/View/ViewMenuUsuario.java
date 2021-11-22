@@ -6,7 +6,7 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
 
     public ViewMenuUsuario() {
         initComponents();
-        //this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
     }
 
     public void exibirTela(){

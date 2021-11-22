@@ -44,6 +44,7 @@ public class ControladorLogin {
     }
 
     public void verificaUsuario() {
+              
         String cpf = viewLogin.getCpf();
         String senha = viewLogin.getSenha();
 

@@ -35,6 +35,10 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
         miLocal.addActionListener(acao);
     }
 
+    public void adicionarAcaoCadastrarNomeExame(ActionListener acao){
+        miCadastrarNomeeExame.addActionListener(acao);
+    }
+    
     public void adicionarAcaoSair(ActionListener acao){
         btSair.addActionListener(acao);
     }
@@ -56,6 +60,7 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
         miEspecialidade = new javax.swing.JMenuItem();
         miMedico = new javax.swing.JMenuItem();
         miLocal = new javax.swing.JMenuItem();
+        miCadastrarNomeeExame = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +82,9 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
 
         miLocal.setText("Local de Atendimento");
         jMenu1.add(miLocal);
+
+        miCadastrarNomeeExame.setText("Nome do Exame");
+        jMenu1.add(miCadastrarNomeeExame);
 
         jMenuBar1.add(jMenu1);
 
@@ -143,6 +151,7 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem miCadastrarConsulta;
     private javax.swing.JMenuItem miCadastrarExame;
+    private javax.swing.JMenuItem miCadastrarNomeeExame;
     private javax.swing.JMenuItem miEspecialidade;
     private javax.swing.JMenuItem miLocal;
     private javax.swing.JMenuItem miMedico;

@@ -1,13 +1,18 @@
 package View;
 
+import DAO.DAOEspecialidade;
 import Modelo.ModeloEspecialidade;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 public class ViewCadastroMedico extends javax.swing.JFrame {
 
+    private DAOEspecialidade especialidadeDAO;
+    
     public ViewCadastroMedico() {
         initComponents();
+        this.setLocationRelativeTo(null);
+
     }
 
     public void adicionaAcaoCadastrar(ActionListener acao) {
@@ -30,8 +35,21 @@ public class ViewCadastroMedico extends javax.swing.JFrame {
         return tfRg.getText();
     }
 
-    public ModeloEspecialidade getEspecialidade() {
-        return (ModeloEspecialidade) cbEspecialidade.getModel();
+    public ModeloEspecialidade getEspecialidade(){
+        ModeloEspecialidade especialidade = cbEspecialidade.getItemAt(cbEspecialidade.getSelectedIndex());
+        return especialidade;
+    }
+//    public ModeloEspecialidade getEspecialidade() {
+//        return (ModeloEspecialidade) cbEspecialidade.getModel();
+//    }
+    public void populaEspecialidade(){
+        for(ModeloEspecialidade esp:this.especialidadeDAO.getEspecialidade()){
+            cbEspecialidade.addItem(esp);
+        }
+    }
+    
+    public void limparCB(){
+        cbEspecialidade.removeAllItems();
     }
     
     public void limpaTela(){

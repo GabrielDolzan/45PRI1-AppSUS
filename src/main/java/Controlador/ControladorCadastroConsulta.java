@@ -60,7 +60,6 @@ public class ControladorCadastroConsulta {
             DAOConsulta cons = new DAOConsulta();
             cons.gravar(modeloConsulta);
             viewCadastroConsulta.limpaTela();
-            viewCadastroConsulta.limparCB();
             viewCadastroConsulta.exibirMensagem("Consulta criada com sucesso:"+ modeloConsulta);
             
             
@@ -74,8 +73,7 @@ public class ControladorCadastroConsulta {
             return false;
         if (viewCadastroConsulta.getlocalAtendimento()== null)
             return false;
-//        if (viewCadastroConsulta.getEndereço().isEmpty())
-//            return false;
+
         if (viewCadastroConsulta.getData().isEmpty())
             return false;
         if (viewCadastroConsulta.getHora().isEmpty())

@@ -57,6 +57,7 @@ public abstract class ModeloAtendimento {
     @Override
     public String toString() {
         return "Local do atendimento: " + local +"\n"
+             + "Telefone em caso de dusvidas: "+ local.getTelefone()+"\n"
              + "Data: " + data +"\n"
              + "Horario: " + hora+ "\n";
     }

@@ -1,20 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controlador;
 
+import DAO.DAODescricaoExame;
 import DAO.DAOEspecialidade;
+import Modelo.ModeloDescricaoExame;
 import Modelo.ModeloEspecialidade;
-import View.ViewCadastroEspecialidade;
+import Modelo.ModeloExame;
+import View.ViewCadastraDescriçaoExame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ControladorCadastroEspecialidade {
+/**
+ *
+ * @author User
+ */
+public class ControladorCadastraDescricaoExame {
+    
+    private ViewCadastraDescriçaoExame view;
 
-    private ViewCadastroEspecialidade view;
-
-    public ControladorCadastroEspecialidade() {
-        view = new ViewCadastroEspecialidade();
+    public ControladorCadastraDescricaoExame() {
+        view = new ViewCadastraDescriçaoExame();
         adicionaAcoes();
     }
-
+    
     private void adicionaAcoes() {
         view.adicionarAcaoCadastrar(new ActionListener() {
             @Override
@@ -37,12 +49,12 @@ public class ControladorCadastroEspecialidade {
     private void insere() {
         String descricao = view.getDescricao();
 
-        ModeloEspecialidade esp = new ModeloEspecialidade(descricao);
+        ModeloDescricaoExame ex = new ModeloDescricaoExame(descricao);
 
-        if(!descricao.equalsIgnoreCase("")){
-            DAOEspecialidade dao = new DAOEspecialidade();
-            if(dao.gravar(esp)){
-             view.exibirMensagem("Especialidade cadastrada com sucesso. ");
+        if(!descricao.equals("")){
+            DAODescricaoExame dao = new DAODescricaoExame();
+            if(dao.gravar(ex)){
+                view.exibirMensagem("Exame cadastrado com sucesso. ");
                 view.limpaTela();
             }
         }
@@ -54,5 +66,4 @@ public class ControladorCadastroEspecialidade {
     public void exibir() {
         view.setVisible(true);
     }
-
 }

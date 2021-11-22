@@ -27,10 +27,23 @@ public class ControladorMenuAdministrador {
             }
         });
 
+        viewMenuAdmin.adicionarAcaoCadastrarNomeExame(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ControladorCadastraDescricaoExame cont = new ControladorCadastraDescricaoExame();
+                cont.exibir();
+                
+                viewMenuAdmin.setVisible(false);
+            }
+        });
+        
         viewMenuAdmin.adicionarAcaoCadastrarExame(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                ControladorCadastraExame cont = new ControladorCadastraExame();
+                cont.exibir();
+                
+                viewMenuAdmin.setVisible(false);
             }
         });
 

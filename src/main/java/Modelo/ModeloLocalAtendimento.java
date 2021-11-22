@@ -25,10 +25,13 @@ public class ModeloLocalAtendimento {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-
+    
+    public String imprimeDados() {
+        return "Endereço: " + endereco + ", telefone: " + telefone;
+    }
     @Override
     public String toString() {
-        return "Endereço: " + endereco + ", telefone: " + telefone;
+        return  endereco ;
     }
 
 }
