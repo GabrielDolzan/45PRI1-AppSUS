@@ -5,9 +5,9 @@
  */
 package View;
 
-import DAO.DAODescricaoExame;
+import DAO.DAOTipoExame;
 import DAO.DAOLocalAtendimento;
-import Modelo.ModeloDescricaoExame;
+import Modelo.ModeloTipoExame;
 import Modelo.ModeloExame;
 import Modelo.ModeloLocalAtendimento;
 import java.awt.event.ActionListener;
@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class ViewCadastroExame extends javax.swing.JFrame {
 
-    private DAODescricaoExame exameDAO;
+    private DAOTipoExame exameDAO;
     private DAOLocalAtendimento localDAO;
     
     public ViewCadastroExame() {
@@ -38,8 +38,8 @@ public class ViewCadastroExame extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
-    public ModeloDescricaoExame getExame(){
-        ModeloDescricaoExame exame = cbExame.getItemAt(cbExame.getSelectedIndex());
+    public ModeloTipoExame getExame(){
+        ModeloTipoExame exame = cbExame.getItemAt(cbExame.getSelectedIndex());
         return exame;
     }
     
@@ -61,7 +61,7 @@ public class ViewCadastroExame extends javax.swing.JFrame {
     }
 
     public void populaExame(){
-        for(ModeloDescricaoExame ex:this.exameDAO.getExame()){
+        for(ModeloTipoExame ex:this.exameDAO.getExame()){
             cbExame.addItem(ex);
         }
     }
@@ -213,7 +213,7 @@ public class ViewCadastroExame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btVoltar;
-    private javax.swing.JComboBox<ModeloDescricaoExame> cbExame;
+    private javax.swing.JComboBox<ModeloTipoExame> cbExame;
     private javax.swing.JComboBox<ModeloLocalAtendimento> cbLocal;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

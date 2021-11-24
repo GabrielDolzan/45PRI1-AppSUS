@@ -30,7 +30,7 @@ public class ControladorMenuAdministrador {
         viewMenuAdmin.adicionarAcaoCadastrarNomeExame(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ControladorCadastraDescricaoExame cont = new ControladorCadastraDescricaoExame();
+                ControladorCadastroTipoExame cont = new ControladorCadastroTipoExame();
                 cont.exibir();
                 
                 viewMenuAdmin.setVisible(false);
@@ -40,7 +40,7 @@ public class ControladorMenuAdministrador {
         viewMenuAdmin.adicionarAcaoCadastrarExame(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ControladorCadastraExame cont = new ControladorCadastraExame();
+                ControladorCadastroExame cont = new ControladorCadastroExame();
                 cont.exibir();
                 
                 viewMenuAdmin.setVisible(false);

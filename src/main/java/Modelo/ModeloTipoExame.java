@@ -9,11 +9,11 @@ package Modelo;
  *
  * @author User
  */
-public class ModeloDescricaoExame {
+public class ModeloTipoExame {
     
     private String descricao;
 
-    public ModeloDescricaoExame(String exame) {
+    public ModeloTipoExame(String exame) {
         this.descricao = exame;
     }
 

@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Modelo.ModeloDescricaoExame;
+import Modelo.ModeloTipoExame;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,12 +13,12 @@ import java.util.List;
  *
  * @author User
  */
-public class DAODescricaoExame {
+public class DAOTipoExame {
     
-    private static List<ModeloDescricaoExame> exames = new ArrayList<>();
+    private static List<ModeloTipoExame> exames = new ArrayList<>();
 
-    public static boolean gravar(ModeloDescricaoExame exame){
-        for(ModeloDescricaoExame ex: exames){
+    public static boolean gravar(ModeloTipoExame exame){
+        for(ModeloTipoExame ex: exames){
             if(ex.getDescricao().equalsIgnoreCase(exame.getDescricao())){
                 return false;
             }
@@ -30,7 +30,7 @@ public class DAODescricaoExame {
     }
 
 
-    public static List<ModeloDescricaoExame> getExame() {
+    public static List<ModeloTipoExame> getExame() {
         return exames;
     }
 }

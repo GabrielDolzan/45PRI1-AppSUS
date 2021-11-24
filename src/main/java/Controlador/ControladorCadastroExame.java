@@ -18,12 +18,12 @@ import java.awt.event.ActionListener;
  *
  * @author User
  */
-public class ControladorCadastraExame {
+public class ControladorCadastroExame {
     
     private ViewCadastroExame view;
     private ModeloExame modeloExame;
     
-    public ControladorCadastraExame() {
+    public ControladorCadastroExame() {
         this.view = new ViewCadastroExame();
         popularCB();
         adicionarAcoesBotoes();

@@ -5,12 +5,12 @@
  */
 package Controlador;
 
-import DAO.DAODescricaoExame;
+import DAO.DAOTipoExame;
 import DAO.DAOEspecialidade;
-import Modelo.ModeloDescricaoExame;
+import Modelo.ModeloTipoExame;
 import Modelo.ModeloEspecialidade;
 import Modelo.ModeloExame;
-import View.ViewCadastraDescriçaoExame;
+import View.ViewCadastroTipoExame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,12 +18,12 @@ import java.awt.event.ActionListener;
  *
  * @author User
  */
-public class ControladorCadastraDescricaoExame {
+public class ControladorCadastroTipoExame {
     
-    private ViewCadastraDescriçaoExame view;
+    private ViewCadastroTipoExame view;
 
-    public ControladorCadastraDescricaoExame() {
-        view = new ViewCadastraDescriçaoExame();
+    public ControladorCadastroTipoExame() {
+        view = new ViewCadastroTipoExame();
         adicionaAcoes();
     }
     
@@ -49,10 +49,10 @@ public class ControladorCadastraDescricaoExame {
     private void insere() {
         String descricao = view.getDescricao();
 
-        ModeloDescricaoExame ex = new ModeloDescricaoExame(descricao);
+        ModeloTipoExame ex = new ModeloTipoExame(descricao);
 
         if(!descricao.equals("")){
-            DAODescricaoExame dao = new DAODescricaoExame();
+            DAOTipoExame dao = new DAOTipoExame();
             if(dao.gravar(ex)){
                 view.exibirMensagem("Exame cadastrado com sucesso. ");
                 view.limpaTela();

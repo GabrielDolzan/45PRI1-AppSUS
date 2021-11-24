@@ -11,18 +11,18 @@ package Modelo;
  */
 public class ModeloExame extends ModeloAtendimento {
 
-    private ModeloDescricaoExame exame;
+    private ModeloTipoExame exame;
 
-    public ModeloExame(ModeloDescricaoExame exame, ModeloLocalAtendimento local, String hora, String data) {
+    public ModeloExame(ModeloTipoExame exame, ModeloLocalAtendimento local, String hora, String data) {
         super(local, hora, data);
         this.exame = exame;
     }
 
-    public ModeloDescricaoExame getExame() {
+    public ModeloTipoExame getExame() {
         return exame;
     }
 
-    public void setExame(ModeloDescricaoExame exame) {
+    public void setExame(ModeloTipoExame exame) {
         this.exame = exame;
     }
 
