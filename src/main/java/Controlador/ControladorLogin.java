@@ -44,7 +44,7 @@ public class ControladorLogin {
     }
 
     public void verificaUsuario() {
-              
+
         String cpf = viewLogin.getCpf();
         String senha = viewLogin.getSenha();
 
@@ -82,7 +82,7 @@ public class ControladorLogin {
                 JOptionPane.showMessageDialog(null, "Senha inválida.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Preencha todos os camposo.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos.", "Alerta", JOptionPane.WARNING_MESSAGE);
         }
     }
 

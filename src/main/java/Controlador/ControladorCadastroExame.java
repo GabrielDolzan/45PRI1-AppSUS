@@ -5,11 +5,8 @@
  */
 package Controlador;
 
-import DAO.DAOConsulta;
 import DAO.DAOExame;
-import Modelo.ModeloConsulta;
 import Modelo.ModeloExame;
-import View.ViewCadastroConsulta;
 import View.ViewCadastroExame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,10 +16,10 @@ import java.awt.event.ActionListener;
  * @author User
  */
 public class ControladorCadastroExame {
-    
+
     private ViewCadastroExame view;
     private ModeloExame modeloExame;
-    
+
     public ControladorCadastroExame() {
         this.view = new ViewCadastroExame();
         popularCB();
@@ -30,13 +27,13 @@ public class ControladorCadastroExame {
     }
 
     public void exibir(){
-       view.exibir();      
+       view.exibir();
     }
-    
+
     public void popularCB(){
        view.populaExame();
        view.populaLocal();
-    } 
+    }
 
     public void adicionarAcoesBotoes(){
         view.adicionaAcaoBotaoCadastrar(new ActionListener() {
@@ -63,7 +60,7 @@ public class ControladorCadastroExame {
             DAOExame exame = new DAOExame();
             exame.gravar(modeloExame);
             view.limpaTela();
-            view.exibirMensagem("Exame criado com sucesso: "+"\n"+ modeloExame);   
+            view.exibirMensagem("Exame criado com sucesso: \n"+ modeloExame);
         }
         else {
             view.exibirMensagem("Algum campo esta em branco ou preenchido incorretamente! ");

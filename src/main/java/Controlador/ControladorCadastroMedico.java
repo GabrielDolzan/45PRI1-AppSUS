@@ -10,17 +10,18 @@ public class ControladorCadastroMedico {
 
     private ViewCadastroMedico view;
     private ModeloMedico medico;
-    
+
     public ControladorCadastroMedico() {
         view = new ViewCadastroMedico();
+        view.limparCB();
         popularCB();
         adicionaAcoes();
     }
 
     public void popularCB(){
        view.populaEspecialidade();
-    } 
-    
+    }
+
     private void adicionaAcoes() {
         view.adicionaAcaoCadastrar(new ActionListener() {
             @Override
@@ -40,21 +41,13 @@ public class ControladorCadastroMedico {
         });
     }
 
-     
     private void insere() {
-         medico = new ModeloMedico(view.getNome(), view.getEspecialidade(), view.getTelefone(), view.getRg());
-
-        //DAOMedico dao = new DAOMedico();
-
-        //dao.insere(medico);
-        
-        
          if (validarMedico()) {
+            medico = new ModeloMedico(view.getNome(), view.getEspecialidade(), view.getTelefone(), view.getRg());
             DAOMedico dao = new DAOMedico();
             if (dao.gravar(medico)) {
                 view.exibirMensagem("Médico cadastrado com sucesso. ");
                 view.limpaTela();
-                //view.limparCB();
             }
         }
         else {
@@ -69,12 +62,12 @@ public class ControladorCadastroMedico {
             return false;
         if (this.view.getTelefone().equals(""))
             return false;
-        if (this.view.getEspecialidade().equals(""))
+        if (this.view.getEspecialidade() == null)
             return false;
-   
+
         return true;
     }
-    
+
     public void exibir() {
         view.setVisible(true);
     }

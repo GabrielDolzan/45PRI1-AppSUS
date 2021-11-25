@@ -42,7 +42,8 @@ public class ControladorCadastroEspecialidade {
         if(!descricao.equalsIgnoreCase("")){
             DAOEspecialidade dao = new DAOEspecialidade();
             if(dao.gravar(esp)){
-             view.exibirMensagem("Especialidade cadastrada com sucesso. ");
+            //if(dao.insere(esp)){
+                view.exibirMensagem("Especialidade cadastrada com sucesso. ");
                 view.limpaTela();
             }
         }

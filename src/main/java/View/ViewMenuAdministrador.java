@@ -38,7 +38,7 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
     public void adicionarAcaoCadastrarNomeExame(ActionListener acao){
         miCadastrarNomeeExame.addActionListener(acao);
     }
-    
+
     public void adicionarAcaoSair(ActionListener acao){
         btSair.addActionListener(acao);
     }
@@ -83,7 +83,7 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
         miLocal.setText("Local de Atendimento");
         jMenu1.add(miLocal);
 
-        miCadastrarNomeeExame.setText("Nome do Exame");
+        miCadastrarNomeeExame.setText("Tipo do Exame");
         jMenu1.add(miCadastrarNomeeExame);
 
         jMenuBar1.add(jMenu1);

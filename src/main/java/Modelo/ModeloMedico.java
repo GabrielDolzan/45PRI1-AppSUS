@@ -51,6 +51,4 @@ public class ModeloMedico {
     public String toString() {
         return  nome + " - " + especialidade ;
     }
-
-
 }

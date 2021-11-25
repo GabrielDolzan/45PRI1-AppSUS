@@ -83,7 +83,7 @@ public class DAOUsuario {
      * @return List<ModeloUsuario>
      */
     public List<ModeloUsuario> getUsuario() {
-        List<ModeloUsuario> usu = null;
+        List<ModeloUsuario> usu = new ArrayList();
         Connection connection = Conexao.conectar();
 
         String sql = "SELECT * FROM USUARIO";

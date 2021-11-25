@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 public class ViewCadastroMedico extends javax.swing.JFrame {
 
     private DAOEspecialidade especialidadeDAO;
-    
+
     public ViewCadastroMedico() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -37,21 +37,20 @@ public class ViewCadastroMedico extends javax.swing.JFrame {
 
     public ModeloEspecialidade getEspecialidade(){
         ModeloEspecialidade especialidade = cbEspecialidade.getItemAt(cbEspecialidade.getSelectedIndex());
+
         return especialidade;
     }
-//    public ModeloEspecialidade getEspecialidade() {
-//        return (ModeloEspecialidade) cbEspecialidade.getModel();
-//    }
+
     public void populaEspecialidade(){
-        for(ModeloEspecialidade esp:this.especialidadeDAO.getEspecialidade()){
+        for (ModeloEspecialidade esp : this.especialidadeDAO.getEspecialidade()) {
             cbEspecialidade.addItem(esp);
         }
     }
-    
+
     public void limparCB(){
         cbEspecialidade.removeAllItems();
     }
-    
+
     public void limpaTela(){
         this.tfNome.setText("");
         this.tfRg.setText("");

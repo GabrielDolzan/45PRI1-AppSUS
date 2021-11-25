@@ -36,7 +36,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="miCadastrarNomeeExame">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nome do Exame"/>
+                <Property name="text" type="java.lang.String" value="Tipo do Exame"/>
               </Properties>
             </MenuItem>
           </SubComponents>

@@ -65,7 +65,7 @@ public class DAOAdministrador {
     }
 
     public static List<ModeloAdministrador> getAdministrador() {
-        List<ModeloAdministrador> admin = null;
+        List<ModeloAdministrador> admin = new ArrayList();
         Connection connection = Conexao.conectar();
 
         String sql = "SELECT * FROM ADMINISTRADOR";

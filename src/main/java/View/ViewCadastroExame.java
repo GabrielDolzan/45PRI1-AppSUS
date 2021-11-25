@@ -1,31 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import DAO.DAOTipoExame;
 import DAO.DAOLocalAtendimento;
 import Modelo.ModeloTipoExame;
-import Modelo.ModeloExame;
 import Modelo.ModeloLocalAtendimento;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author User
- */
 public class ViewCadastroExame extends javax.swing.JFrame {
 
     private DAOTipoExame exameDAO;
     private DAOLocalAtendimento localDAO;
-    
+
     public ViewCadastroExame() {
         initComponents();
     }
-    
+
     public void adicionaAcaoBotaoCadastrar(ActionListener acao){
         btCadastrar.addActionListener(acao);
     }
@@ -42,7 +32,7 @@ public class ViewCadastroExame extends javax.swing.JFrame {
         ModeloTipoExame exame = cbExame.getItemAt(cbExame.getSelectedIndex());
         return exame;
     }
-    
+
     public ModeloLocalAtendimento getlocalAtendimento(){
         ModeloLocalAtendimento local = cbLocal.getItemAt(cbLocal.getSelectedIndex());
         return local;
@@ -65,13 +55,13 @@ public class ViewCadastroExame extends javax.swing.JFrame {
             cbExame.addItem(ex);
         }
     }
-      
+
     public void populaLocal(){
         for(ModeloLocalAtendimento local:this.localDAO.getLocalAtendimento()){
             cbLocal.addItem(local);
         }
     }
-     
+
     public void limpaTela(){
         //this.tfEndereco.setText("");
         this.tfData.setText("");
@@ -182,7 +172,7 @@ public class ViewCadastroExame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
