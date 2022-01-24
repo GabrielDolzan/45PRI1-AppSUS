@@ -48,7 +48,7 @@ public class ControladorCadastroConsulta {
     }
 
     private void cadastraConsulta() {
-        modeloConsulta = new ModeloConsulta(viewCadastroConsulta.getMedico(), viewCadastroConsulta.getlocalAtendimento(), viewCadastroConsulta.getHora(), viewCadastroConsulta.getData());
+        modeloConsulta = new ModeloConsulta(viewCadastroConsulta.getMedico(), viewCadastroConsulta.getlocalAtendimento(), viewCadastroConsulta.getHora(), viewCadastroConsulta.getData(), "Disponivel");
         if (verificaPreenchimento()) {
             DAOConsulta cons = new DAOConsulta();
             cons.gravar(modeloConsulta);

@@ -14,6 +14,7 @@ public class ViewCadastroConsulta extends javax.swing.JFrame {
 
     public ViewCadastroConsulta() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public void adicionaAcaoBotaoCadastrar(ActionListener acao){

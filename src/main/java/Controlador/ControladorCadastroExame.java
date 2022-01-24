@@ -55,7 +55,7 @@ public class ControladorCadastroExame {
     }
 
     private void cadastraConsulta() {
-        modeloExame = new ModeloExame(view.getExame(), view.getlocalAtendimento(), view.getHora(), view.getData());
+        modeloExame = new ModeloExame(view.getExame(), view.getlocalAtendimento(), view.getHora(), view.getData(), "Disponivel");
         if (verificaPreenchimento()) {
             DAOExame exame = new DAOExame();
             exame.gravar(modeloExame);

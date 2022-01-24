@@ -4,8 +4,8 @@ public class ModeloConsulta extends ModeloAtendimento {
 
     private ModeloMedico medico;
 
-    public ModeloConsulta(ModeloMedico medico, ModeloLocalAtendimento local, String hora, String data) {
-        super(local, hora, data);
+    public ModeloConsulta(ModeloMedico medico, ModeloLocalAtendimento local, String hora, String data, String status) {
+        super(local, hora, data, status);
         this.medico = medico;
     }
 

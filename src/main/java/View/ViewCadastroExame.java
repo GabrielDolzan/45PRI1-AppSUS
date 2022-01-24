@@ -14,6 +14,7 @@ public class ViewCadastroExame extends javax.swing.JFrame {
 
     public ViewCadastroExame() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public void adicionaAcaoBotaoCadastrar(ActionListener acao){

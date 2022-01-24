@@ -15,11 +15,13 @@ public abstract class ModeloAtendimento {
     private String hora;
     private String data;
     private ModeloUsuario usuario;
+    private String status;
 
-    public ModeloAtendimento(ModeloLocalAtendimento local, String hora, String data) {
+    public ModeloAtendimento(ModeloLocalAtendimento local, String hora, String data, String status) {
         this.local = local;
         this.hora = hora;
         this.data = data;
+        this.status = status;
     }
 
     public ModeloLocalAtendimento getLocal() {
@@ -30,6 +32,10 @@ public abstract class ModeloAtendimento {
         this.local = local;
     }
 
+    public String getStatus() {
+        return status;
+    }
+    
     public String getHora() {
         return hora;
     }

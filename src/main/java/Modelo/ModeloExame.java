@@ -13,8 +13,8 @@ public class ModeloExame extends ModeloAtendimento {
 
     private ModeloTipoExame exame;
 
-    public ModeloExame(ModeloTipoExame exame, ModeloLocalAtendimento local, String hora, String data) {
-        super(local, hora, data);
+    public ModeloExame(ModeloTipoExame exame, ModeloLocalAtendimento local, String hora, String data, String status) {
+        super(local, hora, data, status);
         this.exame = exame;
     }
 
