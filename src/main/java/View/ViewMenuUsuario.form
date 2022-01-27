@@ -19,6 +19,11 @@
                 <Property name="text" type="java.lang.String" value="Exame"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="miMeuPerfil">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Meu perfil"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>

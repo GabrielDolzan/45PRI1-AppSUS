@@ -31,9 +31,8 @@ public class DAOConsulta {
         return consultas;
     }
     
-    public static List<ModeloConsulta> getConsultaCopiad() {
-        return copias;
-    }
+    
+    
     public Iterable<ModeloConsulta> getConsultaCopia(){
         return copias;
     }

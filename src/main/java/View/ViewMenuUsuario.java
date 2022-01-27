@@ -20,6 +20,10 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
     public void adicionarAcaoAgendaExame(ActionListener acao){
         miAgendarExame.addActionListener(acao);
     }
+   
+    public void adicionarAcaoMeuPErfil(ActionListener acao){
+        miMeuPerfil.addActionListener(acao);
+    }
 
     public void adicionarAcaoSair(ActionListener acao) {
         btSair.addActionListener(acao);
@@ -47,6 +51,7 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
         mnMenu = new javax.swing.JMenu();
         miAgendarConsulta = new javax.swing.JMenuItem();
         miAgendarExame = new javax.swing.JMenuItem();
+        miMeuPerfil = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Próximos Agendamentos");
@@ -82,6 +87,9 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
 
         miAgendarExame.setText("Exame");
         mnMenu.add(miAgendarExame);
+
+        miMeuPerfil.setText("Meu perfil");
+        mnMenu.add(miMeuPerfil);
 
         jMenuBar1.add(mnMenu);
 
@@ -191,6 +199,7 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JMenuItem miAgendarConsulta;
     private javax.swing.JMenuItem miAgendarExame;
+    private javax.swing.JMenuItem miMeuPerfil;
     private javax.swing.JMenu mnMenu;
     // End of variables declaration//GEN-END:variables
 }

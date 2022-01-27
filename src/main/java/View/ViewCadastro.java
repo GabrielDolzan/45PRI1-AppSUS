@@ -17,8 +17,6 @@ public class ViewCadastro extends javax.swing.JFrame {
 
     private ViewMenuUsuario viewMenuUsuario;
     private DAOUsuario usuarioDAO;
-//    private MotoDAO motoDAO;
-//    private CarroDAO carroDAO;
 
     public ViewCadastro() {
         initComponents();

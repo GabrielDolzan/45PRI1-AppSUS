@@ -35,14 +35,19 @@ public class ControladorAgendarConsulta {
          viewAgendarConsulta.addAcaoBotaoPesquisaData(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pesquisaData();
-            }
+                
+                ControladorConsultaDisponivel con = new ControladorConsultaDisponivel();
+                con.exibir();
+                  
+                viewAgendarConsulta.setVisible(false);
+
+                }
         });
 
         viewAgendarConsulta.adicionarAcaoBotaoVoltar(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ControladorMenuAdministrador cont = new ControladorMenuAdministrador();
+                ControladorMenuUsuario cont = new ControladorMenuUsuario();
                 cont.exibirTela();
 
                 viewAgendarConsulta.setVisible(false);
@@ -50,26 +55,7 @@ public class ControladorAgendarConsulta {
         });
     }
     
-    private void pesquisaData() {
-        ModeloMedico med= viewAgendarConsulta.getMedico();
-        ModeloLocalAtendimento loc= viewAgendarConsulta.getLocalAtendimento();
-
-        
     
-
-        modeloConsulta = new ModeloConsulta(viewAgendarConsulta.getMedico(), viewAgendarConsulta.getLocalAtendimento(), "", "", "Disponivel");
-        modeloConsultaCopia = new ModeloConsulta(null, null, "", "", "");
-
-        DAOConsulta cons= new DAOConsulta();
-        if ( cons.pesquisaData(modeloConsulta,modeloConsultaCopia)) {
-                   DAOConsulta consDAO= new DAOConsulta();
-
-            //for( ModeloConsulta mod:this.consDAO.getConsultaCopia){
-            //aqui seria um for para listar as consultas disponiveis e o usuario escolher qual quer.
-            //Porem acho que precisa fazer em outra teli com um checbox
-            //}
-        }
-    }
 
     
 }

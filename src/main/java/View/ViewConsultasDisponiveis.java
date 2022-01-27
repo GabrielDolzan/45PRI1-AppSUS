@@ -39,29 +39,56 @@ public class ViewConsultasDisponiveis extends javax.swing.JFrame {
         cbx4.setText(text);
         cbx5.setText(text);
         cbx6.setText(text);
-
         
-
-                
     }
     public void cbx1(ActionListener acao) {
         cbx1.addActionListener(acao);
-        cbx1.setSelected(false);
+        cbx2.setSelected(false);
+        cbx3.setSelected(false);
+        cbx4.setSelected(false);
+        cbx5.setSelected(false);
+        cbx6.setSelected(false);
+
     }
     
     public void cbx2(ActionListener acao) {
         cbx2.addActionListener(acao);
-        cbx2.setSelected(false);
+        cbx1.setSelected(false);
+        cbx3.setSelected(false);
+        cbx4.setSelected(false);
+        cbx5.setSelected(false);
+        cbx6.setSelected(false);
+
+        
     }
     public void cbx3(ActionListener acao) {
         cbx3.addActionListener(acao);
-        cbx3.setSelected(false);
+        cbx1.setSelected(false);
+        cbx2.setSelected(false);
+        cbx4.setSelected(false);
+        cbx5.setSelected(false);
+        cbx6.setSelected(false);
+
+        
     }
     public void cbx4(ActionListener acao) {
         cbx4.addActionListener(acao);
+        cbx1.setSelected(false);
+        cbx2.setSelected(false);
+        cbx3.setSelected(false);
+        cbx5.setSelected(false);
+        cbx6.setSelected(false);
+
     }
     public void cbx5(ActionListener acao) {
         cbx5.addActionListener(acao);
+        cbx1.setSelected(false);
+        cbx2.setSelected(false);
+        cbx3.setSelected(false);
+        cbx4.setSelected(false);
+        cbx5.setSelected(false);
+        cbx6.setSelected(false);
+
     }
     public void cbx6(ActionListener acao) {
         cbx6.addActionListener(acao);
@@ -69,6 +96,8 @@ public class ViewConsultasDisponiveis extends javax.swing.JFrame {
     public void exibirTela() {
         this.setVisible(true);
     }
+    
+  
 
     public void exibirMensagem(String mensagem) {
         JOptionPane.showMessageDialog(null, mensagem);
