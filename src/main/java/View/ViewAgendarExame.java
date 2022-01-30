@@ -1,66 +1,95 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
-import DAO.DAOLocalAtendimento;
-import DAO.DAOTipoExame;
 import Modelo.ModeloLocalAtendimento;
-import Modelo.ModeloMedico;
 import Modelo.ModeloTipoExame;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author User
- */
 public class ViewAgendarExame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ViewAgendarExame
-     */
     public ViewAgendarExame() {
         initComponents();
         this.setLocationRelativeTo(null);
-
     }
 
-    public void popularExame(){
-        for(ModeloTipoExame exame:DAOTipoExame.getExame()){
-            cbExame.addItem(exame);
-        }
+    public void popularTipoExame(ModeloTipoExame tipo) {
+        cbExame.addItem(tipo);
     }
-    public void popularPostoAtendimento(){
-        for (ModeloLocalAtendimento loc: DAOLocalAtendimento.getLocalAtendimento()){
-            cbLocal.addItem(loc);
-        }
+
+    public void popularPostoAtendimento(ModeloLocalAtendimento loc){
+        cbLocal.addItem(loc);
+    }
+
+    public void popularData(String data){
+        cbData.addItem(data);
+    }
+
+    public void popularHora(String hora){
+        cbHora.addItem(hora);
     }
 
     public void limparCB(){
         cbExame.removeAllItems();
         cbLocal.removeAllItems();
+        cbData.removeAllItems();
+        cbHora.removeAllItems();
     }
 
-    public void addAcaoBotaoPesquisaData(ActionListener acao){
-        btPesquisaData.addActionListener(acao);
+    public void addAcaoBotaoAgendar(ActionListener acao){
+        btAgendar.addActionListener(acao);
     }
 
     public void adicionarAcaoBotaoVoltar(ActionListener acao) {
         btVoltar.addActionListener(acao);
     }
-    
-    public ModeloTipoExame getExame(){
+
+    public void adicionarAcaoTipoExame(ItemListener acao) {
+        cbExame.addItemListener(acao);
+    }
+
+    public void adicionarAcaoLocal(ItemListener acao) {
+        cbLocal.addItemListener(acao);
+    }
+
+    public void adicionarAcaoData(ItemListener acao) {
+        cbData.addItemListener(acao);
+    }
+
+    public ModeloTipoExame getTipoExame(){
         ModeloTipoExame exame = cbExame.getItemAt(cbExame.getSelectedIndex());
 
         return exame;
     }
+
     public ModeloLocalAtendimento getLocalAtendimento(){
         ModeloLocalAtendimento localAtendimento = cbLocal.getItemAt(cbLocal.getSelectedIndex());
 
         return localAtendimento;
+    }
+
+    public String getData() {
+        if (cbData.getSelectedItem() != null) {
+            return cbData.getSelectedItem().toString();
+        }
+
+        return "";
+    }
+
+    public String getHora() {
+        if (cbHora.getSelectedItem() != null) {
+            return cbHora.getSelectedItem().toString();
+        }
+
+        return "";
+    }
+
+    public void limpaData() {
+        cbData.removeAllItems();
+    }
+
+    public void limpaHora() {
+        cbHora.removeAllItems();
     }
 
     public void exibirTela() {
@@ -70,6 +99,7 @@ public class ViewAgendarExame extends javax.swing.JFrame {
     public void exibirMensagem(String mensagem) {
         JOptionPane.showMessageDialog(null, mensagem);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,8 +113,12 @@ public class ViewAgendarExame extends javax.swing.JFrame {
         cbExame = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         cbLocal = new javax.swing.JComboBox<>();
-        btPesquisaData = new javax.swing.JButton();
+        btAgendar = new javax.swing.JButton();
         btVoltar = new javax.swing.JButton();
+        lbData = new javax.swing.JLabel();
+        lbHora = new javax.swing.JLabel();
+        cbData = new javax.swing.JComboBox<>();
+        cbHora = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agendar Exame");
@@ -93,9 +127,13 @@ public class ViewAgendarExame extends javax.swing.JFrame {
 
         jLabel3.setText("Posto de atendimento:");
 
-        btPesquisaData.setText("Pesquisar data disponivel");
+        btAgendar.setText("Agendar");
 
         btVoltar.setText("Voltar");
+
+        lbData.setText("Data");
+
+        lbHora.setText("Hora");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,23 +142,38 @@ public class ViewAgendarExame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(btAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(cbExame, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btPesquisaData, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btVoltar))))
+                            .addComponent(cbLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbData, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cbData, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbHora, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(43, 43, 43))
+                                    .addComponent(cbHora, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btVoltar)
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 17, Short.MAX_VALUE)
+                .addGap(0, 15, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbExame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -128,9 +181,17 @@ public class ViewAgendarExame extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbData)
+                    .addComponent(lbHora))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(84, 84, 84)
-                .addComponent(btPesquisaData, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
+                .addComponent(btAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btVoltar)
                 .addGap(35, 35, 35))
         );
@@ -145,7 +206,7 @@ public class ViewAgendarExame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -174,11 +235,15 @@ public class ViewAgendarExame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btPesquisaData;
+    private javax.swing.JButton btAgendar;
     private javax.swing.JButton btVoltar;
+    private javax.swing.JComboBox<String> cbData;
     private javax.swing.JComboBox<Modelo.ModeloTipoExame> cbExame;
+    private javax.swing.JComboBox<String> cbHora;
     private javax.swing.JComboBox<ModeloLocalAtendimento> cbLocal;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lbData;
+    private javax.swing.JLabel lbHora;
     // End of variables declaration//GEN-END:variables
 }

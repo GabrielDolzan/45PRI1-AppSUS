@@ -117,7 +117,6 @@ public class ViewCadastro extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         tfCelular = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        tfDataNascimento = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         cbSexo = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
@@ -126,6 +125,7 @@ public class ViewCadastro extends javax.swing.JFrame {
         tfSenha = new javax.swing.JTextField();
         btCriaConta = new javax.swing.JButton();
         btVoltar = new javax.swing.JButton();
+        tfDataNascimento = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Criando uma Conta");
@@ -154,6 +154,12 @@ public class ViewCadastro extends javax.swing.JFrame {
 
         btVoltar.setText("Voltar");
 
+        try {
+            tfDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,9 +168,9 @@ public class ViewCadastro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbSexo, 0, 132, Short.MAX_VALUE))
+                        .addComponent(tfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(cbSexo, 0, 125, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -238,8 +244,8 @@ public class ViewCadastro extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addGap(3, 3, 3)
@@ -274,7 +280,7 @@ public class ViewCadastro extends javax.swing.JFrame {
     private javax.swing.JTextField tfCPF;
     private javax.swing.JTextField tfCelular;
     private javax.swing.JTextField tfCidade;
-    private javax.swing.JTextField tfDataNascimento;
+    private javax.swing.JFormattedTextField tfDataNascimento;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfEstado;
     private javax.swing.JTextField tfNomeCompleto;

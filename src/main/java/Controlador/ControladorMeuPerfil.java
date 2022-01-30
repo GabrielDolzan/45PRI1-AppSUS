@@ -1,25 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controlador;
 
+import Estrutura.Principal;
 import Modelo.ModeloUsuario;
-import View.ViewCadastroConsulta;
 import View.ViewMeuPerfil;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- *
- * @author User
- */
 public class ControladorMeuPerfil {
-    
-    private ViewMeuPerfil viewMeuPerfil;
 
-        private ModeloUsuario usuario;
+    private ViewMeuPerfil viewMeuPerfil;
 
     public ControladorMeuPerfil() {
         this.viewMeuPerfil = new ViewMeuPerfil();
@@ -27,21 +16,16 @@ public class ControladorMeuPerfil {
         texFild();
         adicionarAcoesBotoes();
     }
-    
+
     public void exibir(){
        viewMeuPerfil.exibir();
     }
-    
-    
-    
-    
+
     public void texFild(){
         viewMeuPerfil.textFild();
     }
 
     public void adicionarAcoesBotoes(){
-       
-
         viewMeuPerfil.adicionarAcaoVoltar(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -52,9 +36,11 @@ public class ControladorMeuPerfil {
             }
         });
     }
-    
-    public void preencheCampo(){
-        viewMeuPerfil.setCPF(usuario.getCpf()); 
+
+    public void preencheCampo() {
+        ModeloUsuario usuario = Principal.getInstance().getModeloUsuario();
+
+        viewMeuPerfil.setCPF(usuario.getCpf());
         viewMeuPerfil.setCelular(usuario.getCelular());
         viewMeuPerfil.setDataNascimento(usuario.getNascimento());
         viewMeuPerfil.setEmail(usuario.getEmail());
@@ -63,4 +49,5 @@ public class ControladorMeuPerfil {
         viewMeuPerfil.setEstado(usuario.getEstado());
         viewMeuPerfil.setCidade(usuario.getCidade());
     }
+
 }

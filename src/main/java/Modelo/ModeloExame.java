@@ -1,36 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
-/**
- *
- * @author User
- */
 public class ModeloExame extends ModeloAtendimento {
 
-    private ModeloTipoExame exame;
+    private ModeloTipoExame tipoExame;
 
-    public ModeloExame(ModeloTipoExame exame, ModeloLocalAtendimento local, String hora, String data, String status) {
-        super(local, hora, data, status);
-        this.exame = exame;
+    public ModeloExame(String data, String hora, ModeloUsuario usuario, ModeloTipoExame exame, ModeloLocalAtendimento local/*, String status*/) {
+        super(data, hora, usuario, local);
+        this.tipoExame = exame;
     }
 
-    public ModeloTipoExame getExame() {
-        return exame;
+    public ModeloTipoExame getTipoExame() {
+        return tipoExame;
     }
 
-    public void setExame(ModeloTipoExame exame) {
-        this.exame = exame;
+    public void setTipoExame(ModeloTipoExame exame) {
+        this.tipoExame = exame;
     }
 
     @Override
     public String toString() {
-        return super.toString()+ "Exame: " + exame +"\n";
+        return super.toString()+ "Exame: " + tipoExame +"\n";
     }
-
-
 
 }

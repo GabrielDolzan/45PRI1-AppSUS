@@ -1,20 +1,27 @@
 package Controlador;
 
+import DAO.DAOConsulta;
+import DAO.DAOExame;
 import Estrutura.Principal;
-import Modelo.ModeloUsuario;
+import Modelo.ModeloConsulta;
+import Modelo.ModeloExame;
 import View.ViewMenuUsuario;
-import View.ViewMeuPerfil;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ControladorMenuUsuario {
 
     private ViewMenuUsuario viewMenuUsuario;
-    private ViewMeuPerfil viewMeuPerfil;
-    private ModeloUsuario usuario;
+    private DAOConsulta DAOConsulta;
+    private DAOExame DAOExame;
 
-     public ControladorMenuUsuario() {
+    public ControladorMenuUsuario() {
         viewMenuUsuario = new ViewMenuUsuario();
+        DAOConsulta = new DAOConsulta();
+        DAOExame = new DAOExame();
+
+        popularProximaConsulta();
+        popularProximoExame();
         inicializarAcaoBotoesMenu();
     }
 
@@ -22,7 +29,23 @@ public class ControladorMenuUsuario {
         viewMenuUsuario.exibirTela();
     }
 
-    public void inicializarAcaoBotoesMenu() {
+    private void popularProximaConsulta() {
+        ModeloConsulta consulta = DAOConsulta.getProximaConsulta(Principal.getInstance().getModeloUsuario());
+
+        if (consulta != null) {
+            viewMenuUsuario.setProximaConsulta(consulta.toString());
+        }
+    }
+
+    private void popularProximoExame() {
+        ModeloExame exame = DAOExame.getProximoExame(Principal.getInstance().getModeloUsuario());
+
+        if (exame != null) {
+            viewMenuUsuario.setProximoExame(exame.toString());
+        }
+    }
+
+    private void inicializarAcaoBotoesMenu() {
         viewMenuUsuario.adicionarAcaoAgendaConsulta(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -36,15 +59,28 @@ public class ControladorMenuUsuario {
         viewMenuUsuario.adicionarAcaoAgendaExame(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                ControladorAgendarExame cont = new ControladorAgendarExame();
+                cont.exibir();
+
+                viewMenuUsuario.setVisible(false);
             }
         });
-        
-         viewMenuUsuario.adicionarAcaoMeuPErfil(new ActionListener() {
+
+         viewMenuUsuario.adicionarAcaoMeuPerfil(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ControladorMeuPerfil perfil = new ControladorMeuPerfil();
                 perfil.exibir();
+                viewMenuUsuario.setVisible(false);
+            }
+        });
+
+        viewMenuUsuario.adicionarAcaoTodos(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ControladorTodosAgendamentosUsuario cont = new ControladorTodosAgendamentosUsuario();
+                cont.exibir();
+
                 viewMenuUsuario.setVisible(false);
             }
         });
@@ -62,9 +98,9 @@ public class ControladorMenuUsuario {
         });
 
     }
-    
+
 //    public void preencheCampo(){
-//        viewMeuPerfil.setCPF(usuario.getCpf()); 
+//        viewMeuPerfil.setCPF(usuario.getCpf());
 //        viewMeuPerfil.setCelular(usuario.getCelular());
 //        viewMeuPerfil.setDataNascimento(usuario.getNascimento());
 //        viewMeuPerfil.setEmail(usuario.getEmail());

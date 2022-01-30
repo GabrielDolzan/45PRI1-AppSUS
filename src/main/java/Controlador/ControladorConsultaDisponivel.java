@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controlador;
 
 import DAO.DAOConsulta;
+import Estrutura.Principal;
 import Modelo.ModeloConsulta;
 import Modelo.ModeloLocalAtendimento;
 import Modelo.ModeloMedico;
@@ -14,35 +10,35 @@ import View.ViewConsultasDisponiveis;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- *
- * @author User
- */
 public class ControladorConsultaDisponivel {
-    
+
     private ViewConsultasDisponiveis viewConsultasDisponivel;
-        private ViewAgendarConsulta viewAgendarConsulta;
+    private ViewAgendarConsulta viewAgendarConsulta;
     private ModeloConsulta modeloConsulta;
     private ModeloConsulta modeloConsultaCopia;
-    
-    public ControladorConsultaDisponivel() {
+    private String data;
+
+    public ControladorConsultaDisponivel(String data) {
         this.viewConsultasDisponivel = new ViewConsultasDisponiveis();
+        this.data = data;
         pesquisaData();
         addChekBox();
         adicionarAcoesBotoes();
     }
-    
+
      public void exibir(){
        viewConsultasDisponivel.exibirTela();
-    }  
-     
+    }
+
     private void pesquisaData() {
-        modeloConsulta = new ModeloConsulta(viewAgendarConsulta.getMedico(), viewAgendarConsulta.getLocalAtendimento(), "", "", "Disponivel");
-        modeloConsultaCopia = new ModeloConsulta(null, null, "", "", "");
+        //modeloConsulta = new ModeloConsulta("", "", Principal.getInstance().getModeloUsuario(), viewAgendarConsulta.getMedico(), viewAgendarConsulta.getLocalAtendimento(), "Disponivel");
+        //modeloConsultaCopia = new ModeloConsulta(null, null, "", "", "");
+        modeloConsulta = new ModeloConsulta("", "", Principal.getInstance().getModeloUsuario(), viewAgendarConsulta.getMedico(), viewAgendarConsulta.getLocalAtendimento());
+        modeloConsultaCopia = new ModeloConsulta("", "", Principal.getInstance().getModeloUsuario(), null, null);
 
         DAOConsulta cons= new DAOConsulta();
         if ( cons.pesquisaData(modeloConsulta,modeloConsultaCopia)) {
-                   DAOConsulta consDAO= new DAOConsulta();
+            DAOConsulta consDAO= new DAOConsulta();
 
             //for( ModeloConsulta mod:this.consDAO.getConsultaCopia){
             //aqui seria um for para listar as consultas disponiveis e o usuario escolher qual quer.
@@ -50,57 +46,57 @@ public class ControladorConsultaDisponivel {
             //}
         }
     }
-     
-     
-     public void addChekBox(){
-         viewConsultasDisponivel.cbx1(new ActionListener() {
+
+
+    public void addChekBox(){
+        viewConsultasDisponivel.cbx1(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
             }
         });
-         
-         viewConsultasDisponivel.cbx1(new ActionListener() {
+
+        viewConsultasDisponivel.cbx1(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
             }
         });
-         
-         viewConsultasDisponivel.cbx1(new ActionListener() {
+
+        viewConsultasDisponivel.cbx1(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
             }
         });
-         
-         viewConsultasDisponivel.cbx1(new ActionListener() {
+
+        viewConsultasDisponivel.cbx1(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               
+
             }
         });
-         
-         viewConsultasDisponivel.cbx1(new ActionListener() {
+
+        viewConsultasDisponivel.cbx1(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
             }
         });
-         
-         viewConsultasDisponivel.cbx1(new ActionListener() {
+
+        viewConsultasDisponivel.cbx1(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
             }
         });
-         
+
      }
 
     public void adicionarAcoesBotoes(){
          viewConsultasDisponivel.adicionarAcaoMaracarConsulta(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               //procura a consulta que foi escolhida no combobox e altera 
+               //procura a consulta que foi escolhida no combobox e altera
                //o status pra indisponivel e adiciona nas consultas agendadas
             }
         });

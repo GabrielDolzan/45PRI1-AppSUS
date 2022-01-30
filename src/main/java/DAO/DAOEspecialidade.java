@@ -4,6 +4,7 @@ import Estrutura.Conexao;
 import Modelo.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class DAOEspecialidade {
                 return false;
             }
         }
+
         especialidades.add(especialidade);
         System.out.println(especialidades);
 
@@ -52,8 +54,8 @@ public class DAOEspecialidade {
     }
 
     public static List<ModeloEspecialidade> getEspecialidade() {
-        return especialidades;
-/*
+        //return especialidades;
+
         List<ModeloEspecialidade> esp = new ArrayList();
         Connection connection = Conexao.conectar();
 
@@ -65,9 +67,13 @@ public class DAOEspecialidade {
             ResultSet resultado = pstmt.executeQuery();
 
             while (resultado.next()) {
+                Integer id = resultado.getInt("id");
                 String descricao = resultado.getString("descricao");
 
-                esp.add(new ModeloEspecialidade(descricao));
+                ModeloEspecialidade Esp = new ModeloEspecialidade(descricao);
+                Esp.setId(id);
+
+                esp.add(Esp);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -76,7 +82,36 @@ public class DAOEspecialidade {
             Conexao.descontecar();
         }
 
-        return esp;*/
+        return esp;
+    }
+
+    public static ModeloEspecialidade getEspecialidade(Integer id) {
+        ModeloEspecialidade esp = null;
+        Connection connection = Conexao.conectar();
+
+        String sql = "SELECT * FROM ESPECIALIDADE WHERE id = ?";
+        PreparedStatement pstmt;
+
+        try {
+            pstmt = connection.prepareStatement(sql);
+            pstmt.setInt(1, id);
+
+            ResultSet resultado = pstmt.executeQuery();
+
+            while (resultado.next()) {
+                String descricao = resultado.getString("descricao");
+
+                esp = new ModeloEspecialidade(descricao);
+                esp.setId(id);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            Conexao.descontecar();
+        }
+
+        return esp;
     }
 
     public void criaTabela() {

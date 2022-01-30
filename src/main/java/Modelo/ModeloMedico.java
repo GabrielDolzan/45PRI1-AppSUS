@@ -2,6 +2,7 @@ package Modelo;
 
 public class ModeloMedico {
 
+    private Integer id;
     private String nome;
     private String telefone;
     private String rg;
@@ -10,6 +11,16 @@ public class ModeloMedico {
     public ModeloMedico(String nome, ModeloEspecialidade especialidade, String telefone, String rg) {
         this.nome = nome;
         this.especialidade = especialidade;
+        this.telefone = telefone;
+        this.rg = rg;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -47,6 +58,7 @@ public class ModeloMedico {
     public String imprimeDados() {
         return  "Medico: " +nome +  " - Especialidade:  " + especialidade ;
     }
+
     @Override
     public String toString() {
         return  nome + " - " + especialidade ;

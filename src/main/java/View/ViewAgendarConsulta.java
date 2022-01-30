@@ -1,24 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import DAO.DAOEspecialidade;
 import DAO.DAOLocalAtendimento;
 import DAO.DAOMedico;
-import Modelo.ModeloConsulta;
-import Modelo.ModeloEspecialidade;
 import Modelo.ModeloLocalAtendimento;
 import Modelo.ModeloMedico;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author User
- */
 public class ViewAgendarConsulta extends javax.swing.JFrame {
 
     private DAOEspecialidade especialidadeDAO;
@@ -30,32 +21,49 @@ public class ViewAgendarConsulta extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    
-    
-    public void popularMedicos(){
-        for(ModeloMedico med:this.medicoDAO.getMedico()){
-            cbMedico.addItem(med);
-        }
+    public void popularMedicos(ModeloMedico med){
+        cbMedico.addItem(med);
     }
-    public void popularPostoAtendimento(){
-        for (ModeloLocalAtendimento loc: this.localAtendimentoDAO.getLocalAtendimento()){
-            cbPostoAtendimento.addItem(loc);
-        }
+
+    public void popularPostoAtendimento(ModeloLocalAtendimento loc){
+        cbPostoAtendimento.addItem(loc);
+    }
+
+    public void popularData(String data) {
+        cbData.addItem(data);
+    }
+
+    public void popularHora(String hora) {
+        cbHora.addItem(hora);
     }
 
     public void limparCB(){
         cbMedico.removeAllItems();
         cbPostoAtendimento.removeAllItems();
+        cbData.removeAllItems();
+        cbHora.removeAllItems();
     }
 
-    public void addAcaoBotaoPesquisaData(ActionListener acao){
-        btPesquisaData.addActionListener(acao);
+    public void addAcaoBotaoAgendar(ActionListener acao){
+        btAgendar.addActionListener(acao);
     }
 
     public void adicionarAcaoBotaoVoltar(ActionListener acao) {
         btVoltar.addActionListener(acao);
     }
-    
+
+    public void adicionarAcaoMedico(ItemListener acao) {
+        cbMedico.addItemListener(acao);
+    }
+
+    public void adicionarAcaoLocal(ItemListener acao) {
+        cbPostoAtendimento.addItemListener(acao);
+    }
+
+    public void adicionarAcaoData(ItemListener acao) {
+        cbData.addItemListener(acao);
+    }
+
     public ModeloMedico getMedico(){
         ModeloMedico medico = cbMedico.getItemAt(cbMedico.getSelectedIndex());
 
@@ -65,6 +73,30 @@ public class ViewAgendarConsulta extends javax.swing.JFrame {
         ModeloLocalAtendimento localAtendimento = cbPostoAtendimento.getItemAt(cbPostoAtendimento.getSelectedIndex());
 
         return localAtendimento;
+    }
+
+    public String getData() {
+        if (cbData.getSelectedItem() != null) {
+            return cbData.getSelectedItem().toString();
+        }
+
+        return "";
+    }
+
+    public String getHora() {
+        if (cbHora.getSelectedItem() != null) {
+            return cbHora.getSelectedItem().toString();
+        }
+
+        return "";
+    }
+
+    public void limpaData() {
+        cbData.removeAllItems();
+    }
+
+    public void limpaHora() {
+        cbHora.removeAllItems();
     }
 
     public void exibirTela() {
@@ -86,66 +118,95 @@ public class ViewAgendarConsulta extends javax.swing.JFrame {
 
         jLabel3 = new javax.swing.JLabel();
         cbPostoAtendimento = new javax.swing.JComboBox<>();
-        btPesquisaData = new javax.swing.JButton();
+        btAgendar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         cbMedico = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btVoltar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        cbData = new javax.swing.JComboBox<>();
+        lbHora = new javax.swing.JLabel();
+        cbHora = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisar consulta");
 
         jLabel3.setText("Posto de atendimento:");
 
-        btPesquisaData.setText("Pesquisar data disponivel");
+        btAgendar.setText("Agendar");
 
         jLabel2.setText("Médico e especialidade:");
 
         btVoltar.setText("Voltar");
+
+        jLabel1.setText("Data:");
+
+        lbHora.setText("Hora");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btVoltar)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(cbPostoAtendimento, 0, 209, Short.MAX_VALUE)
+                            .addComponent(cbMedico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(btPesquisaData, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cbMedico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(6, 6, 6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                .addComponent(cbData, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(cbHora, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbHora, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74)))
                 .addComponent(jLabel4))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btVoltar)
+                .addGap(25, 25, 25))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(btAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(12, 12, 12)
                         .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbPostoAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(btPesquisaData, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(lbHora))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(btAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btVoltar)
-                .addGap(24, 24, 24))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -188,13 +249,17 @@ public class ViewAgendarConsulta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btPesquisaData;
+    private javax.swing.JButton btAgendar;
     private javax.swing.JButton btVoltar;
+    private javax.swing.JComboBox<String> cbData;
+    private javax.swing.JComboBox<String> cbHora;
     private javax.swing.JComboBox<ModeloMedico> cbMedico;
     private javax.swing.JComboBox<ModeloLocalAtendimento> cbPostoAtendimento;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lbHora;
     // End of variables declaration//GEN-END:variables
 }

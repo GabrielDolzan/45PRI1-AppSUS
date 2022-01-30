@@ -29,7 +29,7 @@ public class ViewCadastroExame extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
-    public ModeloTipoExame getExame(){
+    public ModeloTipoExame getTipoExame(){
         ModeloTipoExame exame = cbExame.getItemAt(cbExame.getSelectedIndex());
         return exame;
     }
@@ -52,7 +52,7 @@ public class ViewCadastroExame extends javax.swing.JFrame {
     }
 
     public void populaExame(){
-        for(ModeloTipoExame ex:this.exameDAO.getExame()){
+        for(ModeloTipoExame ex:this.exameDAO.getTipoExame()){
             cbExame.addItem(ex);
         }
     }
@@ -87,11 +87,11 @@ public class ViewCadastroExame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cbLocal = new javax.swing.JComboBox<>();
         lbData = new javax.swing.JLabel();
-        tfData = new javax.swing.JTextField();
         lbHora = new javax.swing.JLabel();
-        tfHora = new javax.swing.JTextField();
         btCadastrar = new javax.swing.JButton();
         btVoltar = new javax.swing.JButton();
+        tfData = new javax.swing.JFormattedTextField();
+        tfHora = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,6 +107,18 @@ public class ViewCadastroExame extends javax.swing.JFrame {
 
         btVoltar.setText("Voltar");
 
+        try {
+            tfData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            tfHora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,23 +131,23 @@ public class ViewCadastroExame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(cbExame, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbData)
-                                    .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbHora)
-                                    .addComponent(tfHora, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(lbData)
+                                .addGap(84, 84, 84)
+                                .addComponent(lbHora))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(tfHora))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,11 +164,11 @@ public class ViewCadastroExame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbData)
                     .addComponent(lbHora))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(btVoltar)
@@ -204,13 +216,13 @@ public class ViewCadastroExame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btVoltar;
-    private javax.swing.JComboBox<ModeloTipoExame> cbExame;
+    private javax.swing.JComboBox<Modelo.ModeloTipoExame> cbExame;
     private javax.swing.JComboBox<ModeloLocalAtendimento> cbLocal;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lbData;
     private javax.swing.JLabel lbHora;
-    private javax.swing.JTextField tfData;
-    private javax.swing.JTextField tfHora;
+    private javax.swing.JFormattedTextField tfData;
+    private javax.swing.JFormattedTextField tfHora;
     // End of variables declaration//GEN-END:variables
 }

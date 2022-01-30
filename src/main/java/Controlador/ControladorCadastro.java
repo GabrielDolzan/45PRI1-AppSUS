@@ -48,7 +48,8 @@ public class ControladorCadastro {
 
         if (validarUsuario()) {
             DAOUsuario dao = new DAOUsuario();
-            if (dao.gravar(modeloUsuario)) {
+            //if (dao.gravar(modeloUsuario)) {
+            if (dao.insere(modeloUsuario)) {
                 viewCadastro.exibirMensagem("Usuario criado com sucesso. ");
                 viewCadastro.limpaTela();
             }

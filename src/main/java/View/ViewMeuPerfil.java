@@ -1,24 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
-/**
- *
- * @author User
- */
 public class ViewMeuPerfil extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ViewMeuPerfil
-     */
     public ViewMeuPerfil() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public void exibir(){
@@ -26,7 +15,7 @@ public class ViewMeuPerfil extends javax.swing.JFrame {
     }
 
     public void setCPF(String CPF) {
-         this.tfCPF.setText(CPF); 
+         this.tfCPF.setText(CPF);
     }
 
     public void setCelular(String Celular) {
@@ -34,7 +23,7 @@ public class ViewMeuPerfil extends javax.swing.JFrame {
     }
     public void setEstado(String estado) {
          this.tfEstado.setText(estado);
-        
+
     }
     public void setCidade(String cidade) {
         this.tfCidade.setText(cidade);
@@ -55,7 +44,7 @@ public class ViewMeuPerfil extends javax.swing.JFrame {
     public void setSexo(String Sexo) {
         this.tfSexo.setText(Sexo);
     }
-    
+
     public void textFild(){
         tfCPF.setEditable(false);
         tfCelular.setEditable(false);
@@ -64,13 +53,12 @@ public class ViewMeuPerfil extends javax.swing.JFrame {
         tfSexo.setEditable(false);
         tfEstado.setEditable(false);
         tfCidade.setEditable(false);
-        
     }
-    
+
     public void adicionarAcaoVoltar(ActionListener acao) {
         btSair.addActionListener(acao);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -233,7 +221,7 @@ public class ViewMeuPerfil extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

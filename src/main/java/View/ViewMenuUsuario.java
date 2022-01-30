@@ -6,6 +6,8 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
 
     public ViewMenuUsuario() {
         initComponents();
+        taConsulta.setEditable(false);
+        taExame.setEditable(false);
         this.setLocationRelativeTo(null);
     }
 
@@ -20,13 +22,25 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
     public void adicionarAcaoAgendaExame(ActionListener acao){
         miAgendarExame.addActionListener(acao);
     }
-   
-    public void adicionarAcaoMeuPErfil(ActionListener acao){
+
+    public void adicionarAcaoMeuPerfil(ActionListener acao){
         miMeuPerfil.addActionListener(acao);
+    }
+
+    public void adicionarAcaoTodos(ActionListener acao) {
+        btTodos.addActionListener(acao);
     }
 
     public void adicionarAcaoSair(ActionListener acao) {
         btSair.addActionListener(acao);
+    }
+
+    public void setProximaConsulta(String consulta) {
+        taConsulta.setText(consulta);
+    }
+
+    public void setProximoExame(String exame) {
+        taExame.setText(exame);
     }
 
     /**
@@ -41,16 +55,17 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
         btSair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        taConsulta = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        BtVerConsulta1 = new javax.swing.JButton();
+        taExame = new javax.swing.JTextArea();
+        btTodos = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnMenu = new javax.swing.JMenu();
         miAgendarConsulta = new javax.swing.JMenuItem();
         miAgendarExame = new javax.swing.JMenuItem();
+        mnVisualizar = new javax.swing.JMenu();
         miMeuPerfil = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,19 +81,19 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Proximos Agendamentos");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        taConsulta.setColumns(20);
+        taConsulta.setRows(5);
+        jScrollPane1.setViewportView(taConsulta);
 
         jLabel2.setText("Proxima consulta:");
 
         jLabel3.setText("Proximo Exame:");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        taExame.setColumns(20);
+        taExame.setRows(5);
+        jScrollPane2.setViewportView(taExame);
 
-        BtVerConsulta1.setText("Ver todos os agendamentos");
+        btTodos.setText("Ver todos os agendamentos");
 
         mnMenu.setText("Agendar");
 
@@ -88,10 +103,14 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
         miAgendarExame.setText("Exame");
         mnMenu.add(miAgendarExame);
 
-        miMeuPerfil.setText("Meu perfil");
-        mnMenu.add(miMeuPerfil);
-
         jMenuBar1.add(mnMenu);
+
+        mnVisualizar.setText("Visualizar");
+
+        miMeuPerfil.setText("Meu perfil");
+        mnVisualizar.add(miMeuPerfil);
+
+        jMenuBar1.add(mnVisualizar);
 
         setJMenuBar(jMenuBar1);
 
@@ -121,7 +140,7 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BtVerConsulta1)
+                .addComponent(btTodos)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -138,7 +157,7 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(BtVerConsulta1)
+                .addComponent(btTodos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(btSair)
                 .addContainerGap())
@@ -187,19 +206,20 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtVerConsulta1;
     private javax.swing.JButton btSair;
+    private javax.swing.JButton btTodos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JMenuItem miAgendarConsulta;
     private javax.swing.JMenuItem miAgendarExame;
     private javax.swing.JMenuItem miMeuPerfil;
     private javax.swing.JMenu mnMenu;
+    private javax.swing.JMenu mnVisualizar;
+    private javax.swing.JTextArea taConsulta;
+    private javax.swing.JTextArea taExame;
     // End of variables declaration//GEN-END:variables
 }

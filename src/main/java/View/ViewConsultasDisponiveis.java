@@ -1,33 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author User
- */
 public class ViewConsultasDisponiveis extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ViewConsultasDisponiveis
-     */
     public ViewConsultasDisponiveis() {
-        initComponents();    
+        initComponents();
         this.setLocationRelativeTo(null);
-
-        
     }
 
     public void adicionarAcaoMaracarConsulta(ActionListener acao) {
         btMarcaConsulta.addActionListener(acao);
     }
-    
+
     public void adicionarAcaoVoltar(ActionListener acao) {
         btVoltar.addActionListener(acao);
     }
@@ -39,7 +25,7 @@ public class ViewConsultasDisponiveis extends javax.swing.JFrame {
         cbx4.setText(text);
         cbx5.setText(text);
         cbx6.setText(text);
-        
+
     }
     public void cbx1(ActionListener acao) {
         cbx1.addActionListener(acao);
@@ -50,7 +36,7 @@ public class ViewConsultasDisponiveis extends javax.swing.JFrame {
         cbx6.setSelected(false);
 
     }
-    
+
     public void cbx2(ActionListener acao) {
         cbx2.addActionListener(acao);
         cbx1.setSelected(false);
@@ -59,7 +45,7 @@ public class ViewConsultasDisponiveis extends javax.swing.JFrame {
         cbx5.setSelected(false);
         cbx6.setSelected(false);
 
-        
+
     }
     public void cbx3(ActionListener acao) {
         cbx3.addActionListener(acao);
@@ -69,7 +55,7 @@ public class ViewConsultasDisponiveis extends javax.swing.JFrame {
         cbx5.setSelected(false);
         cbx6.setSelected(false);
 
-        
+
     }
     public void cbx4(ActionListener acao) {
         cbx4.addActionListener(acao);
@@ -96,13 +82,13 @@ public class ViewConsultasDisponiveis extends javax.swing.JFrame {
     public void exibirTela() {
         this.setVisible(true);
     }
-    
-  
+
+
 
     public void exibirMensagem(String mensagem) {
         JOptionPane.showMessageDialog(null, mensagem);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -165,25 +151,28 @@ public class ViewConsultasDisponiveis extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbx3)
-                            .addComponent(cbx1)
-                            .addComponent(cbx5)
-                            .addComponent(cbx2)
-                            .addComponent(cbx4)
-                            .addComponent(cbx6)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(btMarcaConsulta)))
-                .addContainerGap(35, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btVoltar)
-                .addGap(21, 21, 21))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbx3)
+                                    .addComponent(cbx1)
+                                    .addComponent(cbx5)
+                                    .addComponent(cbx2)
+                                    .addComponent(cbx4)
+                                    .addComponent(cbx6))))
+                        .addGap(0, 23, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btVoltar)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(btMarcaConsulta)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,11 +191,11 @@ public class ViewConsultasDisponiveis extends javax.swing.JFrame {
                 .addComponent(cbx5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbx6)
-                .addGap(47, 47, 47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addComponent(btMarcaConsulta)
-                .addGap(48, 48, 48)
+                .addGap(43, 43, 43)
                 .addComponent(btVoltar)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -234,7 +223,7 @@ public class ViewConsultasDisponiveis extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -252,6 +241,7 @@ public class ViewConsultasDisponiveis extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ViewConsultasDisponiveis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

@@ -1,18 +1,22 @@
 package View;
 
 import DAO.DAOEspecialidade;
+import DAO.DAOLocalAtendimento;
 import Modelo.ModeloEspecialidade;
+import Modelo.ModeloLocalAtendimento;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 public class ViewCadastroMedico extends javax.swing.JFrame {
 
     private DAOEspecialidade especialidadeDAO;
+    private DAOLocalAtendimento localDAO;
 
     public ViewCadastroMedico() {
         initComponents();
         this.setLocationRelativeTo(null);
-
+        this.especialidadeDAO = new DAOEspecialidade();
+        this.localDAO = new DAOLocalAtendimento();
     }
 
     public void adicionaAcaoCadastrar(ActionListener acao) {
@@ -104,6 +108,9 @@ public class ViewCadastroMedico extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btVoltar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -118,12 +125,9 @@ public class ViewCadastroMedico extends javax.swing.JFrame {
                                     .addComponent(tfRg)
                                     .addComponent(cbEspecialidade, 0, 201, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(74, 74, 74)
+                                .addGap(76, 76, 76)
                                 .addComponent(btCadastrar)))
-                        .addGap(0, 22, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btVoltar)))
+                        .addGap(0, 22, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -143,13 +147,13 @@ public class ViewCadastroMedico extends javax.swing.JFrame {
                 .addComponent(tfRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lbEspecialidade)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(btCadastrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
                 .addComponent(btVoltar)
-                .addGap(21, 21, 21))
+                .addContainerGap())
         );
 
         pack();

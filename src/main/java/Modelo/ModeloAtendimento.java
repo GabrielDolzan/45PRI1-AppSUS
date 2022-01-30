@@ -1,27 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
-/**
- *
- * @author User
- */
 public abstract class ModeloAtendimento {
 
+    private Integer id;
     private ModeloLocalAtendimento local;
     private String hora;
     private String data;
     private ModeloUsuario usuario;
     private String status;
 
-    public ModeloAtendimento(ModeloLocalAtendimento local, String hora, String data, String status) {
-        this.local = local;
+    public ModeloAtendimento(String data, String hora, ModeloUsuario usuario, ModeloLocalAtendimento local/*, String status*/) {
         this.hora = hora;
         this.data = data;
+        this.usuario = usuario;
+        this.local = local;
         this.status = status;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public ModeloLocalAtendimento getLocal() {
@@ -35,7 +36,7 @@ public abstract class ModeloAtendimento {
     public String getStatus() {
         return status;
     }
-    
+
     public String getHora() {
         return hora;
     }

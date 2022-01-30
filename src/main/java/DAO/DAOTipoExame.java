@@ -52,13 +52,13 @@ public class DAOTipoExame {
         }
     }
 
-    public static List<ModeloTipoExame> getExame() {
-        return exames;
+    public static List<ModeloTipoExame> getTipoExame() {
+        //return exames;
 
-        /*List<ModeloTipoExame> tipo = new ArrayList();
+        List<ModeloTipoExame> tipo = new ArrayList();
         Connection connection = Conexao.conectar();
 
-        String sql = "SELECT * FROM ESPECIALIDADE";
+        String sql = "SELECT * FROM TIPOEXAME";
         PreparedStatement pstmt;
 
         try {
@@ -66,9 +66,13 @@ public class DAOTipoExame {
             ResultSet resultado = pstmt.executeQuery();
 
             while (resultado.next()) {
+                Integer id = resultado.getInt("id");
                 String descricao = resultado.getString("descricao");
 
-                tipo.add(new ModeloTipoExame(descricao));
+                ModeloTipoExame TipoExame = new ModeloTipoExame(descricao);
+                TipoExame.setId(id);
+
+                tipo.add(TipoExame);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -77,7 +81,36 @@ public class DAOTipoExame {
             Conexao.descontecar();
         }
 
-        return tipo;*/
+        return tipo;
+    }
+
+    public static ModeloTipoExame getTipoExame(Integer id) {
+        ModeloTipoExame tipo = null;
+        Connection connection = Conexao.conectar();
+
+        String sql = "SELECT * FROM TIPOEXAME WHERE id = ?";
+        PreparedStatement pstmt;
+
+        try {
+            pstmt = connection.prepareStatement(sql);
+            pstmt.setInt(1, id);
+
+            ResultSet resultado = pstmt.executeQuery();
+
+            while (resultado.next()) {
+                String descricao = resultado.getString("descricao");
+
+                tipo = new ModeloTipoExame(descricao);
+                tipo.setId(id);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            Conexao.descontecar();
+        }
+
+        return tipo;
     }
 
     public void criaTabela() {

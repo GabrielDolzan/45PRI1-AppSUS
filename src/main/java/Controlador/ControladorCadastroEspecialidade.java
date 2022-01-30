@@ -41,8 +41,8 @@ public class ControladorCadastroEspecialidade {
 
         if(!descricao.equalsIgnoreCase("")){
             DAOEspecialidade dao = new DAOEspecialidade();
-            if(dao.gravar(esp)){
-            //if(dao.insere(esp)){
+            //if(dao.gravar(esp)){
+            if(dao.insere(esp)){
                 view.exibirMensagem("Especialidade cadastrada com sucesso. ");
                 view.limpaTela();
             }

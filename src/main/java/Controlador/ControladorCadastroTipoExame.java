@@ -1,32 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controlador;
 
 import DAO.DAOTipoExame;
-import DAO.DAOEspecialidade;
 import Modelo.ModeloTipoExame;
-import Modelo.ModeloEspecialidade;
-import Modelo.ModeloExame;
 import View.ViewCadastroTipoExame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- *
- * @author User
- */
 public class ControladorCadastroTipoExame {
-    
+
     private ViewCadastroTipoExame view;
 
     public ControladorCadastroTipoExame() {
         view = new ViewCadastroTipoExame();
         adicionaAcoes();
     }
-    
+
     private void adicionaAcoes() {
         view.adicionarAcaoCadastrar(new ActionListener() {
             @Override
@@ -53,7 +41,8 @@ public class ControladorCadastroTipoExame {
 
         if(!descricao.equals("")){
             DAOTipoExame dao = new DAOTipoExame();
-            if(dao.gravar(ex)){
+            //if (dao.gravar(ex)) {
+            if (dao.insere(ex)) {
                 view.exibirMensagem("Exame cadastrado com sucesso. ");
                 view.limpaTela();
             }

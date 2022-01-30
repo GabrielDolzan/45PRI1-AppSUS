@@ -4,8 +4,8 @@ public class ModeloConsulta extends ModeloAtendimento {
 
     private ModeloMedico medico;
 
-    public ModeloConsulta(ModeloMedico medico, ModeloLocalAtendimento local, String hora, String data, String status) {
-        super(local, hora, data, status);
+    public ModeloConsulta(String data, String hora, ModeloUsuario usuario, ModeloMedico medico, ModeloLocalAtendimento local) {
+        super(data, hora, usuario, local);
         this.medico = medico;
     }
 
@@ -20,9 +20,8 @@ public class ModeloConsulta extends ModeloAtendimento {
     @Override
     public String toString() {
         return "Especialidade: " + medico.getEspecialidade().getDescricao() +"\n"
-             + "Médico: " + medico+"\n" 
+             + "Médico: " + medico+"\n"
              + super.toString()+"\n";
     }
-
 
 }

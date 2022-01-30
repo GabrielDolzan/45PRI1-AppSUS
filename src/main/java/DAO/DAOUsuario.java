@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO;
 
 import Estrutura.Conexao;
@@ -17,10 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author User
- */
 public class DAOUsuario {
 
     private static List<ModeloUsuario> usuarios = new ArrayList<>();
@@ -29,12 +20,24 @@ public class DAOUsuario {
         criaTabela();
     }
 
+    public boolean gravar(ModeloUsuario usuario) {
+        for (ModeloUsuario use : usuarios) {
+            if(use.getCpf().equals(usuario.getCpf())){
+                return false;
+            }
+        }
+
+        usuarios.add(usuario);
+
+        return true;
+    }
+
     /**
-     * Grava o usuário
+     * Insere o usuário
      * @param usuario
      * @return bool
      */
-    public boolean gravar(ModeloUsuario usuario) {
+    public boolean insere(ModeloUsuario usuario) {
         Connection connection = Conexao.conectar();
 
         String sql = "INSERT INTO USUARIO (cpf, nome, email, senha, estado, cidade, celular, nascimento, sexo) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -50,8 +53,9 @@ public class DAOUsuario {
             pstmt.setString(4, usuario.getSenha());
             pstmt.setString(5, usuario.getEstado());
             pstmt.setString(6, usuario.getCidade());
-            pstmt.setInt(7, Integer.parseInt(usuario.getCelular()));
-            pstmt.setDate(8, Date.valueOf(data[2] + "-" + data[1] + "-" + data[0]));
+            pstmt.setString(7, usuario.getCelular());
+            //pstmt.setDate(8, Date.valueOf(data[2] + "-" + data[1] + "-" + data[0]));
+            pstmt.setString(8, usuario.getNascimento());
             pstmt.setString(9, usuario.getSexo());
 
             pstmt.execute();
@@ -67,15 +71,6 @@ public class DAOUsuario {
         } finally {
             Conexao.descontecar();
         }
-
-        /*
-        for (ModeloUsuario use : usuarios) {
-            if(use.getCpf().equals(usuario.getCpf())){
-                return false;
-            }
-        }
-        usuarios.add(usuario);
-        return true;*/
     }
 
     /**
@@ -98,11 +93,11 @@ public class DAOUsuario {
                 String nome = resultado.getString("nome");
                 String email = resultado.getString("email");
                 String senha = resultado.getString("senha");
-                String cidade = resultado.getString("senha");
-                String estado = resultado.getString("senha");
-                String celular = resultado.getString("senha");
-                String nascimento = resultado.getString("senha");
-                String sexo = resultado.getString("senha");
+                String cidade = resultado.getString("cidade");
+                String estado = resultado.getString("estado");
+                String celular = resultado.getString("celular");
+                String nascimento = resultado.getString("nascimento");
+                String sexo = resultado.getString("sexo");
 
                 usu.add(new ModeloUsuario(estado, cidade, nome, cpf, celular, nascimento, sexo, email, senha));
             }
@@ -123,7 +118,7 @@ public class DAOUsuario {
      * @param cpf
      * @return ModeloUsuario
      */
-    public ModeloUsuario getUsuario(String cpf) {
+    public static ModeloUsuario getUsuario(String cpf) {
         Connection connection = Conexao.conectar();
 
         String sql = "SELECT * FROM USUARIO WHERE cpf = ?";
@@ -138,11 +133,11 @@ public class DAOUsuario {
                 String nome = resultado.getString("nome");
                 String email = resultado.getString("email");
                 String senha = resultado.getString("senha");
-                String cidade = resultado.getString("senha");
-                String estado = resultado.getString("senha");
-                String celular = resultado.getString("senha");
-                String nascimento = resultado.getString("senha");
-                String sexo = resultado.getString("senha");
+                String cidade = resultado.getString("cidade");
+                String estado = resultado.getString("estado");
+                String celular = resultado.getString("celular");
+                String nascimento = resultado.getString("nascimento");
+                String sexo = resultado.getString("sexo");
 
                 return new ModeloUsuario(estado, cidade, nome, cpf, celular, nascimento, sexo, email, senha);
             }

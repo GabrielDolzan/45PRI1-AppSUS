@@ -4,6 +4,7 @@ import Estrutura.Conexao;
 import Modelo.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -24,13 +25,13 @@ public class DAOLocalAtendimento {
         return true;
     }
 
-   public static List<ModeloLocalAtendimento> getLocalAtendimento(){
-        return locais;
+    public static List<ModeloLocalAtendimento> getLocalAtendimento() {
+        //return locais;
 
-        /*List<ModeloLocalAtendimento> local = new ArrayList();
+        List<ModeloLocalAtendimento> local = new ArrayList();
         Connection connection = Conexao.conectar();
 
-        String sql = "SELECT * FROM ESPECIALIDADE";
+        String sql = "SELECT * FROM LOCALATENDIMENTO";
         PreparedStatement pstmt;
 
         try {
@@ -38,10 +39,14 @@ public class DAOLocalAtendimento {
             ResultSet resultado = pstmt.executeQuery();
 
             while (resultado.next()) {
+                Integer id = resultado.getInt("id");
                 String endereco = resultado.getString("endereco");
                 String telefone = resultado.getString("telefone");
 
-                local.add(new ModeloLocalAtendimento(telefone, endereco));
+                ModeloLocalAtendimento Local= new ModeloLocalAtendimento(telefone, endereco);
+                Local.setId(id);
+
+                local.add(Local);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -50,7 +55,37 @@ public class DAOLocalAtendimento {
             Conexao.descontecar();
         }
 
-        return local;*/
+        return local;
+    }
+
+    public static ModeloLocalAtendimento getLocalAtendimento(Integer id) {
+        ModeloLocalAtendimento local = null;
+        Connection connection = Conexao.conectar();
+
+        String sql = "SELECT * FROM LOCALATENDIMENTO WHERE id = ?";
+        PreparedStatement pstmt;
+
+        try {
+            pstmt = connection.prepareStatement(sql);
+            pstmt.setInt(1, id);
+
+            ResultSet resultado = pstmt.executeQuery();
+
+            while (resultado.next()) {
+                String endereco = resultado.getString("endereco");
+                String telefone = resultado.getString("telefone");
+
+                local = new ModeloLocalAtendimento(telefone, endereco);
+                local.setId(id);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            Conexao.descontecar();
+        }
+
+        return local;
     }
 
     public static boolean excluirFilial(String endereco){

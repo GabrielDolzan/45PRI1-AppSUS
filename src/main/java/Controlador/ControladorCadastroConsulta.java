@@ -1,7 +1,10 @@
 package Controlador;
 
 import DAO.DAOConsulta;
+import Estrutura.Principal;
 import Modelo.ModeloConsulta;
+import Modelo.ModeloLocalAtendimento;
+import Modelo.ModeloMedico;
 import View.ViewCadastroConsulta;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,10 +51,19 @@ public class ControladorCadastroConsulta {
     }
 
     private void cadastraConsulta() {
-        modeloConsulta = new ModeloConsulta(viewCadastroConsulta.getMedico(), viewCadastroConsulta.getlocalAtendimento(), viewCadastroConsulta.getHora(), viewCadastroConsulta.getData(), "Disponivel");
         if (verificaPreenchimento()) {
+            String data = viewCadastroConsulta.getData();
+            String hora = viewCadastroConsulta.getHora();
+            ModeloMedico medico = viewCadastroConsulta.getMedico();
+            ModeloLocalAtendimento local = viewCadastroConsulta.getlocalAtendimento();
+
+            //modeloConsulta = new ModeloConsulta(data, hora, Principal.getInstance().getModeloUsuario(), medico, local, "Disponivel");
+            modeloConsulta = new ModeloConsulta(data, hora, Principal.getInstance().getModeloUsuario(), medico, local);
+
             DAOConsulta cons = new DAOConsulta();
-            cons.gravar(modeloConsulta);
+            //cons.gravar(modeloConsulta);
+            cons.insere(modeloConsulta);
+
             viewCadastroConsulta.limpaTela();
             viewCadastroConsulta.exibirMensagem("Consulta criada com sucesso: "+ modeloConsulta);
         }

@@ -57,10 +57,10 @@ public class ControladorLogin {
 
             if (usuario != null) {
                 if (usuario.getSenha().equalsIgnoreCase(senha)) {
+                    Principal.getInstance().setModeloUsuario(usuario);
+
                     ControladorMenuUsuario menuUsuario = new ControladorMenuUsuario();
                     menuUsuario.exibirTela();
-
-                    Principal.getInstance().setModeloUsuario(usuario);
 
                     viewLogin.setVisible(false);
                 } else {

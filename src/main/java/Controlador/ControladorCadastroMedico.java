@@ -45,7 +45,8 @@ public class ControladorCadastroMedico {
          if (validarMedico()) {
             medico = new ModeloMedico(view.getNome(), view.getEspecialidade(), view.getTelefone(), view.getRg());
             DAOMedico dao = new DAOMedico();
-            if (dao.gravar(medico)) {
+            //if (dao.gravar(medico)) {
+            if (dao.insere(medico)) {
                 view.exibirMensagem("Médico cadastrado com sucesso. ");
                 view.limpaTela();
             }

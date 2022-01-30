@@ -1,20 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controlador;
 
 import DAO.DAOExame;
+import Estrutura.Principal;
 import Modelo.ModeloExame;
+import Modelo.ModeloLocalAtendimento;
+import Modelo.ModeloTipoExame;
 import View.ViewCadastroExame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- *
- * @author User
- */
 public class ControladorCadastroExame {
 
     private ViewCadastroExame view;
@@ -39,7 +33,7 @@ public class ControladorCadastroExame {
         view.adicionaAcaoBotaoCadastrar(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cadastraConsulta();
+                cadastraExame();
             }
         });
 
@@ -54,11 +48,19 @@ public class ControladorCadastroExame {
         });
     }
 
-    private void cadastraConsulta() {
-        modeloExame = new ModeloExame(view.getExame(), view.getlocalAtendimento(), view.getHora(), view.getData(), "Disponivel");
+    private void cadastraExame() {
+        //modeloExame = new ModeloExame(view.getExame(), view.getlocalAtendimento(), view.getHora(), view.getData(), "Disponivel");
+
         if (verificaPreenchimento()) {
+            String data = view.getData();
+            String hora = view.getHora();
+            ModeloTipoExame tipoExame = view.getTipoExame();
+            ModeloLocalAtendimento local = view.getlocalAtendimento();
+            modeloExame = new ModeloExame(data, hora, Principal.getInstance().getModeloUsuario(), tipoExame, local);
+
             DAOExame exame = new DAOExame();
-            exame.gravar(modeloExame);
+            //exame.gravar(modeloExame);
+            exame.insere(modeloExame);
             view.limpaTela();
             view.exibirMensagem("Exame criado com sucesso: \n"+ modeloExame);
         }
@@ -68,11 +70,10 @@ public class ControladorCadastroExame {
     }
 
     private boolean verificaPreenchimento() {
-        if (view.getExame()== null)
+        if (view.getTipoExame() == null)
             return false;
-        if (view.getlocalAtendimento()== null)
+        if (view.getlocalAtendimento() == null)
             return false;
-
         if (view.getData().isEmpty())
             return false;
         if (view.getHora().isEmpty())
@@ -80,4 +81,5 @@ public class ControladorCadastroExame {
 
         return true;
     }
+
 }
