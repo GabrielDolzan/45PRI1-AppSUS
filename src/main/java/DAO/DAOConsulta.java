@@ -254,5 +254,15 @@ public class DAOConsulta {
             Conexao.descontecar();
         }
     }
+    
+     public static boolean excluirConsulta(String DAta, String Hora){
+        for(ModeloConsulta f : consultas){
+            if(f.getData().equals(DAta) && f.getHora().equals(Hora)){
+                consultas.remove(f);
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

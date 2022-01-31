@@ -3,6 +3,7 @@ package Controlador;
 import DAO.DAOConsulta;
 import DAO.DAOExame;
 import Estrutura.Principal;
+import Modelo.Modelo.Tabelas.TabelaConsulta;
 import Modelo.ModeloConsulta;
 import Modelo.ModeloExame;
 import View.ViewMenuUsuario;
@@ -12,25 +13,30 @@ import java.awt.event.ActionListener;
 public class ControladorMenuUsuario {
 
     private ViewMenuUsuario viewMenuUsuario;
-    private DAOConsulta DAOConsulta;
+    private DAOConsulta daoConsulta;
     private DAOExame DAOExame;
 
+    private TabelaConsulta consultaTabela;
+    //private ControladorTodosAgendamentosUsuario agendamentos;
+    
     public ControladorMenuUsuario() {
         viewMenuUsuario = new ViewMenuUsuario();
-        DAOConsulta = new DAOConsulta();
+        daoConsulta = new DAOConsulta();
         DAOExame = new DAOExame();
+        consultaTabela = new TabelaConsulta();
 
         popularProximaConsulta();
         popularProximoExame();
         inicializarAcaoBotoesMenu();
     }
 
+    
     public void exibirTela() {
         viewMenuUsuario.exibirTela();
     }
 
     private void popularProximaConsulta() {
-        ModeloConsulta consulta = DAOConsulta.getProximaConsulta(Principal.getInstance().getModeloUsuario());
+        ModeloConsulta consulta = daoConsulta.getProximaConsulta(Principal.getInstance().getModeloUsuario());
 
         if (consulta != null) {
             viewMenuUsuario.setProximaConsulta(consulta.toString());
@@ -79,6 +85,7 @@ public class ControladorMenuUsuario {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ControladorTodosAgendamentosUsuario cont = new ControladorTodosAgendamentosUsuario();
+               // consultaTabela.atualizar();
                 cont.exibir();
 
                 viewMenuUsuario.setVisible(false);

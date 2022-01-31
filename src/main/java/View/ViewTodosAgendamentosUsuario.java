@@ -1,13 +1,23 @@
 package View;
 
+import Modelo.Modelo.Tabelas.TabelaConsulta;
+import Modelo.Modelo.Tabelas.TabelaExame;
 import Modelo.ModeloConsulta;
 import Modelo.ModeloExame;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class ViewTodosAgendamentosUsuario extends javax.swing.JFrame {
 
+    
+    TabelaConsulta tabela =new TabelaConsulta();
+    TabelaExame exame =new TabelaExame();
+    
     public ViewTodosAgendamentosUsuario() {
         initComponents();
+        jtConsulta.setModel(tabela);
+        jtExame.setModel(exame);
+
         this.setLocationRelativeTo(null);
     }
 
@@ -23,21 +33,60 @@ public class ViewTodosAgendamentosUsuario extends javax.swing.JFrame {
         btVoltar.addActionListener(acao);
     }
 
-    public void imprimeConsulta(){
-        for (ModeloConsulta con : DAO.DAOConsulta.getConsulta()) {
+    public String getDataConsultaSelecionada(){
+        if(jtConsulta.getSelectedRow() == -1){
+            System.out.println("Nenhuma Linha selecionada");
+            return null;
         }
+            
+        return jtConsulta.getModel().getValueAt(jtConsulta.getSelectedRow(), 2).toString();
+    }
+    
+    public String getHoraConsultaSelecionada(){
+        if(jtConsulta.getSelectedRow() == -1){
+            System.out.println("Nenhuma Linha selecionada");
+            return null;
+        }
+            
+        return jtConsulta.getModel().getValueAt(jtConsulta.getSelectedRow(), 3).toString();
     }
 
-    public void imprimeExame(){
-        for (ModeloExame ex : DAO.DAOExame.getExame()) {
-            taExames.append(ex.toString());
-            taExames.append("\n");
+    
+    
+    public String getDataExameSelecionada(){
+        if(jtExame.getSelectedRow() == -1){
+            System.out.println("Nenhuma Linha selecionada");
+            return null;
         }
+            
+        return jtExame.getModel().getValueAt(jtExame.getSelectedRow(), 2).toString();
     }
-
+    
+    public String getHoraExameSelecionada(){
+        if(jtExame.getSelectedRow() == -1){
+            System.out.println("Nenhuma Linha selecionada");
+            return null;
+        }
+            
+        return jtExame.getModel().getValueAt(jtExame.getSelectedRow(), 3).toString();
+    }
+    
     public void exibirTela() {
         this.setVisible(true);
     }
+    
+    public void setTableModelConsulta(TabelaConsulta consultaTabela){
+        jtConsulta.setModel(consultaTabela);
+    }
+    
+    public void setTableModelExamae(TabelaExame exameTabela){
+        jtExame.setModel(exameTabela);
+    }
+    
+    public void exibirMensagem(String msg){
+        JOptionPane.showMessageDialog(null, msg);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,13 +102,13 @@ public class ViewTodosAgendamentosUsuario extends javax.swing.JFrame {
         lbTitulo = new javax.swing.JLabel();
         lbConsulta = new javax.swing.JLabel();
         lbExame = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        taExames = new javax.swing.JTextArea();
         btVoltar = new javax.swing.JButton();
         btCancelaConsulta = new javax.swing.JButton();
         btCancelaExame = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jtConsulta = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtExame = new javax.swing.JTable();
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -76,10 +125,6 @@ public class ViewTodosAgendamentosUsuario extends javax.swing.JFrame {
         lbConsulta.setText("Consultas:");
 
         lbExame.setText("Exames:");
-
-        taExames.setColumns(20);
-        taExames.setRows(5);
-        jScrollPane3.setViewportView(taExames);
 
         btVoltar.setText("Voltar");
 
@@ -99,6 +144,19 @@ public class ViewTodosAgendamentosUsuario extends javax.swing.JFrame {
             }
         ));
         jScrollPane4.setViewportView(jtConsulta);
+
+        jtExame.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jtExame);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,12 +181,13 @@ public class ViewTodosAgendamentosUsuario extends javax.swing.JFrame {
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addComponent(lbConsulta)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                                            .addComponent(btCancelaConsulta))
-                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))))
+                                            .addComponent(btCancelaConsulta))))))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -146,9 +205,9 @@ public class ViewTodosAgendamentosUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lbExame)
                     .addComponent(btCancelaExame))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(btVoltar)
                 .addContainerGap())
         );
@@ -196,14 +255,14 @@ public class ViewTodosAgendamentosUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btCancelaExame;
     private javax.swing.JButton btVoltar;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTable jtConsulta;
+    private javax.swing.JTable jtExame;
     private javax.swing.JLabel lbConsulta;
     private javax.swing.JLabel lbExame;
     private javax.swing.JLabel lbTitulo;
-    private javax.swing.JTextArea taExames;
     // End of variables declaration//GEN-END:variables
 }
