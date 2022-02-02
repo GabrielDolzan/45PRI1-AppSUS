@@ -27,9 +27,9 @@ public class TabelaConsulta extends AbstractTableModel {
     private final int COLUNA_DATA = 2;
     private final int COLUNA_HORARIO = 3;
 
-    public TabelaConsulta() {
+    public TabelaConsulta(List<ModeloConsulta> consultas) {
         
-        this.consultas = new ArrayList<ModeloConsulta>() ;
+        this.consultas = consultas ;
     }
 
     @Override
@@ -74,11 +74,12 @@ public class TabelaConsulta extends AbstractTableModel {
         this.consultas.add(cons);
         this.fireTableDataChanged();
     }
-    
-    public void atualizar( ){
-        this.fireTableDataChanged();
+
+    public List<ModeloConsulta> getConsultas() {
+        return consultas;
     }
     
+      
    @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return true;
@@ -86,11 +87,9 @@ public class TabelaConsulta extends AbstractTableModel {
     
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        //o argumento recebido pelo método é do tipo Object
-        //mas como nossa tabela é de funcionários, é seguro(e até recomendável) fazer o cast de suas propriedades
+     
     	ModeloConsulta consulta = this.consultas.get(rowIndex);
-        //de acordo com a coluna, ele preenche a célula com o valor
-        //respectivo do objeto de mesmo indice na lista
+
         switch (columnIndex) {
             case COLUNA_MEDICO:
                 consulta.setMedico((ModeloMedico) aValue);

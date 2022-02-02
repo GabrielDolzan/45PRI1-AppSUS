@@ -16,14 +16,13 @@ public class ControladorMenuUsuario {
     private DAOConsulta daoConsulta;
     private DAOExame DAOExame;
 
-    private TabelaConsulta consultaTabela;
+    //private TabelaConsulta consultaTabela;
     //private ControladorTodosAgendamentosUsuario agendamentos;
     
     public ControladorMenuUsuario() {
         viewMenuUsuario = new ViewMenuUsuario();
         daoConsulta = new DAOConsulta();
         DAOExame = new DAOExame();
-        consultaTabela = new TabelaConsulta();
 
         popularProximaConsulta();
         popularProximoExame();
@@ -85,7 +84,6 @@ public class ControladorMenuUsuario {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ControladorTodosAgendamentosUsuario cont = new ControladorTodosAgendamentosUsuario();
-               // consultaTabela.atualizar();
                 cont.exibir();
 
                 viewMenuUsuario.setVisible(false);

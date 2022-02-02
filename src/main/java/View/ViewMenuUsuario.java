@@ -10,27 +10,21 @@ public class ViewMenuUsuario extends javax.swing.JFrame {
         taExame.setEditable(false);
         this.setLocationRelativeTo(null);
     }
-
     public void exibirTela(){
         this.setVisible(true);
     }
-
     public void adicionarAcaoAgendaConsulta(ActionListener acao){
         miAgendarConsulta.addActionListener(acao);
     }
-
     public void adicionarAcaoAgendaExame(ActionListener acao){
         miAgendarExame.addActionListener(acao);
     }
-
     public void adicionarAcaoMeuPerfil(ActionListener acao){
         miMeuPerfil.addActionListener(acao);
     }
-
     public void adicionarAcaoTodos(ActionListener acao) {
         btTodos.addActionListener(acao);
     }
-
     public void adicionarAcaoSair(ActionListener acao) {
         btSair.addActionListener(acao);
     }

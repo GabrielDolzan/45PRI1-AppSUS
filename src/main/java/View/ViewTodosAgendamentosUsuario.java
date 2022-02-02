@@ -10,17 +10,21 @@ import javax.swing.JOptionPane;
 public class ViewTodosAgendamentosUsuario extends javax.swing.JFrame {
 
     
-    TabelaConsulta tabela =new TabelaConsulta();
     TabelaExame exame =new TabelaExame();
     
     public ViewTodosAgendamentosUsuario() {
         initComponents();
-        jtConsulta.setModel(tabela);
-        jtExame.setModel(exame);
-
         this.setLocationRelativeTo(null);
     }
 
+    public void setTableModelConsultas(TabelaConsulta consultaTabela){
+        jtConsulta.setModel(consultaTabela);
+    }
+    
+    public void setTableModelExames(TabelaExame exameTabela){
+        jtExame.setModel(exameTabela);
+    }
+    
     public void addAcaoBotaoCancelaConsulta(ActionListener acao){
         btCancelaConsulta.addActionListener(acao);
     }

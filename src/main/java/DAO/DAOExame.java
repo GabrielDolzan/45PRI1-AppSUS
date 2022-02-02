@@ -240,4 +240,13 @@ public class DAOExame {
         }
     }
 
+    public static boolean excluirExame(String DAta, String Hora){
+        for(ModeloExame f : exames){
+            if(f.getData().equals(DAta) && f.getHora().equals(Hora)){
+                exames.remove(f);
+                return true;
+            }
+        }
+        return false;
+    }
 }
