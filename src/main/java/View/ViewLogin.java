@@ -81,6 +81,7 @@ public class ViewLogin extends javax.swing.JFrame {
 
         jLabel2.setText("Senha:");
 
+        btEntrar.setBackground(java.awt.Color.white);
         btEntrar.setText("Entrar");
 
         jLabel6.addFocusListener(new java.awt.event.FocusAdapter() {

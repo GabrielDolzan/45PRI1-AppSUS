@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 public class ViewTodosAgendamentosUsuario extends javax.swing.JFrame {
 
     
-    TabelaExame exame =new TabelaExame();
     
     public ViewTodosAgendamentosUsuario() {
         initComponents();

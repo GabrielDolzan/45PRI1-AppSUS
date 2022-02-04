@@ -29,9 +29,9 @@ public class TabelaExame extends AbstractTableModel {
     private final int COLUNA_DATA = 2;
     private final int COLUNA_HORARIO = 3;
 
-    public TabelaExame() {
+    public TabelaExame(List<ModeloExame> exames) {
         
-        this.exames = new ArrayList<ModeloExame>() ;
+        this.exames = exames;
     }
 
     @Override
