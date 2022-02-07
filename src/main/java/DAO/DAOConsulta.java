@@ -20,7 +20,7 @@ public class DAOConsulta {
 
     private static List<ModeloConsulta> consultas = new ArrayList<>();
     private static List<ModeloConsulta> copias = new ArrayList<>();
-    private static List<ModeloConsulta> cons = new ArrayList();
+    //private static List<ModeloConsulta> cons = new ArrayList();
 
     public DAOConsulta() {
         criaTabela();
@@ -43,21 +43,29 @@ public class DAOConsulta {
     }
     
     public static List<ModeloConsulta> getConsultaTabela(){
+        List<ModeloConsulta> consTabela = new ArrayList();        
         
         for(ModeloConsulta con: getConsulta()) {
             if(con.getUsuario() != null){
                     //if( !con.getUsuario().getCpf().equals(cons.)
-                    if(Principal.getInstance().getModeloUsuario().getCpf().equals(con.getUsuario().getCpf())){
-                          cons.add(con);
-                    }
-                
-            }
-            
+                if(Principal.getInstance().getModeloUsuario().getCpf().equals(con.getUsuario().getCpf())){
+                    consTabela.add(con);    
+                }
+           } 
         }
-        
-        return cons;
-        
+        return consTabela;  
     }
+    
+    public static boolean excluirConsulta(String DAta, String Hora){
+        for(ModeloConsulta f : cons){
+            if(f.getData().equals(DAta) && f.getHora().equals(Hora)){
+                cons.remove(f);
+                return true;
+            }
+        }
+        return false;
+    }
+    
     
 
     public static List<ModeloConsulta> getConsulta() {
@@ -276,15 +284,6 @@ public class DAOConsulta {
         }
     }
     
-     public static boolean excluirConsulta(String DAta, String Hora){
-        for(ModeloConsulta f : cons){
-            if(f.getData().equals(DAta) && f.getHora().equals(Hora)){
-                cons.remove(f);
-                consultas.remove(f);
-                return true;
-            }
-        }
-        return false;
-    }
+     
 
 }
