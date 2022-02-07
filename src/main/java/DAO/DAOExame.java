@@ -1,6 +1,7 @@
 package DAO;
 
 import Estrutura.Conexao;
+import Estrutura.Principal;
 import Modelo.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,6 +23,21 @@ public class DAOExame {
     public static boolean gravar(ModeloExame exame){
         exames.add(exame);
         return true;
+    }
+    
+    public static List<ModeloExame> getExameTabela(){
+         List<ModeloExame> exame = new ArrayList();
+        
+        for(ModeloExame ex: getExame()) {
+            if(ex.getUsuario() != null){
+                if(Principal.getInstance().getModeloUsuario().equals(ex.getUsuario())){
+                  exame.add(ex);
+                }
+            }   
+        }
+        
+        return exame;
+        
     }
 
     public static List<ModeloExame> getExame() {

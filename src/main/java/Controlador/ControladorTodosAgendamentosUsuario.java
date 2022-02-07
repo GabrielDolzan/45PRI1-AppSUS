@@ -5,11 +5,9 @@ import DAO.DAOExame;
 import Estrutura.Principal;
 import Modelo.Modelo.Tabelas.TabelaConsulta;
 import Modelo.Modelo.Tabelas.TabelaExame;
-import Modelo.ModeloConsulta;
 import View.ViewTodosAgendamentosUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public class ControladorTodosAgendamentosUsuario {
 
@@ -22,8 +20,8 @@ public class ControladorTodosAgendamentosUsuario {
     
     public ControladorTodosAgendamentosUsuario() {
         this.viewAgendamentos = new ViewTodosAgendamentosUsuario();
-        consultaTabela = new TabelaConsulta(daoConsulta.getConsultaTabela(principal.getModeloUsuario()));
-        exameTabela = new TabelaExame(daoExame.getExame());
+        consultaTabela = new TabelaConsulta(daoConsulta.getConsultaTabela());
+        exameTabela = new TabelaExame(daoExame.getExameTabela());
         setTableModelConsultas();
         setTableModelExames();
         adicionarAcoesBotoes();
@@ -62,6 +60,8 @@ public class ControladorTodosAgendamentosUsuario {
 
                 ControladorMenuUsuario controlador = new ControladorMenuUsuario();
                 controlador.exibirTela();
+                
+                viewAgendamentos.setTableModelConsultas(consultaTabela);
             }
         });
         

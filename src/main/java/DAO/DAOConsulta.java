@@ -1,5 +1,6 @@
 package DAO;
 
+import static DAO.DAOConsulta.getConsulta;
 import Estrutura.Conexao;
 import Estrutura.Principal;
 import Modelo.ModeloConsulta;
@@ -19,8 +20,8 @@ public class DAOConsulta {
 
     private static List<ModeloConsulta> consultas = new ArrayList<>();
     private static List<ModeloConsulta> copias = new ArrayList<>();
-    private static Principal prin;
-    
+    private static List<ModeloConsulta> cons = new ArrayList();
+
     public DAOConsulta() {
         criaTabela();
     }
@@ -41,16 +42,17 @@ public class DAOConsulta {
         return false;
     }
     
-    public static List<ModeloConsulta> getConsultaTabela(ModeloUsuario us){
-         List<ModeloConsulta> cons = new ArrayList();
-
-        //Principal prin = new Principal();
+    public static List<ModeloConsulta> getConsultaTabela(){
         
         for(ModeloConsulta con: getConsulta()) {
-            if(us.equals(con.getUsuario())){
-                  cons.add(con);
+            if(con.getUsuario() != null){
+                    //if( !con.getUsuario().getCpf().equals(cons.)
+                    if(Principal.getInstance().getModeloUsuario().getCpf().equals(con.getUsuario().getCpf())){
+                          cons.add(con);
+                    }
+                
             }
-           
+            
         }
         
         return cons;
@@ -86,7 +88,7 @@ public class DAOConsulta {
 
                 consultas.add(consulta);
             }
-        } catch (SQLException e) {
+        } catch (SQLException e) { 
             System.out.println(e.getMessage());
             return null;
         } finally {
@@ -275,8 +277,9 @@ public class DAOConsulta {
     }
     
      public static boolean excluirConsulta(String DAta, String Hora){
-        for(ModeloConsulta f : consultas){
+        for(ModeloConsulta f : cons){
             if(f.getData().equals(DAta) && f.getHora().equals(Hora)){
+                cons.remove(f);
                 consultas.remove(f);
                 return true;
             }

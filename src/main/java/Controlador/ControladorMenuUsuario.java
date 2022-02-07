@@ -7,18 +7,19 @@ import Modelo.Modelo.Tabelas.TabelaConsulta;
 import Modelo.ModeloConsulta;
 import Modelo.ModeloExame;
 import View.ViewMenuUsuario;
+import View.ViewTodosAgendamentosUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ControladorMenuUsuario {
 
+    private ViewTodosAgendamentosUsuario telaTabelas;
     private ViewMenuUsuario viewMenuUsuario;
     private DAOConsulta daoConsulta;
     private DAOExame DAOExame;
 
-    //private TabelaConsulta consultaTabela;
-    //private ControladorTodosAgendamentosUsuario agendamentos;
-    
+    private int cont =0;
+       
     public ControladorMenuUsuario() {
         viewMenuUsuario = new ViewMenuUsuario();
         daoConsulta = new DAOConsulta();
@@ -80,13 +81,26 @@ public class ControladorMenuUsuario {
             }
         });
 
+                             
+
         viewMenuUsuario.adicionarAcaoTodos(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ControladorTodosAgendamentosUsuario cont = new ControladorTodosAgendamentosUsuario();
-                cont.exibir();
+                 
 
-                viewMenuUsuario.setVisible(false);
+                if(cont <= 1){
+                    cont++;
+                    ControladorTodosAgendamentosUsuario cont = new ControladorTodosAgendamentosUsuario();
+                    cont.exibir();
+                    viewMenuUsuario.setVisible(false);
+                }else{
+                    viewMenuUsuario.setVisible(false);
+                    telaTabelas.setVisible(true);
+
+                }
+                
+
+                //viewMenuUsuario.setVisible(false);
             }
         });
 
