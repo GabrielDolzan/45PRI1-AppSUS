@@ -4,7 +4,7 @@ import DAO.DAOConsulta;
 import DAO.DAOLocalAtendimento;
 import DAO.DAOMedico;
 import Estrutura.Principal;
-import Modelo.Modelo.Tabelas.TabelaConsulta;
+import Modelo.Tabelas.TabelaConsulta;
 import Modelo.ModeloConsulta;
 import Modelo.ModeloLocalAtendimento;
 import Modelo.ModeloMedico;

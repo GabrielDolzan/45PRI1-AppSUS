@@ -2,8 +2,8 @@ package Controlador;
 
 import DAO.DAOConsulta;
 import DAO.DAOExame;
-import Modelo.Modelo.Tabelas.TabelaConsulta;
-import Modelo.Modelo.Tabelas.TabelaExame;
+import Modelo.Tabelas.TabelaConsulta;
+import Modelo.Tabelas.TabelaExame;
 import Modelo.ModeloConsulta;
 import Modelo.ModeloExame;
 import View.ViewTodosAgendamentosUsuario;

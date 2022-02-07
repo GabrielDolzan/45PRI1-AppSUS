@@ -1,4 +1,4 @@
-package Modelo.Modelo.Tabelas;
+package Modelo.Tabelas;
 
 import Modelo.ModeloConsulta;
 import Modelo.ModeloLocalAtendimento;
