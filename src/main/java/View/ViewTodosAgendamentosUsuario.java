@@ -2,7 +2,6 @@ package View;
 
 import Modelo.Tabelas.TabelaConsulta;
 import Modelo.Tabelas.TabelaExame;
-import Modelo.ModeloConsulta;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
