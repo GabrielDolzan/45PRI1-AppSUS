@@ -24,20 +24,19 @@ public class DAOExame {
         exames.add(exame);
         return true;
     }
-    
+
     public static List<ModeloExame> getExameTabela(){
-         List<ModeloExame> exame = new ArrayList();
-        
-        for(ModeloExame ex: getExame()) {
+        List<ModeloExame> exame = new ArrayList();
+
+        for (ModeloExame ex: getExame()) {
             if(ex.getUsuario() != null){
-                if(Principal.getInstance().getModeloUsuario().equals(ex.getUsuario())){
+                if(Principal.getInstance().getModeloUsuario().getCpf().equals(ex.getUsuario().getCpf())){
                   exame.add(ex);
                 }
-            }   
+            }
         }
-        
+
         return exame;
-        
     }
 
     public static List<ModeloExame> getExame() {
@@ -256,13 +255,30 @@ public class DAOExame {
         }
     }
 
-    public static boolean excluirExame(String DAta, String Hora){
-        for(ModeloExame f : exames){
-            if(f.getData().equals(DAta) && f.getHora().equals(Hora)){
-                exames.remove(f);
-                return true;
-            }
+    public static boolean cancelarExame(ModeloExame exame){
+        //exame.setUsuario(null);
+        //return true;
+
+        Connection connection = Conexao.conectar();
+
+        String sql = "UPDATE EXAME SET usuario = null WHERE tipo = ? AND local = ? AND data = ? AND hora = ?";
+        PreparedStatement pstmt;
+
+        try {
+            pstmt = connection.prepareStatement(sql);
+            pstmt.setInt(1, exame.getTipoExame().getId());
+            pstmt.setInt(2, exame.getLocal().getId());
+            pstmt.setString(3, exame.getData());
+            pstmt.setString(4, exame.getHora());
+
+            pstmt.execute();
+
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        } finally {
+            Conexao.descontecar();
         }
-        return false;
     }
 }

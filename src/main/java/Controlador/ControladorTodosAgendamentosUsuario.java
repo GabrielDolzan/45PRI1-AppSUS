@@ -2,9 +2,10 @@ package Controlador;
 
 import DAO.DAOConsulta;
 import DAO.DAOExame;
-import Estrutura.Principal;
 import Modelo.Modelo.Tabelas.TabelaConsulta;
 import Modelo.Modelo.Tabelas.TabelaExame;
+import Modelo.ModeloConsulta;
+import Modelo.ModeloExame;
 import View.ViewTodosAgendamentosUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,8 +17,7 @@ public class ControladorTodosAgendamentosUsuario {
     private DAOConsulta daoConsulta;
     private TabelaExame exameTabela;
     private DAOExame daoExame;
-    private Principal principal;
-    
+
     public ControladorTodosAgendamentosUsuario() {
         this.viewAgendamentos = new ViewTodosAgendamentosUsuario();
         consultaTabela = new TabelaConsulta(daoConsulta.getConsultaTabela());
@@ -33,23 +33,17 @@ public class ControladorTodosAgendamentosUsuario {
     private void setTableModelExames(){
         viewAgendamentos.setTableModelExames(this.exameTabela);
     }
-   
- 
+
     public void exibir(){
        viewAgendamentos.exibirTela();
     }
 
-    public void atualizarDados(){
-        consultaTabela.fireTableDataChanged();
-    }
-    
-   
-     private void adicionarAcoesBotoes(){
+    private void adicionarAcoesBotoes(){
 
         viewAgendamentos.addAcaoBotaoCancelaExame(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CancelarExame();
+                cancelarExame();
             }
         });
 
@@ -60,41 +54,51 @@ public class ControladorTodosAgendamentosUsuario {
 
                 ControladorMenuUsuario controlador = new ControladorMenuUsuario();
                 controlador.exibirTela();
-                
+
                 viewAgendamentos.setTableModelConsultas(consultaTabela);
             }
         });
-        
-        
+
         viewAgendamentos.addAcaoBotaoCancelaConsulta(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CancelarConsulta();
+                cancelarConsulta();
             }
         });
     }
-    
-    public void CancelarConsulta(){
-        String Data = viewAgendamentos.getDataConsultaSelecionada();
-        String hora = viewAgendamentos.getHoraConsultaSelecionada();
-        if(DAOConsulta.excluirConsulta(Data, hora)){
-            viewAgendamentos.exibirMensagem("Consulta excluida com sucesso");
-            atualizarDados();
-        }
-        else {
-            viewAgendamentos.exibirMensagem("Não foi possível Cancelar a Consulta");
-        }
-    }
-    
-    public void CancelarExame(){
-        String Data = viewAgendamentos.getDataExameSelecionada();
-        String hora = viewAgendamentos.getHoraExameSelecionada();
-        if(DAOExame.excluirExame(Data, hora)){
-            viewAgendamentos.exibirMensagem("Exame excluido com sucesso");
-            atualizarDados();
-        }
-        else {
-            viewAgendamentos.exibirMensagem("Não foi possível Cancelar o Exame");
+
+    public void cancelarConsulta(){
+        if(viewAgendamentos.getLinhaConsultaSelecionada() == -1){
+            System.out.println("Nenhuma Linha selecionada");
+        } else {
+            ModeloConsulta consulta = consultaTabela.getConsultas().get(viewAgendamentos.getLinhaConsultaSelecionada());
+
+            if (DAOConsulta.cancelarConsulta(consulta)){
+                viewAgendamentos.exibirMensagem("Consulta cancelada com sucesso");
+                consultaTabela.setConsultas(daoConsulta.getConsultaTabela());
+                consultaTabela.atualizar();
+            }
+            else {
+                viewAgendamentos.exibirMensagem("Não foi possível Cancelar a Consulta");
+            }
         }
     }
+
+    public void cancelarExame(){
+        if(viewAgendamentos.getLinhaExameSelecionada() == -1){
+            System.out.println("Nenhuma Linha selecionada");
+        } else {
+            ModeloExame exame = exameTabela.getExames().get(viewAgendamentos.getLinhaExameSelecionada());
+
+            if(DAOExame.cancelarExame(exame)){
+                viewAgendamentos.exibirMensagem("Exame excluido com sucesso");
+                exameTabela.setExames(daoExame.getExameTabela());
+                exameTabela.atualizar();
+            }
+            else {
+                viewAgendamentos.exibirMensagem("Não foi possível Cancelar o Exame");
+            }
+        }
+    }
+
 }

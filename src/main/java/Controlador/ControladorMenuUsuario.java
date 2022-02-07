@@ -3,7 +3,6 @@ package Controlador;
 import DAO.DAOConsulta;
 import DAO.DAOExame;
 import Estrutura.Principal;
-import Modelo.Modelo.Tabelas.TabelaConsulta;
 import Modelo.ModeloConsulta;
 import Modelo.ModeloExame;
 import View.ViewMenuUsuario;
@@ -19,7 +18,7 @@ public class ControladorMenuUsuario {
     private DAOExame DAOExame;
 
     private int cont =0;
-       
+
     public ControladorMenuUsuario() {
         viewMenuUsuario = new ViewMenuUsuario();
         daoConsulta = new DAOConsulta();
@@ -30,7 +29,6 @@ public class ControladorMenuUsuario {
         inicializarAcaoBotoesMenu();
     }
 
-    
     public void exibirTela() {
         viewMenuUsuario.exibirTela();
     }
@@ -81,13 +79,9 @@ public class ControladorMenuUsuario {
             }
         });
 
-                             
-
         viewMenuUsuario.adicionarAcaoTodos(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                 
-
                 if(cont <= 1){
                     cont++;
                     ControladorTodosAgendamentosUsuario cont = new ControladorTodosAgendamentosUsuario();
@@ -98,9 +92,6 @@ public class ControladorMenuUsuario {
                     telaTabelas.setVisible(true);
 
                 }
-                
-
-                //viewMenuUsuario.setVisible(false);
             }
         });
 
@@ -117,16 +108,5 @@ public class ControladorMenuUsuario {
         });
 
     }
-
-//    public void preencheCampo(){
-//        viewMeuPerfil.setCPF(usuario.getCpf());
-//        viewMeuPerfil.setCelular(usuario.getCelular());
-//        viewMeuPerfil.setDataNascimento(usuario.getNascimento());
-//        viewMeuPerfil.setEmail(usuario.getEmail());
-//        viewMeuPerfil.setNome(usuario.getNome());
-//        viewMeuPerfil.setSexo(usuario.getSexo());
-//        viewMeuPerfil.setEstado(usuario.getEstado());
-//        viewMeuPerfil.setCidade(usuario.getCidade());
-//    }
 
 }

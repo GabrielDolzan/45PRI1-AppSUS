@@ -3,14 +3,11 @@ package View;
 import Modelo.Modelo.Tabelas.TabelaConsulta;
 import Modelo.Modelo.Tabelas.TabelaExame;
 import Modelo.ModeloConsulta;
-import Modelo.ModeloExame;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 public class ViewTodosAgendamentosUsuario extends javax.swing.JFrame {
 
-    
-    
     public ViewTodosAgendamentosUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -19,11 +16,11 @@ public class ViewTodosAgendamentosUsuario extends javax.swing.JFrame {
     public void setTableModelConsultas(TabelaConsulta consultaTabela){
         jtConsulta.setModel(consultaTabela);
     }
-    
+
     public void setTableModelExames(TabelaExame exameTabela){
         jtExame.setModel(exameTabela);
     }
-    
+
     public void addAcaoBotaoCancelaConsulta(ActionListener acao){
         btCancelaConsulta.addActionListener(acao);
     }
@@ -36,60 +33,66 @@ public class ViewTodosAgendamentosUsuario extends javax.swing.JFrame {
         btVoltar.addActionListener(acao);
     }
 
+    public int getLinhaConsultaSelecionada() {
+        return jtConsulta.getSelectedRow();
+    }
+
+    public int getLinhaExameSelecionada() {
+        return jtExame.getSelectedRow();
+    }
+
     public String getDataConsultaSelecionada(){
         if(jtConsulta.getSelectedRow() == -1){
             System.out.println("Nenhuma Linha selecionada");
             return null;
         }
-            
+
         return jtConsulta.getModel().getValueAt(jtConsulta.getSelectedRow(), 2).toString();
     }
-    
+
     public String getHoraConsultaSelecionada(){
         if(jtConsulta.getSelectedRow() == -1){
             System.out.println("Nenhuma Linha selecionada");
             return null;
         }
-            
+
         return jtConsulta.getModel().getValueAt(jtConsulta.getSelectedRow(), 3).toString();
     }
 
-    
-    
     public String getDataExameSelecionada(){
         if(jtExame.getSelectedRow() == -1){
             System.out.println("Nenhuma Linha selecionada");
             return null;
         }
-            
+
         return jtExame.getModel().getValueAt(jtExame.getSelectedRow(), 2).toString();
     }
-    
+
     public String getHoraExameSelecionada(){
         if(jtExame.getSelectedRow() == -1){
             System.out.println("Nenhuma Linha selecionada");
             return null;
         }
-            
+
         return jtExame.getModel().getValueAt(jtExame.getSelectedRow(), 3).toString();
     }
-    
+
     public void exibirTela() {
         this.setVisible(true);
     }
-    
+
     public void setTableModelConsulta(TabelaConsulta consultaTabela){
         jtConsulta.setModel(consultaTabela);
     }
-    
+
     public void setTableModelExamae(TabelaExame exameTabela){
         jtExame.setModel(exameTabela);
     }
-    
+
     public void exibirMensagem(String msg){
         JOptionPane.showMessageDialog(null, msg);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

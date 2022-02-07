@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class DAOConsulta {
 
     private static List<ModeloConsulta> consultas = new ArrayList<>();
-    private static List<ModeloConsulta> copias = new ArrayList<>();
+    //private static List<ModeloConsulta> copias = new ArrayList<>();
     //private static List<ModeloConsulta> cons = new ArrayList();
 
     public DAOConsulta() {
@@ -31,42 +31,47 @@ public class DAOConsulta {
         return true;
     }
 
-    public static boolean pesquisaData(ModeloConsulta consulta, ModeloConsulta copia){
-        for (ModeloConsulta ex: consultas) {
-            if(ex.getStatus().equalsIgnoreCase(consulta.getStatus())){
-                copias.add(ex);
-                return true;
+    public static List<ModeloConsulta> getConsultaTabela(){
+        List<ModeloConsulta> consTabela = new ArrayList();
+
+        for (ModeloConsulta con: getConsulta()) {
+            if (con.getUsuario() != null) {
+                    //if( !con.getUsuario().getCpf().equals(cons.)
+                if (Principal.getInstance().getModeloUsuario().getCpf().equals(con.getUsuario().getCpf())){
+                    consTabela.add(con);
+                }
             }
         }
 
-        return false;
+        return consTabela;
     }
-    
-    public static List<ModeloConsulta> getConsultaTabela(){
-        List<ModeloConsulta> consTabela = new ArrayList();        
-        
-        for(ModeloConsulta con: getConsulta()) {
-            if(con.getUsuario() != null){
-                    //if( !con.getUsuario().getCpf().equals(cons.)
-                if(Principal.getInstance().getModeloUsuario().getCpf().equals(con.getUsuario().getCpf())){
-                    consTabela.add(con);    
-                }
-           } 
+
+    public static boolean cancelarConsulta(ModeloConsulta consulta){
+        //consulta.setUsuario(null);
+        //return true;
+
+        Connection connection = Conexao.conectar();
+
+        String sql = "UPDATE CONSULTA SET usuario = null WHERE medico = ? AND local = ? AND data = ? AND hora = ?";
+        PreparedStatement pstmt;
+
+        try {
+            pstmt = connection.prepareStatement(sql);
+            pstmt.setInt(1, consulta.getMedico().getId());
+            pstmt.setInt(2, consulta.getLocal().getId());
+            pstmt.setString(3, consulta.getData());
+            pstmt.setString(4, consulta.getHora());
+
+            pstmt.execute();
+
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        } finally {
+            Conexao.descontecar();
         }
-        return consTabela;  
     }
-    
-    public static boolean excluirConsulta(String DAta, String Hora){
-        for(ModeloConsulta f : cons){
-            if(f.getData().equals(DAta) && f.getHora().equals(Hora)){
-                cons.remove(f);
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    
 
     public static List<ModeloConsulta> getConsulta() {
         List<ModeloConsulta> consultas = new ArrayList();
@@ -96,7 +101,7 @@ public class DAOConsulta {
 
                 consultas.add(consulta);
             }
-        } catch (SQLException e) { 
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             return null;
         } finally {
@@ -234,9 +239,9 @@ public class DAOConsulta {
         return consulta;
     }
 
-    public Iterable<ModeloConsulta> getConsultaCopia(){
-        return copias;
-    }
+    //public Iterable<ModeloConsulta> getConsultaCopia(){
+    //    return copias;
+    //}
 
     public boolean insere(ModeloConsulta consulta) {
         Connection connection = Conexao.conectar();
@@ -283,7 +288,5 @@ public class DAOConsulta {
             Conexao.descontecar();
         }
     }
-    
-     
 
 }
