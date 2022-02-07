@@ -1,6 +1,7 @@
 package DAO;
 
 import Estrutura.Conexao;
+import Estrutura.Principal;
 import Modelo.ModeloConsulta;
 import Modelo.ModeloLocalAtendimento;
 import Modelo.ModeloMedico;
@@ -18,7 +19,8 @@ public class DAOConsulta {
 
     private static List<ModeloConsulta> consultas = new ArrayList<>();
     private static List<ModeloConsulta> copias = new ArrayList<>();
-
+    private static Principal prin;
+    
     public DAOConsulta() {
         criaTabela();
     }
@@ -38,6 +40,23 @@ public class DAOConsulta {
 
         return false;
     }
+    
+    public static List<ModeloConsulta> getConsultaTabela(ModeloUsuario us){
+         List<ModeloConsulta> cons = new ArrayList();
+
+        //Principal prin = new Principal();
+        
+        for(ModeloConsulta con: getConsulta()) {
+            if(us.equals(con.getUsuario())){
+                  cons.add(con);
+            }
+           
+        }
+        
+        return cons;
+        
+    }
+    
 
     public static List<ModeloConsulta> getConsulta() {
         List<ModeloConsulta> consultas = new ArrayList();

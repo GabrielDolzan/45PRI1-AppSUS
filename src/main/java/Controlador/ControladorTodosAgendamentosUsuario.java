@@ -2,6 +2,7 @@ package Controlador;
 
 import DAO.DAOConsulta;
 import DAO.DAOExame;
+import Estrutura.Principal;
 import Modelo.Modelo.Tabelas.TabelaConsulta;
 import Modelo.Modelo.Tabelas.TabelaExame;
 import Modelo.ModeloConsulta;
@@ -17,10 +18,11 @@ public class ControladorTodosAgendamentosUsuario {
     private DAOConsulta daoConsulta;
     private TabelaExame exameTabela;
     private DAOExame daoExame;
+    private Principal principal;
     
     public ControladorTodosAgendamentosUsuario() {
         this.viewAgendamentos = new ViewTodosAgendamentosUsuario();
-        consultaTabela = new TabelaConsulta(daoConsulta.getConsulta());
+        consultaTabela = new TabelaConsulta(daoConsulta.getConsultaTabela(principal.getModeloUsuario()));
         exameTabela = new TabelaExame(daoExame.getExame());
         setTableModelConsultas();
         setTableModelExames();
