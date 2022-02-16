@@ -53,6 +53,7 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
     private void initComponents() {
 
         btSair = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         miCadastrarConsulta = new javax.swing.JMenuItem();
@@ -63,8 +64,15 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
         miCadastrarNomeeExame = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         btSair.setText("Sair");
+        getContentPane().add(btSair);
+        btSair.setBounds(480, 270, 51, 23);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\GitHub\\45PRI1-AppSUS\\app-Sus.png")); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(-10, 0, 550, 307);
 
         jMenu1.setText("Cadastrar");
 
@@ -89,23 +97,6 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(202, Short.MAX_VALUE)
-                .addComponent(btSair)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(364, Short.MAX_VALUE)
-                .addComponent(btSair)
-                .addContainerGap())
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -147,6 +138,7 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btSair;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem miCadastrarConsulta;
