@@ -68,11 +68,9 @@ public class ViewMenuAdministrador extends javax.swing.JFrame {
 
         btSair.setText("Sair");
         getContentPane().add(btSair);
-        btSair.setBounds(480, 270, 51, 23);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\GitHub\\45PRI1-AppSUS\\app-Sus.png")); // NOI18N
+        btSair.setBounds(480, 270, 53, 25);
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-10, 0, 550, 307);
+        jLabel1.setBounds(0, 0, 540, 210);
 
         jMenu1.setText("Cadastrar");
 
