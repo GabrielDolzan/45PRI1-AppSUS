@@ -68,8 +68,8 @@ public class ControladorTodosAgendamentosUsuario {
     }
 
     public void cancelarConsulta(){
-        if(viewAgendamentos.getLinhaConsultaSelecionada() == -1){
-            System.out.println("Nenhuma Linha selecionada");
+        if (viewAgendamentos.getLinhaConsultaSelecionada() == -1){
+            viewAgendamentos.exibirMensagem("Nenhuma consulta selecionada!");
         } else {
             ModeloConsulta consulta = consultaTabela.getConsultas().get(viewAgendamentos.getLinhaConsultaSelecionada());
 
@@ -86,7 +86,7 @@ public class ControladorTodosAgendamentosUsuario {
 
     public void cancelarExame(){
         if(viewAgendamentos.getLinhaExameSelecionada() == -1){
-            System.out.println("Nenhuma Linha selecionada");
+            viewAgendamentos.exibirMensagem("Nenhum exame selecionado!");
         } else {
             ModeloExame exame = exameTabela.getExames().get(viewAgendamentos.getLinhaExameSelecionada());
 

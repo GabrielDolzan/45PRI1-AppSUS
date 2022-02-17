@@ -122,8 +122,10 @@ public class ControladorAgendarExame {
         viewAgendarExame.limpaData();
         ModeloTipoExame tipo = viewAgendarExame.getTipoExame();
         ModeloLocalAtendimento local = viewAgendarExame.getLocalAtendimento();
-        for (ModeloExame exame : this.DAOExame.getExameLivre(tipo, local)) {
-            viewAgendarExame.popularData(exame.getData());
+        if (tipo != null && local != null) {
+            for (ModeloExame exame : this.DAOExame.getExameLivre(tipo, local)) {
+                viewAgendarExame.popularData(exame.getData());
+            }
         }
     }
 

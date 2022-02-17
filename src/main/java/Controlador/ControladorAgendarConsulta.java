@@ -24,7 +24,7 @@ public class ControladorAgendarConsulta {
     private DAOLocalAtendimento DAOLocalAtendimento;
 
     private TabelaConsulta tabela;
-                
+
     public ControladorAgendarConsulta() {
         this.viewAgendarConsulta = new ViewAgendarConsulta();
         this.DAOConsulta = new DAOConsulta();
@@ -125,8 +125,11 @@ public class ControladorAgendarConsulta {
         viewAgendarConsulta.limpaData();
         ModeloMedico medico = viewAgendarConsulta.getMedico();
         ModeloLocalAtendimento local = viewAgendarConsulta.getLocalAtendimento();
-        for (ModeloConsulta consulta : this.DAOConsulta.getConsultaLivre(medico, local)) {
-            viewAgendarConsulta.popularData(consulta.getData());
+
+        if (medico != null && local != null) {
+            for (ModeloConsulta consulta : this.DAOConsulta.getConsultaLivre(medico, local)) {
+                viewAgendarConsulta.popularData(consulta.getData());
+            }
         }
     }
 
